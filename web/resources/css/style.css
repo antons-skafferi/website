@@ -1,0 +1,96 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2019-feb-19, 14:29:51
+    Author     : smexcell
+*/
+
+@font-face {
+font-family: "David CLM";
+
+src: url("#{resource['fonts/David CLM, Medium Italic.ttf']}");
+font-weight: normal;
+font-style: normal;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    font-family: "David CLM";
+    margin:0;
+    font-size: 4em;
+    color: white;
+}
+
+h2{
+    color: green;
+}
+h1{
+    color: white;
+    font-size: 2.6em;
+}
+.background-image{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    background-image: url(/website/resources/images/background.jpg);
+    
+    margin:0;
+    height: 100%;
+}
+
+.header-image{
+
+    
+    display: flex;
+    flex-direction: column;
+
+    height: 300px;
+    margin:0;
+    flex: 1;
+    background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url(/website/resources/images/background-blur.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+}
+
+.menubar-links-text{
+    color: white;
+}
+
+.menubar-links > li > a{
+    color: white !important;
+}
+
+.navbar .navbar-nav{
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+  
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.main-menubar{
+    background:none;
+    border-bottom: white solid 8px;
+    border-top: white solid 8px;
+    border-right: none;
+    border-left: none;
+    width: 100%;
+    position: absolute;
+    border-radius: 0px;;
+}
+
+
+
