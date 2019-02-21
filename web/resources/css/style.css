@@ -201,5 +201,37 @@ display:inline-block;
     margin-top: 6%;
 }
 
+/*Footer*/
 
+.footer-container{
+    background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url(/website/resources/images/background-blur.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 
+.footer-heading-rows{
+    margin-left : 10%;
+    margin-right : 10%;
+}
+
+hr.hr1{
+  border-top: 1px solid white;
+}
+
+.footer-rows{
+    margin-left : 10%;
+    margin-right : 10%;
+    margin-bottom : 25px;
+}
+
+.footer-rows p{
+    font-size : 24px;
+    color : white;
+    margin-bottom: 1px;
+}
+
+.footer-text-header h3{
+    font-size: 34px;
+    color : white;
+}
