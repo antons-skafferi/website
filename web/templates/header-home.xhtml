@@ -9,14 +9,14 @@
     <h:body>
         <ui:composition>
             <div class="header-image">
-                <div style="flex: 1; text-align: center;">
-                    <h1 style="font-size: 0; position: relative; top: 50%; transform: translateY(-50%)">Antons Skafferi</h1>
-                </div>
-                <div style="flex: 1; display:flex; flex-direction: column-reverse">
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center">
+                        <h1 style="margin: 0; padding: 0;">Antons Skafferi</h1>
+                    </div>
+                    </div>
                 <ui:insert name = "menu" >
                         <ui:include src = "menu.xhtml" />
                 </ui:insert>
-                </div>
             </div>
         </ui:composition>
     </h:body>

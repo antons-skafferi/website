@@ -47,19 +47,20 @@ h1{
 }
 
 .header-image{
-
-    
     display: flex;
     flex-direction: column;
 
-    height: 300px;
+    height: 250px;
     margin:0;
-    flex: 1;
-    background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url(/website/resources/images/background-blur.jpg);
+    background: linear-gradient(rgba(30, 30, 30, 0.70), rgba(30, 30, 30, 0.70)), url(/website/resources/images/background-blur.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     
+}
+
+.header-content{
+    height: 100%;
 }
 
 .menubar-links-text{
@@ -71,10 +72,14 @@ h1{
 }
 
 .navbar .navbar-nav{
-  display: inline-block;
-  float: none;
-  vertical-align: top;
+   display: flex;
+  justify-content: center;
   
+  float: none;
+}
+
+.navbar .navbar-nav navbar-default{
+  padding: 0;
 }
 
 .navbar .navbar-collapse {
@@ -88,8 +93,9 @@ h1{
     border-right: none;
     border-left: none;
     width: 100%;
-    position: absolute;
-    border-radius: 0px;;
+    border-radius: 0px;
+    margin: 0px;
+    
 }
 
 

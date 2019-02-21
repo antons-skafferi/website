@@ -10,22 +10,14 @@
     </h:head>
     <h:body>
         <div class='background-image'> 
-            <div>
-                <ui:insert name = "header" >
-                    <ui:include src = "/templates/header.xhtml" />
+            <div class="header-content">
+                <ui:insert name = "header-home" >
+                    <ui:include src = "/templates/header-home.xhtml" />
                 </ui:insert> 
-            </div>
 
-            <div>
                 <ui:insert name = "content" >
                     <ui:include src = "/templates/contents.xhtml" />
                 </ui:insert>    
-            </div>
-
-            <div>
-                <ui:insert name = "footer" >
-                    <ui:include src = "/templates/footer.xhtml" />
-                </ui:insert>
             </div>
         </div>
     </h:body>
