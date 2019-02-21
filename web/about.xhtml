@@ -35,7 +35,7 @@ and open the template in the editor.
                                 Ett genuint hantverk i varje detalj, från rätterna till sake glasen som är speciellt framtagna för oss, 
                                 och med Frida Ronge som kreativ ledare"/>
                         </b:column>
-                        <b:column span="3" class="content-about-upper-column-right"><h:outputText value=""/>
+                        <b:column span="3" class="content-about-upper-column-right"><h:outputText/>
                             <div class="content-about-upper-column-right-image">
                                 
                              </div>
@@ -44,13 +44,26 @@ and open the template in the editor.
                         
                     
                     <b:row>
-                        <h:outputText class="content-about-lower-row-label" value="Vårt fokus!"/>
+                         <b:column span="5" class="content-about-upper-column-label">
+                            
+                        </b:column>
+                        <b:column span="5" class="content-about-lower-column-label">
+                            <h:outputText class="content-about-upper-row-label" value="Vårt fokus!"/>
+                        </b:column>
                     </b:row>
+                    
                     <b:row class="content-about-lower-row">
-                        <b:column span="5" class="content-about-lower-column"><h:outputText value=""/></b:column>
-                        <b:column span="5" class="content-about-lower-column"><h:outputText value="När du investerar din tid, gör du ett mål och ett beslut av något som du vill uppnå.
-                                                                                      Oavsett om det är bra betyg på skolan, var en bra idrottsman, var en bra person, gå ner och gör lite samhällstjänst och hjälpa någon som behöver,
-                                                                                      vad som helst du väljer att göra, du investerar din tid i det. "/></b:column>
+                        <b:column span="5" class="content-about-lower-column"><h:outputText/>
+                            <div class="content-about-lower-column-left-image">
+
+                            </div>
+                        </b:column>
+                       
+                        <b:column span="5" class="content-about-lower-column">
+                            <h:outputText value="När du investerar din tid, gör du ett mål och ett beslut av något som du vill uppnå.
+                                Oavsett om det är bra betyg på skolan, var en bra idrottsman, var en bra person, gå ner och gör lite samhällstjänst och hjälpa någon som behöver,
+                                vad som helst du väljer att göra, du investerar din tid i det. "/>
+                        </b:column>
                     </b:row>
                 </b:container>
             </ui:define>        		
