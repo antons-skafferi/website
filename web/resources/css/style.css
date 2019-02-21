@@ -82,12 +82,31 @@ h1{
     height: 100%;
 }
 
+.content-about-upper-column-right{
+    
+    padding:1px;
+    border-bottom: solid 2px threedface;
+    height: 290px;
+    margin:3%;
+   
+   
+}
+
+.content-about-upper-column-right-image{
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-image: url(/website/resources/images/markje-about.png);
+}
 .content-about-upper-column{
     padding:1px;
     border-bottom: solid 2px threedface;
     height: 290px;
     margin:3%;
-   font-size: 21px;
+    font-size: 21px;
+   
     
 }
 .content-about-lower-column{
