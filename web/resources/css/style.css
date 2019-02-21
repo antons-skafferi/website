@@ -46,6 +46,12 @@ h1{
     height: 100%;
 }
 
+.common-background{
+    background-color: black;
+    margin:0;
+    height: 100%;
+}
+
 .header-image{
     display: flex;
     flex-direction: column;
