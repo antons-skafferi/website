@@ -113,6 +113,39 @@ hr {
     height: 100%;
 }
 
+
+.nav-tabs > li > a:hover{
+    background: none;
+    color:#337ab7;
+    border-top: none;
+    border-bottom: none;
+    margin-top:1px; 
+    border-radius: 0px 0px 0px 0px;
+}
+.nav-tabs > li.active > a:hover{
+    background: none;
+    color:#337ab7;
+    border-top: none;
+    border-bottom: none;
+    margin-top:1px; 
+    border-radius: 0px 0px 0px 0px;
+}
+.nav-tabs > li.active > a:focus{
+    background: none;
+    color:#337ab7;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0px 0px 0px 0px;
+}
+.nav-tabs > li.active > a{
+    background: none;
+    color:#337ab7;
+    border-top: none;
+    border-bottom: none;
+    margin-top:1px;
+    border-radius: 0px 0px 0px 0px;
+}
+
 .content-about-upper-column-right{
     
     padding:1px;
