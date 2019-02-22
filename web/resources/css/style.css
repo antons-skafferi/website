@@ -33,7 +33,7 @@ html, body {
 body{
     font-family: "Roboto";
     margin:0;
-    font-size: 3em;
+    font-size: 3rem;
     color: white;
 }
 
@@ -70,7 +70,7 @@ hr {
 }
 
 .common-background{
-    background-color: #111111;
+    background-color: #151B1F;
     margin:0;
     min-height: 200%;
     display: flex;
@@ -85,7 +85,7 @@ hr {
     min-height: 160px;
     margin: 0;
     background-color: #252120;
-    background-size: cover;
+    background-image: linear-gradient(to right, #122a3d, #182a3a, #1d2938, #202935, #232932);    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     padding: 10px 0px 0px 0px;
@@ -101,6 +101,7 @@ hr {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    padding: 10px 0px 10px 0px;
 }
 
 .header-content{
@@ -233,6 +234,7 @@ display:inline-block;
     //background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url(/website/resources/images/background-blur.jpg);
     background-color: #252120;
     //border-top: white solid 8px;
+     background-image: linear-gradient(to right, #122a3d, #182a3a, #1d2938, #202935, #232932);
     
     background-size: cover;
     background-position: center center;
