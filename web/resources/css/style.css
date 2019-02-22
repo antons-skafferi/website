@@ -16,25 +16,46 @@ font-weight: normal;
 font-style: normal;
 }
 
+@font-face {
+font-family: "Roboto";
+
+src: url("#{resource['fonts/OpenSans-Regular.ttf']}");
+font-weight: normal;
+font-style: normal;
+}
+
 html, body {
     margin: 0;
     height: 100%;
+    font-size: 16px;
 }
 
 body{
-    font-family: "David CLM";
+    font-family: "Roboto";
     margin:0;
-    font-size: 4em;
+    font-size: 3em;
     color: white;
 }
 
 h2{
+    font-family: "David CLM";
     color: green;
 }
 
 h1{
+    font-family: "David CLM";
     color: white;
-    font-size: 2.6em;
+}
+
+hr {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+    width: 70%;
+    flex: 1;
+    align-self: center;
 }
 
 .background-image{
@@ -49,9 +70,12 @@ h1{
 }
 
 .common-background{
-    background-color: black;
+    background-color: #111111;
     margin:0;
     min-height: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .header-image{
@@ -59,11 +83,12 @@ h1{
     flex-direction: column;
 
     min-height: 160px;
-    margin:0;
-    background: linear-gradient(rgba(30, 30, 30, 0.70), rgba(30, 30, 30, 0.70)), url(/website/resources/images/background-blur.jpg);
+    margin: 0;
+    background-color: #252120;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    padding: 10px 0px 0px 0px;
 }
 
 .header-image-home{
@@ -160,14 +185,15 @@ display:inline-block;
 
 .main-menubar{
     background:none;
-    border-bottom: white solid 8px;
-    border-top: white solid 8px;
+    border-bottom: white solid 0px;
+    border-top: white solid 0px;
     border-right: none;
     border-left: none;
     width: 100%;
     border-radius: 0px;
     margin: 0px;
     text-align: center;
+    padding: 10px 0px 10px 0px;
     
 }
 .content-about-lower-column-label{
@@ -204,10 +230,14 @@ display:inline-block;
 /*Footer*/
 
 .footer-container{
-    background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url(/website/resources/images/background-blur.jpg);
+    //background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url(/website/resources/images/background-blur.jpg);
+    background-color: #252120;
+    //border-top: white solid 8px;
+    
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    padding: 10px 0px 10px 0px;
 }
 
 .footer-heading-rows{
@@ -233,5 +263,5 @@ hr.hr1{
 
 .footer-text-header h3{
     font-size: 34px;
-    color : white;
+    color : whitesmoke;
 }

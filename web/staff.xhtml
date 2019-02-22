@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Personal</title>
+
     </h:head>
 
     <h:body>
@@ -13,20 +14,11 @@
         <h:form id="tabform">
             <p:tabView>
                 <p:tab title="Schema">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <h:panelGrid columnClasses="value">
-                            <h3 style="margin-top: 0">Schemaläggning</h3>
-                            <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
-                            </p:schedule>
-
-                            <h3>Locale Support ( Example: Turkishs )</h3>
-                            <p:schedule id="scheduleLocale" value="#{scheduleView.eventModel}" locale="sv" />
-
-                            <h3>Lazy Schedule</h3>
-                            <p:schedule value="#{scheduleView.lazyEventModel}" />
-                        </h:panelGrid>
-
-                    </h:panelGrid>
+                    <h3>Schemaläggning</h3>
+                    <p:schedule id="scheduleLocale" value="#{scheduleView.eventModel}" locale="sv" />
+                </p:tab>
+                <p:tab title="Inventarie">
+                    <h3>Inventarie</h3>
                 </p:tab>
             </p:tabView>
         </h:form>
