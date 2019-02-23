@@ -15,7 +15,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="antons_skafferi"/>
         <property name="User" value="root"/>
-        <property name="Password" value="martinSäl159"/>
+        <property name="Password" value="123456"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/antons_skafferi?autoReconnect=true&amp;useSSL=false"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
@@ -25,8 +25,8 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="antons_skafferi"/>
         <property name="User" value="root"/>
-        <property name="Password" value="martinSäl159"/>
-        <property name="URL" value="jdbc:mysql://localhost:3306/antons_skafferi"/>
+        <property name="Password" value="123456"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/antons_skafferi?autoReconnect=true&amp;useSSL=fals"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/test" object-type="user" pool-name="mysql_antons_skafferi_rootPool_1"/>
