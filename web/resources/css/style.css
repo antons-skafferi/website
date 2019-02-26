@@ -71,6 +71,7 @@ hr {
     margin:0;   
     display: flex;
     flex-flow: column;
+    min-height: 100%;
 }
 
 .common-background{
@@ -79,6 +80,7 @@ hr {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    min-height: 100%;
 }
 
 .header-image{
@@ -112,7 +114,6 @@ hr {
     //flex-flow: column;
     min-height: 100%;
 }
-
 
 .nav-tabs > li > a:hover{
     background: none;
