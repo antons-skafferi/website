@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package api;
+package entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -22,59 +22,58 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Tobias
  */
 @Entity
-@Table(name = "drink")
+@Table(name = "dinner")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Drink.findAll", query = "SELECT d FROM Drink d")
-    , @NamedQuery(name = "Drink.findByDrinkId", query = "SELECT d FROM Drink d WHERE d.drinkId = :drinkId")
-    , @NamedQuery(name = "Drink.findByDrinkName", query = "SELECT d FROM Drink d WHERE d.drinkName = :drinkName")
-    , @NamedQuery(name = "Drink.findByPrice", query = "SELECT d FROM Drink d WHERE d.price = :price")})
-public class Drink implements Serializable {
+    @NamedQuery(name = "Dinner.findAll", query = "SELECT d FROM Dinner d")
+    , @NamedQuery(name = "Dinner.findByDinnerId", query = "SELECT d FROM Dinner d WHERE d.dinnerId = :dinnerId")
+    , @NamedQuery(name = "Dinner.findByFoodId", query = "SELECT d FROM Dinner d WHERE d.foodId = :foodId")
+    , @NamedQuery(name = "Dinner.findByPrice", query = "SELECT d FROM Dinner d WHERE d.price = :price")})
+public class Dinner implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "drink_id")
-    private String drinkId;
+    @Column(name = "dinner_id")
+    private String dinnerId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "drink_name")
-    private String drinkName;
+    @Column(name = "food_id")
+    private int foodId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "price")
     private int price;
 
-    public Drink() {
+    public Dinner() {
     }
 
-    public Drink(String drinkId) {
-        this.drinkId = drinkId;
+    public Dinner(String dinnerId) {
+        this.dinnerId = dinnerId;
     }
 
-    public Drink(String drinkId, String drinkName, int price) {
-        this.drinkId = drinkId;
-        this.drinkName = drinkName;
+    public Dinner(String dinnerId, int foodId, int price) {
+        this.dinnerId = dinnerId;
+        this.foodId = foodId;
         this.price = price;
     }
 
-    public String getDrinkId() {
-        return drinkId;
+    public String getDinnerId() {
+        return dinnerId;
     }
 
-    public void setDrinkId(String drinkId) {
-        this.drinkId = drinkId;
+    public void setDinnerId(String dinnerId) {
+        this.dinnerId = dinnerId;
     }
 
-    public String getDrinkName() {
-        return drinkName;
+    public int getFoodId() {
+        return foodId;
     }
 
-    public void setDrinkName(String drinkName) {
-        this.drinkName = drinkName;
+    public void setFoodId(int foodId) {
+        this.foodId = foodId;
     }
 
     public int getPrice() {
@@ -88,18 +87,18 @@ public class Drink implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (drinkId != null ? drinkId.hashCode() : 0);
+        hash += (dinnerId != null ? dinnerId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Drink)) {
+        if (!(object instanceof Dinner)) {
             return false;
         }
-        Drink other = (Drink) object;
-        if ((this.drinkId == null && other.drinkId != null) || (this.drinkId != null && !this.drinkId.equals(other.drinkId))) {
+        Dinner other = (Dinner) object;
+        if ((this.dinnerId == null && other.dinnerId != null) || (this.dinnerId != null && !this.dinnerId.equals(other.dinnerId))) {
             return false;
         }
         return true;
@@ -107,7 +106,7 @@ public class Drink implements Serializable {
 
     @Override
     public String toString() {
-        return "api.Drink[ drinkId=" + drinkId + " ]";
+        return "api.Dinner[ dinnerId=" + dinnerId + " ]";
     }
     
 }

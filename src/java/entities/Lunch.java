@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package api;
+package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -22,50 +25,57 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Tobias
  */
 @Entity
-@Table(name = "dinner")
+@Table(name = "lunch")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Dinner.findAll", query = "SELECT d FROM Dinner d")
-    , @NamedQuery(name = "Dinner.findByDinnerId", query = "SELECT d FROM Dinner d WHERE d.dinnerId = :dinnerId")
-    , @NamedQuery(name = "Dinner.findByFoodId", query = "SELECT d FROM Dinner d WHERE d.foodId = :foodId")
-    , @NamedQuery(name = "Dinner.findByPrice", query = "SELECT d FROM Dinner d WHERE d.price = :price")})
-public class Dinner implements Serializable {
+    @NamedQuery(name = "Lunch.findAll", query = "SELECT l FROM Lunch l")
+    , @NamedQuery(name = "Lunch.findByLunchId", query = "SELECT l FROM Lunch l WHERE l.lunchId = :lunchId")
+    , @NamedQuery(name = "Lunch.findByFoodId", query = "SELECT l FROM Lunch l WHERE l.foodId = :foodId")
+    , @NamedQuery(name = "Lunch.findByDate", query = "SELECT l FROM Lunch l WHERE l.date = :date")
+    , @NamedQuery(name = "Lunch.findByPrice", query = "SELECT l FROM Lunch l WHERE l.price = :price")})
+public class Lunch implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "dinner_id")
-    private String dinnerId;
+    @Column(name = "lunch_id")
+    private String lunchId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "food_id")
     private int foodId;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "date")
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "price")
     private int price;
 
-    public Dinner() {
+    public Lunch() {
     }
 
-    public Dinner(String dinnerId) {
-        this.dinnerId = dinnerId;
+    public Lunch(String lunchId) {
+        this.lunchId = lunchId;
     }
 
-    public Dinner(String dinnerId, int foodId, int price) {
-        this.dinnerId = dinnerId;
+    public Lunch(String lunchId, int foodId, Date date, int price) {
+        this.lunchId = lunchId;
         this.foodId = foodId;
+        this.date = date;
         this.price = price;
     }
 
-    public String getDinnerId() {
-        return dinnerId;
+    public String getLunchId() {
+        return lunchId;
     }
 
-    public void setDinnerId(String dinnerId) {
-        this.dinnerId = dinnerId;
+    public void setLunchId(String lunchId) {
+        this.lunchId = lunchId;
     }
 
     public int getFoodId() {
@@ -74,6 +84,14 @@ public class Dinner implements Serializable {
 
     public void setFoodId(int foodId) {
         this.foodId = foodId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getPrice() {
@@ -87,18 +105,18 @@ public class Dinner implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (dinnerId != null ? dinnerId.hashCode() : 0);
+        hash += (lunchId != null ? lunchId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Dinner)) {
+        if (!(object instanceof Lunch)) {
             return false;
         }
-        Dinner other = (Dinner) object;
-        if ((this.dinnerId == null && other.dinnerId != null) || (this.dinnerId != null && !this.dinnerId.equals(other.dinnerId))) {
+        Lunch other = (Lunch) object;
+        if ((this.lunchId == null && other.lunchId != null) || (this.lunchId != null && !this.lunchId.equals(other.lunchId))) {
             return false;
         }
         return true;
@@ -106,7 +124,7 @@ public class Dinner implements Serializable {
 
     @Override
     public String toString() {
-        return "api.Dinner[ dinnerId=" + dinnerId + " ]";
+        return "api.Lunch[ lunchId=" + lunchId + " ]";
     }
     
 }

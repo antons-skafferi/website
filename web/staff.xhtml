@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Personal</title>
 
@@ -50,6 +51,17 @@
             <input type="reset" value="Clear" />
             <input type="submit" name="submitbtn" value="Submit"/>
         </form>
+                </p:tab>
+                <p:tab title="lunch">
+                    <h3>LUNCH</h3>
+                    
+                    <h:form>
+                        <c:forEach var="lunch" items="#{mainController.listAllLunch()}">
+                            <h3>"#{lunch.foodId}"</h3>
+                            <h3>"#{lunch.price}"</h3>
+                        </c:forEach>
+                    </h:form>
+                    
                 </p:tab>
 
             </p:tabView>
