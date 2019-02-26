@@ -428,4 +428,14 @@ hr.hr1{
     color: white;
 }
 
+.col-md-4{
+    justify-content: center;
+    
+}
+
+.col-md-7 > div{
+    display: flex;
+    justify-content: center;
+}
+
 
