@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package api;
+package entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Staff.findByAdress", query = "SELECT s FROM Staff s WHERE s.adress = :adress")
     , @NamedQuery(name = "Staff.findByPhone", query = "SELECT s FROM Staff s WHERE s.phone = :phone")
     , @NamedQuery(name = "Staff.findByEmail", query = "SELECT s FROM Staff s WHERE s.email = :email")})
+
 public class Staff implements Serializable {
 
     private static final long serialVersionUID = 1L;
