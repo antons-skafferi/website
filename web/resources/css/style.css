@@ -326,3 +326,52 @@ hr.hr1{
 .underline{
     width: 80%;
 }
+
+/*DAILY-MENU*/
+
+.daily-menu-rows h3{
+    font-weight: bold;
+}
+
+.daily-menu{
+    float: left;
+    width: 20rem;
+    background: rgba(65, 65, 65, 0.9);
+    padding: 0rem 2rem 0rem 2rem;
+    margin: 2rem;
+}
+
+.daily-menu-hr1{
+    width: 17rem;
+}
+
+.daily-menu-price p{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.daily-menu-more {
+    text-align: center;
+    max-height: 100%;
+    max-width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.daily-menu-more p{
+    font-weight: bold;
+}
+
+.daily-menu-more a{
+    font-size: 1.5rem;
+}
+
+.daily-menu-more a:link {
+    color: white;
+}
+
+.daily-menu-more a:visited {
+    color: white;
+}
+
+
