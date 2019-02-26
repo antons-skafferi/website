@@ -23,45 +23,44 @@
                 </p:tab>
                 <p:tab title="Johnform">
                     <h3>Pog</h3>
-                                    <form method="post" >
-            <fieldset>
-                <legend>Personal information</legend>
-                <label for="firstname">First name</label><br />
-                <input type="text" name="firstname" id="firstname"/><br />
+                    <h:form >
+                        <fieldset>
+                            <legend>Personal information</legend>
+                            <label for="firstname">PersonNummer</label><br />
+                            <p:inputText id="staff_id" value="#{staffbean.staff_id}" /><br />
 
-                <label for="lastname">Last name</label><br />
-                <input type="text" name="lastname" id="lastname" /><br />
+                            <label for="lastname">Namn</label><br />
+                            <p:inputText id="firstname" value="#{staffbean.firstname}" /><br />
 
-                <label for="lastname">Amount of people</label><br />
-                <input type="text" name="people" id="people" /><br />
+                            <label for="lastname">Efternamn</label><br />
+                            <p:inputText id="lastname" value="#{staffbean.lastname}" /><br />
 
-                <label for="start">Start date:</label><br />
-                <input type="date" id="start" name="book-start" /><br />
+                            <label for="start">adress:</label><br />
+                            <p:inputText id="adress" value="#{staffbean.adress}" /><br />
 
 
-                <label for="lastname">to</label><br />
-                <input type="date" name="to" id="book-to" /><br />
+                            <label for="lastname">telefonnummer</label><br />
+                            <p:inputText id="phone" value="#{staffbean.phone}" /><br />
 
-                <label for="lastname">phone</label><br />
-                <input type="text" name="phone" id="phone" /><br />
+                            <label for="lastname">Email</label><br />
+                            <p:inputText id="email" value="#{staffbean.email}" /><br />
+                        </fieldset>
+                        <input type="reset" value="Clear" />
 
-                <label for="lastname">Email</label><br />
-                <input type="text" name="email" id="email" /><br />
-            </fieldset>
-            <input type="reset" value="Clear" />
-            <input type="submit" name="submitbtn" value="Submit"/>
-        </form>
+                        <h:commandButton type="submit"  value="Submit"  action="#{staffbean.addForm()}" />
+                        C
+                    </h:form>
                 </p:tab>
                 <p:tab title="lunch">
                     <h3>LUNCH</h3>
-                    
+
                     <h:form>
                         <c:forEach var="lunch" items="#{mainController.listAllLunch()}">
                             <h3>"#{lunch.foodId}"</h3>
                             <h3>"#{lunch.price}"</h3>
                         </c:forEach>
                     </h:form>
-                    
+
                 </p:tab>
 
             </p:tabView>
