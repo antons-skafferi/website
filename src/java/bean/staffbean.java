@@ -9,6 +9,8 @@ import entities.Staff;
 import facade.LunchFacade;
 import facade.StaffFacade;
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.Dependent;
@@ -22,6 +24,7 @@ import javax.inject.Named;
 @Named(value = "staffbean")
 @SessionScoped
 public class staffbean implements Serializable {
+
     private String staff_id;
     private String firstname;
     private String lastname;
@@ -30,7 +33,7 @@ public class staffbean implements Serializable {
     private String email;
     @EJB
     private StaffFacade staffFacade;
-    
+
     public String getStaff_id() {
         return staff_id;
     }
@@ -79,8 +82,16 @@ public class staffbean implements Serializable {
         this.email = email;
     }
 
+    public List<Staff> StaffList() {
+        return staffFacade.findAll();
+    }
+
     public void addForm() {
-        
-       staffFacade.create(new Staff(staff_id,firstname,lastname,adress,phone,email));
+        try {
+            staffFacade.create(new Staff(staff_id, firstname, lastname, adress, phone, email));
+        } catch (javax.ejb.EJBException e) {
+            e.printStackTrace();
+        }
+
     }
 }
