@@ -14,6 +14,12 @@
                 <ui:insert name = "header-home" >
                     <ui:include src = "/templates/header-home.xhtml" />
                 </ui:insert> 
+                
+                <div id="sidebar">
+                    <ui:insert name="leftnav">
+                            <ui:include src="leftnav-home.xhtml" />
+                    </ui:insert>
+                </div>
 
                 <ui:insert name = "content" >
                     <ui:include src = "/templates/contents.xhtml" />

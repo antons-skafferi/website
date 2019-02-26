@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package api.service;
+package api;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -29,12 +29,12 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(api.service.DinnerFacadeREST.class);
-        resources.add(api.service.DrinkFacadeREST.class);
-        resources.add(api.service.LoginFacadeREST.class);
-        resources.add(api.service.LunchFacadeREST.class);
-        resources.add(api.service.Order1FacadeREST.class);
-        resources.add(api.service.StaffFacadeREST.class);
+        resources.add(api.DinnerFacadeREST.class);
+        resources.add(api.DrinkFacadeREST.class);
+        resources.add(api.LoginFacadeREST.class);
+        resources.add(api.LunchFacadeREST.class);
+        resources.add(api.Order1FacadeREST.class);
+        resources.add(api.StaffFacadeREST.class);
     }
     
 }

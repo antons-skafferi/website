@@ -66,20 +66,18 @@ hr {
 .background-image{
     background-size: cover;
     background-position: center center;
-    background-repeat: no-repeat;
-    
-    background-image: url(/website/resources/images/background.jpg);
-    
-    margin:0;
-    height: 100%;
+    background-repeat: no-repeat;   
+    background-image: url(/website/resources/images/background.jpg);   
+    margin:0;   
+    display: flex;
+    flex-flow: column;
 }
 
 .common-background{
     background-color: #151B1F;
     margin:0;
-    min-height: 200%;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     justify-content: space-between;
 }
 
@@ -110,7 +108,9 @@ hr {
 }
 
 .header-content{
-    height: 100%;
+    //display: flex;
+    //flex-flow: column;
+    min-height: 100%;
 }
 
 
@@ -380,3 +380,51 @@ hr.hr1{
   -webkit-transform: scale(1.01); /* Safari 3-8 */
   transform: scale(1.01); 
 }
+/*DAILY-MENU*/
+
+.daily-menu-rows h3{
+    font-weight: bold;
+}
+
+.daily-menu{
+    float: left;
+    width: 20rem;
+    background: rgba(65, 65, 65, 0.9);
+    padding: 0rem 2rem 0rem 2rem;
+    margin: 2rem;
+}
+
+.daily-menu-hr1{
+    width: 17rem;
+}
+
+.daily-menu-price p{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.daily-menu-more {
+    text-align: center;
+    max-height: 100%;
+    max-width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.daily-menu-more p{
+    font-weight: bold;
+}
+
+.daily-menu-more a{
+    font-size: 1.5rem;
+}
+
+.daily-menu-more a:link {
+    color: white;
+}
+
+.daily-menu-more a:visited {
+    color: white;
+}
+
+

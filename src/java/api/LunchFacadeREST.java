@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package api.service;
+package api;
 
-import api.Lunch;
+import entities.Lunch;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
