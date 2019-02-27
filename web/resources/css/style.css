@@ -438,4 +438,22 @@ hr.hr1{
     justify-content: center;
 }
 
+/*BOOKING*/
+
+.booking-div{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.booking-div-forms{
+    background-color: #151B1G;
+    width: 15rem;
+}
+
+.booking-form-rows{
+    padding-bottom: 2rem;
+}
+
 
