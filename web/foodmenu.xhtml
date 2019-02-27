@@ -17,24 +17,31 @@ and open the template in the editor.
          
             <ui:define name = "content">
                 <b:container  fluid="true">
-                    <b:row class="menu-background-start" style="padding-left: 15%; padding-right: 15%; ">
-                        <div style="border-left: solid 1px white; border-right: solid 1px white;">
-                            <div style="display: flex; justify-content: center; margin-top:10%; ">
-                                <h2 style="align-self: center; padding-left: 10%; padding-right: 10%;" >HÄR SER DU GODSAKERNA SOM SÄSONGERNA ERBJUDER.</h2>
-
-
-                            </div>
-                            <div style="display: flex; justify-content: center; ">
-
-                                <h3 style="align-self: center; padding-left: 10%; padding-right: 10%;" >MATUPPLEVELSEN PÅ ANTONS SKAFFERI ÄR I STÄNDIG FÖRÄNDRING OCH VI DAGENS LUNCH MENYER VARJE VECKA</h3>
-
-                            </div>
-
-
-                            <div style="display: flex; justify-content: center;">
-                                <hr style="align-self: center; width: 20%; margin: 5%;"/>
+                    <b:row class="menu-background-start" style="width:80%; height: 10%;padding-left: 15%; padding-right: 15%; ">
+                       
+                        <div>
+                            
+                            
+                            <b:carousel id="parque2" style="width:140%; max-height: 10%; margin-top: 4rem; " disabled="true">
+                                <b:carouselItem>
+                                    <img src="/website/resources/images/carosell_1.jpg" alt="Valladolid" />
+                                </b:carouselItem>
+                                <b:carouselItem>
+                                    <img src="/website/resources/images/carosell_2.jpg" alt="Valladolid"  />
+                                </b:carouselItem>
+                                <b:carouselItem>
+                                    <img src="/website/resources/images/carosell_3.jpg" alt="Valladolid"  />
+                                </b:carouselItem>
+                            </b:carousel>
+                           
+                            <div style="position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                                <h2 style="" >HÄR SER DU GODSAKERNA SOM SÄSONGERNA ERBJUDER.</h2>
                             </div>
                         </div>
+                              
+                            
+                          
+                        
                         <!-- contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px" -->
                     </b:row>
                     <b:row> 
