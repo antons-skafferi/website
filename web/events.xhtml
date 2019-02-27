@@ -14,6 +14,8 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="/path/to/flickity.css" media="screen"></link>
+        <script src="/path/to/flickity.pkgd.min.js"></script>
     </h:head>
     <h:body>
         <ui:composition template = "/templates/common.xhtml">			
@@ -35,7 +37,13 @@ and open the template in the editor.
                             <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Våra kommande event!</h3>
                                 
                         </div>
-                        
+                        <div class="carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                          </div>
                     </b:row>
                     
                     <b:row style="justify-content: space-between">
@@ -45,7 +53,7 @@ and open the template in the editor.
                                     <div style="padding: 0rem;">
                                         <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
                                     </div>
-                                    <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
+                                    <div class="event-content">
                                         <h4 style="font-weight: bold; color:black;">Välkommen in till oss på Antons Skafferi</h4>
                                         
                                         <p class="event-news-first-text">
@@ -66,7 +74,7 @@ and open the template in the editor.
                                     <div style="padding: 0rem;">
                                         <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
                                     </div>
-                                    <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
+                                    <div class="event-content">
                                         <h4 style="font-weight: bold; color:black;">Välkommen in till oss på Antons Skafferi</h4>
                                         
                                         <p class="event-news-first-text">
@@ -80,13 +88,13 @@ and open the template in the editor.
                                 </div>
                             </a>
                         </b:column>
-                        <b:column class="zoom" span="4" style="display: flex; margin-bottom: 2rem;">
+                        <b:column span="4" style="display: flex; margin-bottom: 2rem;">
                             <a id="atrigger"  href="#amodal" data-toggle="modal"> 
                                 <div class="event-news-first">
                                     <div style="padding: 0rem;">
                                         <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
                                     </div>
-                                    <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
+                                    <div class="event-content">
                                         <h4 style="font-weight: bold; color:black;">Välkommen in till oss på Antons Skafferi</h4>
                                         
                                         <p class="event-news-first-text">

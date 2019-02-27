@@ -6,7 +6,7 @@
             xmlns:p="http://primefaces.org/ui"
             >
     <h:head>
-        <h:outputStylesheet position="last" library="css" name="style.css" />
+        <h:outputStylesheet position="last" library="css" name="style.css" />      
     </h:head>
     <h:body>
         <div class='common-background'> 
@@ -15,9 +15,11 @@
                     <ui:include src = "/templates/header.xhtml" />
                 </ui:insert> 
 
-                <ui:insert name = "content" >
-                    <ui:include src = "/templates/contents.xhtml" />
-                </ui:insert>    
+                 <div class='content-background'> 
+                    <ui:insert name = "content" >
+                        <ui:include src = "/templates/contents.xhtml" />
+                    </ui:insert>   
+                 </div>
             </div>
 
             <div>
