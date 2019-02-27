@@ -67,6 +67,7 @@ hr {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;   
+    
     background-image: url(/website/resources/images/background.jpg);   
     margin:0;   
     display: flex;
@@ -75,7 +76,8 @@ hr {
 }
 
 .common-background{
-    background-color: #151B1F;
+    background-image: url(/website/resources/images/e05bb1e8.png);  
+    //background-color: #151B1F;
     margin:0;
     display: flex;
     flex-flow: column;
@@ -438,4 +440,12 @@ hr.hr1{
     justify-content: center;
 }
 
+.menu-background{
+    //background-image: url(/website/resources/images/d5be9ee6.png);
+    //box-shadow: 0 0 8px 8px black;
+}
 
+.menu-background-start{
+    //background-image: url(/website/resources/images/mypost.jpg);
+    
+}

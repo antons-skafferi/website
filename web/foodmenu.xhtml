@@ -11,13 +11,13 @@ and open the template in the editor.
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
     </h:head>
-    <h:body>
+    <h:body >
         <ui:composition template = "/templates/common.xhtml">
             			
          
             <ui:define name = "content">
                 <b:container  fluid="true">
-                    <b:row style="padding-left: 15%; padding-right: 15%; ">
+                    <b:row class="menu-background-start" style="padding-left: 15%; padding-right: 15%; ">
                         <div style="border-left: solid 1px white; border-right: solid 1px white;">
                             <div style="display: flex; justify-content: center; margin-top:10%; ">
                                 <h2 style="align-self: center; padding-left: 10%; padding-right: 10%;" >HÄR SER DU GODSAKERNA SOM SÄSONGERNA ERBJUDER.</h2>
@@ -54,8 +54,9 @@ and open the template in the editor.
                         
                     </b:row>
                     
-                    <b:row style="display: flex; justify-content: center; margin-top: 5%;">
-                        <h:form style="align-self: center;">
+                    <b:row  style="display: flex; justify-content: center; margin-top: 5%;">
+                      
+                        <h:form class="menu-background" style="align-self: center;">
                             <b:tabView >
                               <b:tab title="Huvudmenyn">
                                 <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
