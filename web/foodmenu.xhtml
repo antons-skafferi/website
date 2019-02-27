@@ -17,12 +17,20 @@ and open the template in the editor.
          
             <ui:define name = "content">
                 <b:container  fluid="true">
-                    <b:row class="menu-background-start" style="width:80%; height: 10%;padding-left: 15%; padding-right: 15%; ">
+                                        <b:row style="margin-bottom: 2rem; margin-top: 2rem;">
+                        <div style="display: flex; flex-flow: column; align-items: center;">
+                            <div style="display: flex; flex-flow: column; align-items: center; justify-content: center">
+                                <h1 style="align-self: center">Meny</h1>
+                                <hr class="underline"/>
+                            </div>
+                        </div>
+                    </b:row>
+                    <b:row class="menu-background-start" style="display: flex; justify-content: center; align-content: center; ">
                        
                         <div>
                             
                             
-                            <b:carousel id="parque2" style="width:140%; max-height: 10%; margin-top: 4rem; " disabled="true">
+                            <b:carousel id="parque2" disabled="true">
                                 <b:carouselItem>
                                     <img src="/website/resources/images/carosell_1.jpg" alt="Valladolid" />
                                 </b:carouselItem>
@@ -34,9 +42,7 @@ and open the template in the editor.
                                 </b:carouselItem>
                             </b:carousel>
                            
-                            <div style="position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                <h2 style="" >HÄR SER DU GODSAKERNA SOM SÄSONGERNA ERBJUDER.</h2>
-                            </div>
+       
                         </div>
                               
                             
