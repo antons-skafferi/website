@@ -14,6 +14,8 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="/path/to/flickity.css" media="screen"></link>
+        <script src="/path/to/flickity.pkgd.min.js"></script>
     </h:head>
     <h:body>
         <ui:composition template = "/templates/common.xhtml">			
@@ -35,7 +37,13 @@ and open the template in the editor.
                             <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Våra kommande event!</h3>
                                 
                         </div>
-                        
+                        <div class="carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                            <div class="carousel-cell"></div>
+                          </div>
                     </b:row>
                     
                     <b:row style="justify-content: space-between">
