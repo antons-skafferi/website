@@ -44,12 +44,15 @@ span{
 h2{
 
     align-self: center;
+    font-size: 2rem;
 }
 
 h1{
     font-family: "David CLM";
     color: white;
     font-size: 4rem;
+    margin-top: 0;
+    padding: 0;
 }
 
 hr {
@@ -93,6 +96,7 @@ hr {
     flex-flow: column;
     justify-content: space-between;
     box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    padding: 2rem 0 4rem 0;
 }
 
 .header-image{
@@ -324,6 +328,11 @@ hr.hr1{
     margin-bottom: 1px;
 }
 
+.footer-text-header{
+    display: flex;
+    //min-width: 100%;
+}
+
 .footer-text-header h3{
     font-size: 34px;
     color : whitesmoke;
@@ -400,8 +409,8 @@ hr.hr1{
 
 .underline-event{
     width: 80%;
-    margin-bottom: 5rem;
-    margin-top: 4rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 #atrigger:hover {
@@ -488,9 +497,13 @@ hr.hr1{
     justify-content: center;
 }
 
+.booking-container-div{
+    width: 24rem;
+}
+
 .booking-div-forms{
-    background-color: #151B1G;
     width: 15rem;
+    
 }
 
 .booking-form-rows{
@@ -500,5 +513,23 @@ hr.hr1{
 .bootstrap-datetimepicker-widget{
     color: black;
 }
+
+.booking-tabview{
+   background: rgba(255, 255, 255, 0.9);
+   text-align: center;
+   align-self: center;
+   justify-content: center;
+}
+
+.booking-tab nav-pills > li.active > a{
+    background-color: green;
+}
+
+active booking-tab{
+    background-color: green;
+}
+
+
+
 
 
