@@ -61,7 +61,7 @@ public class foodBean implements Serializable {
         this.category = category;
     }
 
-    public List<Food> FoodList() {
+    public List<Food> foodList() {
         return foodFacade.findAll();
     }
 

@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Tobias
+ * @author Gustav
  */
 @Named(value = "mainController")
 @Dependent
