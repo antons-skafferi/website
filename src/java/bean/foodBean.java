@@ -66,12 +66,15 @@ public class foodBean implements Serializable {
     }
 
     public void addfoodForm() {
-        System.out.println(id);
-        System.out.println(dish);
-        System.out.println(description);
-        System.out.println(category);
 
-        foodFacade.create(new Food(id, dish, description, category));
-        
+        if(ingrediens == null){
+        foodFacade.create(new Food(null, dish, description, category));
+        }
+        else{
+            foodFacade.create(new Food(null, dish, description, category, ingrediens));
+        }
+       
     }
+    
+ 
 }

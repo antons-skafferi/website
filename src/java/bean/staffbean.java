@@ -86,10 +86,6 @@ public class staffbean implements Serializable {
 
     public void addForm() {
         try {
-                System.out.println(staff_id);
-        System.out.println(firstname);
-        System.out.println(lastname);
-        System.out.println(adress);
             staffFacade.create(new Staff(staff_id, firstname, lastname, adress, phone, email));
         } catch (javax.ejb.EJBException e) {
             e.printStackTrace();
