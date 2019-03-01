@@ -82,9 +82,7 @@ public class staffbean implements Serializable {
         this.email = email;
     }
 
-    public List<Staff> StaffList() {
-        return staffFacade.findAll();
-    }
+
 
     public void addForm() {
         try {

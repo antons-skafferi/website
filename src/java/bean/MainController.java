@@ -1,9 +1,12 @@
 package bean;
 
+import entities.Food;
 import entities.Lunch;
 import entities.Staff;
+import facade.FoodFacade;
 import facade.LunchFacade;
 import facade.StaffFacade;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -14,7 +17,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Tobias
+ * @author Gustav
  */
 @Named(value = "mainController")
 @Dependent
@@ -30,7 +33,7 @@ public class MainController {
     
     @EJB
     private LunchFacade lunchFacade;
-    private StaffFacade staffFacade;
+    private FoodFacade foodFacade;
 
     /**
      * Creates a new instance of MainController
@@ -40,8 +43,22 @@ public class MainController {
 
     }
     
-        public List<Lunch> lunchList(){            
+        public List<Lunch> lunchList(){  
             return lunchFacade.findAll();
+        }
+        
+        public List<Food> foodLunchList(){
+            List<Lunch> lunches = lunchList();
+            List<Food> allFood = foodFacade.findAll();
+            List<Food> foodLunches = new ArrayList<Food>();
+            for(Lunch lunch : lunches){
+                for(Food food : allFood){
+                    if(lunch.getFoodId() == food.getFoodId()){
+                        foodLunches.add(food);
+                    }
+                }
+            }
+            return foodLunches;
         }
         
         public void addForm(String staff_id, String firstname, String lastname, String adress, String phone, String email) {

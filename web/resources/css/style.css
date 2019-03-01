@@ -90,13 +90,17 @@ hr {
 
 .content-background{
     background-image: linear-gradient(rgba(35, 41, 50, 0.75), rgba(35, 41, 50, 0.75)), url(/website/resources/images/e05bb1e8.png);  
-    //background-color: #151B1F;
+
+    background-position: center center;
+    background-repeat: repeat;
+
     margin:0;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
     box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     padding: 2rem 0 4rem 0;
+    
 }
 
 .header-image{
@@ -351,8 +355,7 @@ hr.hr1{
     width: 80%;
     
     background-color: #151B1F;
-    border:none;
-    
+    border:none;   
 }
 
 .event-news-first{
@@ -365,8 +368,6 @@ hr.hr1{
 .event-news-first-text {
     color:black;
     padding:1rem;
-    
-    
 }
 
 .event-content{
@@ -375,6 +376,7 @@ hr.hr1{
     flex-flow: column;
     justify-content: center;
     text-align: center;
+    min-height: 100%;
 }
 
 .event-news-first-image{
