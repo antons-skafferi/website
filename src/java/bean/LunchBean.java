@@ -68,19 +68,32 @@ public class LunchBean implements Serializable {
     }
     
     public List<Food> getAllLunchAsFood(){
-    //return lunchFacade.findAllFood();
-    List<Lunch> lunches = lunchFacade.findAll();
-    List<Food> allFood = foodFacade.findAll();
+        //return lunchFacade.findAllFood();
+        List<Lunch> lunches = lunchFacade.findAll();
+        List<Food> allFood = foodFacade.findAll();
 
-    List<Food> lunchFood = new ArrayList<Food>();
-    for(Lunch lunch : lunches){
-        for(Food food : allFood){
-            if(lunch.getFoodId() == food.getFoodId()){
-                lunchFood.add(food);
+        List<Food> lunchFood = new ArrayList<Food>();
+        for(Lunch lunch : lunches){
+            for(Food food : allFood){
+                if(lunch.getFoodId() == food.getFoodId()){
+                    lunchFood.add(food);
+                }
             }
         }
+        return lunchFood;
     }
-    return lunchFood;
-}
+    
+    public List<Food> getMainCourse(){
+        List<Food> lunches = getAllLunchAsFood();
+        List<Food> mainCourse = new ArrayList<Food>();
+        
+        for(Food food : lunches){
+            if(food.getCategory().equals("main_menu")){
+                mainCourse.add(food);
+            }
+        }
+        
+        return mainCourse;
+    }
 
 }

@@ -17,7 +17,6 @@ and open the template in the editor.
          
             <ui:define name = "content">
                 <b:container  fluid="true">
-
                     <b:row style="margin-bottom: 2rem;">
                         <div style="display: flex; flex-flow: column; align-items: center;">
                             <div style="display: flex; flex-flow: column; align-items: center; justify-content: center">
@@ -73,43 +72,13 @@ and open the template in the editor.
                         <h:form  style="align-self: center;">
                             <b:tabView >
                               <b:tab title="Huvudmenyn">
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>DUO PÅ SKÅNSK ANKA med hasselbackskålrot, smörad anksky och ostronskivling <br></br>
-                                        Duo on duck from Skåne with baked swede, buttered duck gravy and oyster mushrooms
-                                    </p>
-                                </div>
-                                
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>
-                                        SMAK AV HAVET lättrökt torsk med havets godsaker <br></br>
-                                        Flavors of the sea, smoked cod with treats from the sea
-                                    </p>
-                                </div>
-                                  
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>
-                                        NATTBAKAD KALVBRINGA med betor, pepparrot och dillsky <br></br>
-                                        Slowly baked veal with beets, horseradish and dill gravy
-                                    </p>
-                                </div>
-                                
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>SVENSK OXFILÉ med potatisvariation, örter och kryddstark kräm <br></br>
-                                       Swedish fillet of beef with variation of potatoes, herbs and spicy créme
-                                    </p>
-                                </div>
-                                  
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>PIO´S KLASSISKA FISKPLANKA  med säsongens fisk och räkor <br></br>
-                                        Pio´s classic fish plank with the fish of the season and prawns
-                                    </p>
-                                </div>
-                                  
-                                <div style=" min-height: 8rem; padding-top: 1rem; ">
-                                    <p>PIO´S KLASSISKA KÖTTPLANKA med svensk ryggbiff <br></br>
-                                       Pio´s classic plank steak with Swedish sirloin steak
-                                    </p>
-                                </div>
+                                        <ui:repeat value="#{lunchbean.getMainCourse()}" var="food">
+                                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                                    <h3>#{food.dish}</h3>
+                                                    <p>#{food.description}
+                                                    </p>
+                                                </div>          
+                                        </ui:repeat>
                               </b:tab >
                               <b:tab title="Barnmeny för barn upp till 12år">
                                   <div style="border-bottom: solid 1px white; padding-top: 1rem; min-height: 8rem;">

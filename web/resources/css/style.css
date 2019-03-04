@@ -497,6 +497,7 @@ hr.hr1{
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 2rem;
+    max-width: 70%;
     
 }
 * { box-sizing: border-box; }
