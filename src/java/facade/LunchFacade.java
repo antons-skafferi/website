@@ -5,10 +5,13 @@
  */
 package facade;
 
+import entities.Food;
 import entities.Lunch;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -30,8 +33,14 @@ public class LunchFacade extends AbstractFacade<Lunch> {
     public LunchFacade() {
         super(Lunch.class);
     }
+    
     public List <Lunch> findalllunch() {
         return em.createNamedQuery("Lunch.findAll", Lunch.class).getResultList();
+         
+    }
+    
+    public List <Food> findAllFood() {
+        return em.createNamedQuery("Lunch.findAllFood", Food.class).getResultList();
          
     }
     

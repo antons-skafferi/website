@@ -32,7 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Lunch.findByLunchId", query = "SELECT l FROM Lunch l WHERE l.lunchId = :lunchId")
     , @NamedQuery(name = "Lunch.findByFoodId", query = "SELECT l FROM Lunch l WHERE l.foodId = :foodId")
     , @NamedQuery(name = "Lunch.findByDate", query = "SELECT l FROM Lunch l WHERE l.date = :date")
-    , @NamedQuery(name = "Lunch.findByPrice", query = "SELECT l FROM Lunch l WHERE l.price = :price")})
+    , @NamedQuery(name = "Lunch.findByPrice", query = "SELECT l FROM Lunch l WHERE l.price = :price")
+    , @NamedQuery(name = "Lunch.findAllFood", query = "SELECT f FROM Food f INNER JOIN Lunch l ON f.food_id = l.food_id")})
+
 public class Lunch implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -5,10 +5,14 @@
  */
 package bean;
 
+import entities.Food;
+import entities.Lunch;
 import facade.FoodFacade;
 import facade.LunchFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -28,6 +32,8 @@ public class LunchBean implements Serializable {
     
     @EJB
     private LunchFacade lunchFacade;
+    @EJB
+    private FoodFacade foodFacade;
 
     public int getLunchId() {
         return lunchId;
@@ -60,5 +66,21 @@ public class LunchBean implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
+    
+    public List<Food> getAllLunchAsFood(){
+    //return lunchFacade.findAllFood();
+    List<Lunch> lunches = lunchFacade.findAll();
+    List<Food> allFood = foodFacade.findAll();
+
+    List<Food> lunchFood = new ArrayList<Food>();
+    for(Lunch lunch : lunches){
+        for(Food food : allFood){
+            if(lunch.getFoodId() == food.getFoodId()){
+                lunchFood.add(food);
+            }
+        }
+    }
+    return lunchFood;
+}
 
 }

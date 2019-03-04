@@ -33,6 +33,7 @@ public class MainController {
     
     @EJB
     private LunchFacade lunchFacade;
+    @EJB
     private FoodFacade foodFacade;
 
     /**
@@ -43,31 +44,17 @@ public class MainController {
 
     }
     
-        public List<Lunch> lunchList(){  
-            return lunchFacade.findAll();
-        }
-        
-        public List<Food> foodLunchList(){
-            List<Lunch> lunches = lunchList();
-            List<Food> allFood = foodFacade.findAll();
-            List<Food> foodLunches = new ArrayList<Food>();
-            for(Lunch lunch : lunches){
-                for(Food food : allFood){
-                    if(lunch.getFoodId() == food.getFoodId()){
-                        foodLunches.add(food);
-                    }
-                }
-            }
-            return foodLunches;
-        }
-        
-        public void addForm(String staff_id, String firstname, String lastname, String adress, String phone, String email) {
-           System.out.println("hej");
-          
-           System.out.println(staff_id);
-           //Staff newStaff = new Staff(staff_id,firstname,lastname,adress,phone,email);
-           // staffFacade.create(newStaff);
-            
-        }
+    public List<Lunch> lunchList(){  
+        return lunchFacade.findAll();
+    }
+
+    public void addForm(String staff_id, String firstname, String lastname, String adress, String phone, String email) {
+       System.out.println("hej");
+
+       System.out.println(staff_id);
+       //Staff newStaff = new Staff(staff_id,firstname,lastname,adress,phone,email);
+       // staffFacade.create(newStaff);
+
+    }
     
 }
