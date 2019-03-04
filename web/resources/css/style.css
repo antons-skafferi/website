@@ -88,6 +88,20 @@ hr {
     min-height: 100%;
 }
 
+.login-background{
+    background-image: linear-gradient(rgba(35, 41, 50, 0.75), rgba(35, 41, 50, 0.75)), url(/website/resources/images/e05bb1e8.png);  
+
+    background-position: center center;
+    background-repeat: repeat;
+
+    margin:0;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    
+}
+
 .content-background{
     background-image: linear-gradient(rgba(35, 41, 50, 0.75), rgba(35, 41, 50, 0.75)), url(/website/resources/images/e05bb1e8.png);  
 
@@ -107,13 +121,13 @@ hr {
     display: flex;
     flex-direction: column;
 
-    min-height: 160px;
-    margin: 0;
-    background-color: #252120;
-    background-image: linear-gradient(to right, #122a3d, #182a3a, #1d2938, #202935, #232932);    background-size: cover;
+    min-height: 10rem;
+    margin:0;
+    background: linear-gradient(rgba(35, 41, 50, 0.75), rgba(35, 41, 50, 0.75)), url(/website/resources/images/background-blur.jpg);
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    padding: 10px 0px 0px 0px;
+   
 }
 
 .header-image-home{
@@ -528,6 +542,20 @@ hr.hr1{
 
 active booking-tab{
     background-color: green;
+}
+
+.login-column{
+    background-image: linear-gradient(to right, #122a3d, #182a3a, #1d2938, #202935, #232932);
+    box-shadow: 0px 0px 2rem 0rem rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    width: 40rem;
+    height: 20rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .About-text-column{
