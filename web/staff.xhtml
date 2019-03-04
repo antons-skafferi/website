@@ -118,6 +118,41 @@
                     </b:row>
 
                 </p:tab>
+                
+                <p:tab title="Event">
+                    <h3>Add event</h3>
+
+                    <b:row>
+                        <b:column span="3">
+                            <fieldset style="float:left">
+                                <legend>Event</legend>
+                                <label for="Title">Title</label><br />
+                                <p:inputText id="event_id" value="#{eventBean.event_title}" /><br />
+
+                                <label for="lastname">Description</label><br />
+                                <p:inputTextarea id="event_description" value="#{eventBean.description}" rows="6" cols="33" /><br />
+                                
+                                <b:dateTimePicker value="#{eventBean.event_date}" format="DD.MM.YYYY">
+  
+                                </b:dateTimePicker>
+           
+                                
+                                
+                            </fieldset>
+                            <h:commandButton type="submit"  value="Submit"  action="#{eventBean.addEventForm()}" />
+                        </b:column>
+                        <b:column span="6">
+                            <legend>Maträtter</legend>
+                            <p:selectManyMenu>
+                                <c:forEach var="eventList" items="#{eventBean.eventList()}">
+                                    <f:selectItem itemLabel="#{eventList.eventTitle}" itemValue="#{eventList.eventId}"/>                                      
+                                </c:forEach>
+                            </p:selectManyMenu>
+                             <h:commandButton type="submit"  value="Submit"/>
+                        </b:column>
+                    </b:row>
+
+                </p:tab>
 
             </p:tabView>
         </h:form>
