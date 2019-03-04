@@ -89,13 +89,27 @@
                                     <f:selectItem itemLabel="Förrätt" itemValue="appetizer_menu" />
                                     <f:selectItem itemLabel="Efterätt" itemValue="desset_menu" />
                                 </p:selectOneMenu>
-                                
+
                             </fieldset>
                             <h:commandButton type="submit"  value="Submit"  action="#{foodbean.addfoodForm()}"/>
-                            
+
                         </b:column>
                         <b:column span="6">
                             <legend>Maträtter</legend>
+                            <p:selectManyMenu value="#{foodbean.selectedFoodIDs}">
+                                <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
+                            </p:selectManyMenu>
+                            <h:commandButton type="submit"  value="Delete"  action="#{foodbean.deleteFood()}"/>
+                        </b:column>
+                        <b:column span="9">
+                            <legend>Lunch</legend>
+                            <p:selectManyMenu value="#{foodbean.selectedFoodIDs}">
+                                <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
+                            </p:selectManyMenu>
+                            <h:commandButton type="submit"  value="Delete"  action="#{foodbean.deleteFood()}"/>
+                        </b:column>
+                        <b:column span="12">
+                            <legend>Dinner</legend>
                             <p:selectManyMenu value="#{foodbean.selectedFoodIDs}">
                                 <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
                             </p:selectManyMenu>

@@ -19,14 +19,17 @@ import javax.inject.Named;
  */
 @Named(value = "foodbean")
 @SessionScoped
-public class foodBean implements Serializable {
+public class FoodBean implements Serializable {
 
-   private String dish;
-   private String description;
-   private String ingrediens;
-   private String category;
-   
-   private List<Integer> selectedFoodIDs;
+    private String dish;
+    private String description;
+    private String ingrediens;
+    private String category;
+
+    private List<Integer> selectedFoodIDs;
+
+    @EJB
+    private FoodFacade foodFacade;
 
     public List<Integer> getSelectedFoodIDs() {
         return selectedFoodIDs;
@@ -35,10 +38,6 @@ public class foodBean implements Serializable {
     public void setSelectedFoodIDs(List<Integer> selectedFoodIDs) {
         this.selectedFoodIDs = selectedFoodIDs;
     }
-
-   
-    @EJB
-    private FoodFacade foodFacade;
 
     public String getDish() {
         return dish;
@@ -78,20 +77,19 @@ public class foodBean implements Serializable {
 
     public void addfoodForm() {
 
-        if(ingrediens == null){
-        foodFacade.create(new Food(null, dish, description, category));
-        }
-        else{
+        if (ingrediens == null) {
+            foodFacade.create(new Food(null, dish, description, category));
+        } else {
             foodFacade.create(new Food(null, dish, description, category, ingrediens));
         }
-       
+
     }
-    
-    public void deleteFood(){
-        for(Integer foodID : selectedFoodIDs){
+
+    public void deleteFood() {
+        for (Integer foodID : selectedFoodIDs) {
             foodFacade.deleteFood(foodID);
+
         }
     }
-    
- 
+
 }

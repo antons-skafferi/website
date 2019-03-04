@@ -23,7 +23,7 @@ import javax.inject.Named;
  */
 @Named(value = "staffbean")
 @SessionScoped
-public class staffbean implements Serializable {
+public class StaffBean implements Serializable {
 
     private String staff_id;
     private String firstname;
