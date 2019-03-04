@@ -95,5 +95,44 @@ public class LunchBean implements Serializable {
         
         return mainCourse;
     }
+    
+    public List<Food> getChildMenu(){
+        List<Food> lunches = getAllLunchAsFood();
+        List<Food> childMenu = new ArrayList<Food>();
+        
+        for(Food food : lunches){
+            if(food.getCategory().equals("child_menu")){
+                childMenu.add(food);
+            }
+        }
+        
+        return childMenu;
+    }
+    
+    public List<Food> getStarter(){
+        List<Food> lunches = getAllLunchAsFood();
+        List<Food> starter = new ArrayList<Food>();
+        
+        for(Food food : lunches){
+            if(food.getCategory().equals("appetizer_menu")){
+                starter.add(food);
+            }
+        }
+        
+        return starter;
+    }
+    
+    public List<Food> getDessert(){
+        List<Food> lunches = getAllLunchAsFood();
+        List<Food> dessert = new ArrayList<Food>();
+        
+        for(Food food : lunches){
+            if(food.getCategory().equals("desset_menu")){
+                dessert.add(food);
+            }
+        }
+        
+        return dessert;
+    }
 
 }
