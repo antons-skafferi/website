@@ -28,5 +28,11 @@ public class FoodFacade extends AbstractFacade<Food> {
     public FoodFacade() {
         super(Food.class);
     }
+    public void deleteFood(int foodID){
+        Food food = find(foodID);
+        remove(food);
+        
+        //em.createNamedQuery("Food.deleteByFoodId").setParameter("foodId", foodID);
+    }
     
 }

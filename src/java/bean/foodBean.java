@@ -25,7 +25,18 @@ public class foodBean implements Serializable {
    private String description;
    private String ingrediens;
    private String category;
-   private int id = 10;
+   
+   private List<Integer> selectedFoodIDs;
+
+    public List<Integer> getSelectedFoodIDs() {
+        return selectedFoodIDs;
+    }
+
+    public void setSelectedFoodIDs(List<Integer> selectedFoodIDs) {
+        this.selectedFoodIDs = selectedFoodIDs;
+    }
+
+   
     @EJB
     private FoodFacade foodFacade;
 
@@ -74,6 +85,12 @@ public class foodBean implements Serializable {
             foodFacade.create(new Food(null, dish, description, category, ingrediens));
         }
        
+    }
+    
+    public void deleteFood(){
+        for(Integer foodID : selectedFoodIDs){
+            foodFacade.deleteFood(foodID);
+        }
     }
     
  

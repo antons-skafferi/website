@@ -69,8 +69,8 @@
                     <h3>Add Food</h3>
 
                     <b:row>
-                        <b:column span="3">
-                            <fieldset style="float:left">
+                        <b:column span="3" style="dislay: flex">
+                            <fieldset>
                                 <legend>Mat</legend>
                                 <label for="Dish">Dish</label><br />
                                 <p:inputText id="food_id" value="#{foodbean.dish}" /><br />
@@ -89,17 +89,17 @@
                                     <f:selectItem itemLabel="Förrätt" itemValue="appetizer_menu" />
                                     <f:selectItem itemLabel="Efterätt" itemValue="desset_menu" />
                                 </p:selectOneMenu>
+                                
                             </fieldset>
-                            <h:commandButton type="submit"  value="Submit"  action="#{foodbean.addfoodForm()}" />
+                            <h:commandButton type="submit"  value="Submit"  action="#{foodbean.addfoodForm()}"/>
+                            
                         </b:column>
                         <b:column span="6">
                             <legend>Maträtter</legend>
-                            <p:selectManyMenu>
-                                <c:forEach var="lunch" items="#{foodbean.foodList()}">
-                                    <f:selectItem itemLabel="#{lunch.dish}" itemValue="#{lunch.foodId}"/>                                      
-                                </c:forEach>
+                            <p:selectManyMenu value="#{foodbean.selectedFoodIDs}">
+                                <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
                             </p:selectManyMenu>
-                             <h:commandButton type="submit"  value="Submit"/>
+                            <h:commandButton type="submit"  value="Delete"  action="#{foodbean.deleteFood()}"/>
                         </b:column>
                     </b:row>
 
