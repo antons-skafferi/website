@@ -5,6 +5,7 @@
  */
 package bean;
 
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.javaIdentifierType;
 import entities.Event;
 import facade.EventFacade;
 import javax.inject.Named;
@@ -50,7 +51,7 @@ public class eventBean implements Serializable {
     public void setStrDate(String strDate) {
         this.strDate = strDate;
     }
-    
+
     public String getEvent_title() {
         return event_title;
     }
@@ -58,7 +59,7 @@ public class eventBean implements Serializable {
     public void setEvent_title(String event_title) {
         this.event_title = event_title;
     }
-    
+
     public String getEvent_id() {
         return event_id;
     }
@@ -90,15 +91,27 @@ public class eventBean implements Serializable {
     public void setEvent_date(Date event_date) {
         this.event_date = event_date;
     }
-    
-    public List<Event> eventList(){
+
+    public List<Event> eventList() {
         return eventFacade.findAll();
     }
     
+ 
+
     public void addEventForm() throws ParseException{
         java.sql.Date sqlDate = new java.sql.Date(event_date.getTime());
 
-        eventFacade.create(new Event(null, sqlDate, event_title));
+        if (description == null) {
+            if (image == null) {
+                eventFacade.create(new Event(null, sqlDate, event_title));
+            }
+            eventFacade.create(new Event(null, sqlDate, event_title, image));
+        } else if (image == null) {
+            eventFacade.create(new Event(null, description, sqlDate, event_title));
+        } else {
+            eventFacade.create(new Event(null, sqlDate, event_title, description, image));
+        }
+
     }
     
     public void deleteEvent() {
