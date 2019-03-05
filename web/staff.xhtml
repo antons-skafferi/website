@@ -87,7 +87,7 @@
                                     <f:selectItem itemLabel="Huvudmeny" itemValue="main_menu" />
                                     <f:selectItem itemLabel="Barnmeny" itemValue="child_menu" />
                                     <f:selectItem itemLabel="Förrätt" itemValue="appetizer_menu" />
-                                    <f:selectItem itemLabel="Efterätt" itemValue="desset_menu" />
+                                    <f:selectItem itemLabel="Efterätt" itemValue="dessert_menu" />
                                 </p:selectOneMenu>
 
                             </fieldset>
@@ -100,21 +100,16 @@
                                 <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
                             </p:selectManyMenu>
                             <h:commandButton type="submit"  value="Delete"  action="#{foodbean.deleteFood()}"/>
+                            <h:commandButton type="submit"  value="Add to Lunch"  action="#{lunchbean.addLunch()}"/>
                         </b:column>
                         <b:column span="9">
                             <legend>Lunch</legend>
-                            <p:selectManyMenu value="#{foodbean.selectedFoodIDs}">
-                                <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
+                            <p:selectManyMenu value="#{lunchbean.selectedLunchIDs}">
+                                <f:selectItems value="#{lunchbean.allLunchAsFood}" var="food" itemLabel="#{food.dish}" itemValue="#{lunchbean.getLunch(food).lunchId}" />
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Delete"  action="#{foodbean.deleteFood()}"/>
+                            <h:commandButton type="submit"  value="Delete"  action="#{lunchbean.deleteLunch()}"/>
                         </b:column>
-                        <b:column span="12">
-                            <legend>Dinner</legend>
-                            <p:selectManyMenu value="#{foodbean.selectedFoodIDs}">
-                                <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
-                            </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Delete"  action="#{foodbean.deleteFood()}"/>
-                        </b:column>
+ 
                     </b:row>
 
                 </p:tab>
