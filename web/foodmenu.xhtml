@@ -80,14 +80,6 @@ and open the template in the editor.
                                                 </div>          
                                         </ui:repeat>
                               </b:tab >
-                              <b:tab title="Barnmeny för barn upp till 12år">
-                                  <ui:repeat value="#{lunchbean.getChildMenu()}" var="food">
-                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                            <h3>#{food.dish}</h3>
-                                            <p>#{food.description}</p>
-                                        </div>          
-                                    </ui:repeat>
-                              </b:tab>
                               <b:tab title="Förrätt">
                                  <ui:repeat value="#{lunchbean.getStarter()}" var="food">
                                         <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
@@ -110,6 +102,14 @@ and open the template in the editor.
                                             </p>
                                         </div>          
                                 </ui:repeat>
+                              </b:tab>
+                                <b:tab title="Barnmeny">
+                                  <ui:repeat value="#{lunchbean.getChildMenu()}" var="food">
+                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                            <h3>#{food.dish}</h3>
+                                            <p>#{food.description}</p>
+                                        </div>          
+                                    </ui:repeat>
                               </b:tab>
                                 <b:tab  title="Är du allergisk">
                                     <div style="min-height: 8rem; padding-top: 1rem; ">
