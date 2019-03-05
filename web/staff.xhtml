@@ -73,16 +73,16 @@
                             <fieldset>
                                 <legend>Mat</legend>
                                 <label for="Dish">Dish</label><br />
-                                <p:inputText id="food_id" value="#{foodbean.dish}" /><br />
+                                <p:inputText id="food_id" value="#{staffMenuBean.dish}" /><br />
 
                                 <label for="lastname">Description</label><br />
-                                <p:inputTextarea id="description" value="#{foodbean.description}" rows="6" cols="33" /><br />
+                                <p:inputTextarea id="description" value="#{staffMenuBean.description}" rows="6" cols="33" /><br />
 
                                 <label for="lastname">Ingrediens</label><br />
-                                <p:inputText id="ingrediens" value="#{foodbean.ingrediens}" /><br />
+                                <p:inputText id="ingrediens" value="#{staffMenuBean.ingrediens}" /><br />
 
                                 <label for="start">Category</label><br />
-                                <p:selectOneMenu id="category" value="#{foodbean.category}" style="width:125px">
+                                <p:selectOneMenu id="category" value="#{staffMenuBean.category}" style="width:125px">
                                     <f:selectItem itemLabel="Category" itemValue="" />
                                     <f:selectItem itemLabel="Huvudmeny" itemValue="main_menu" />
                                     <f:selectItem itemLabel="Barnmeny" itemValue="child_menu" />
@@ -91,23 +91,23 @@
                                 </p:selectOneMenu>
 
                             </fieldset>
-                            <h:commandButton type="submit"  value="Submit"  action="#{foodbean.addfoodForm()}"/>
+                            <h:commandButton type="submit"  value="Submit"  action="#{staffMenuBean.addfoodForm()}"/>
 
                         </b:column>
                         <b:column span="6">
                             <legend>Maträtter</legend>
-                            <p:selectManyMenu value="#{foodbean.selectedFoodIDs}">
+                            <p:selectManyMenu value="#{staffMenuBean.selectedFoodIDs}">
                                 <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Delete"  action="#{foodbean.deleteFood()}"/>
-                            <h:commandButton type="submit"  value="Add to Lunch"  action="#{lunchbean.addLunch()}"/>
+                            <h:commandButton type="submit"  value="Delete"  action="#{staffMenuBean.deleteFood()}"/>
+                            <h:commandButton type="submit"  value="Add to Lunch"  action="#{staffMenuBean.addLunch()}"/>
                         </b:column>
                         <b:column span="9">
                             <legend>Lunch</legend>
-                            <p:selectManyMenu value="#{lunchbean.selectedLunchIDs}">
+                            <p:selectManyMenu value="#{staffMenuBean.selectedLunchIDs}">
                                 <f:selectItems value="#{lunchbean.allLunchAsFood}" var="food" itemLabel="#{food.dish}" itemValue="#{lunchbean.getLunch(food).lunchId}" />
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Delete"  action="#{lunchbean.deleteLunch()}"/>
+                            <h:commandButton type="submit"  value="Delete"  action="#{staffMenuBean.deleteLunch()}"/>
                         </b:column>
  
                     </b:row>

@@ -6,7 +6,6 @@
 package bean;
 
 import entities.Food;
-import entities.Lunch;
 import facade.FoodFacade;
 import entities.Lunch;
 import facade.LunchFacade;
@@ -32,22 +31,10 @@ public class LunchBean implements Serializable {
     private Date date;
     private int price;
 
-    private List<String> selectedLunchIDs;
- 
-    java.util.Date uDate = new java.util.Date();
-    java.sql.Date sDate = convertUtilToSql(uDate);
-
     @EJB
     private LunchFacade lunchFacade;
     @EJB
     private FoodFacade foodFacade;
-    
-    @Inject
-    private FoodBean foodBean; // +setter (no getter!)
-
-    public void setFoodBean(FoodBean foodBean) {
-        this.foodBean = foodBean;
-    }
 
     public String getLunchId() {
         return lunchId;
@@ -105,8 +92,7 @@ public class LunchBean implements Serializable {
             if(food.getCategory().equals("main_menu")){
                 mainCourse.add(food);
             }
-        }
-        
+        }  
         return mainCourse;
     }
     
@@ -118,8 +104,7 @@ public class LunchBean implements Serializable {
             if(food.getCategory().equals("child_menu")){
                 childMenu.add(food);
             }
-        }
-        
+        }   
         return childMenu;
     }
     
@@ -131,8 +116,7 @@ public class LunchBean implements Serializable {
             if(food.getCategory().equals("appetizer_menu")){
                 starter.add(food);
             }
-        }
-        
+        }  
         return starter;
     }
     
@@ -141,11 +125,10 @@ public class LunchBean implements Serializable {
         List<Food> dessert = new ArrayList<Food>();
         
         for(Food food : lunches){
-            if(food.getCategory().equals("desset_menu")){
+            if(food.getCategory().equals("dessert_menu")){
                 dessert.add(food);
             }
         }
-        
         return dessert;
     }
     
@@ -159,38 +142,7 @@ public class LunchBean implements Serializable {
         return null;
     }
     
-    public List<String> getSelectedLunchIDs() {
-        return selectedLunchIDs;
-    }
-
-    public void setSelectedLunchIDs(List<String> selectedLunchIDs) {
-        this.selectedLunchIDs = selectedLunchIDs;
-    }
-
     public List<Lunch> lunchList() {
         return lunchFacade.findAll();
-    }
-
-    public void deleteLunch() {
-        for (String lunchID : selectedLunchIDs) {
-            lunchFacade.deleteLunch(lunchID);
-        }
-    }
-
-    public void addLunch() {
-    
-      for (Integer foodID : foodBean.getSelectedFoodIDs()) {
-          System.out.print(lunchId);
-          System.out.print(foodID);
-          System.out.print(sDate);
-          
-            lunchFacade.create(new Lunch("lunch"+foodID.toString(), foodID, sDate, 100) );
-       }
-
-    }
-
-    private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
-        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
-        return sDate;
     }
 }
