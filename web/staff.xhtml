@@ -132,11 +132,12 @@
                                 <label for="lastname">Description</label><br />
                                 <p:inputTextarea id="event_description" value="#{eventBean.description}" rows="6" cols="33" /><br />
                                 
+                                <label for="image">Image</label><br />
+                                <p:inputText value="#{eventBean.image}" /><br />
+                                
                                 <b:dateTimePicker value="#{eventBean.event_date}" format="YYYY-MM-DD">
   
                                 </b:dateTimePicker>
-           
-                                
                                 
                             </fieldset>
                             <h:commandButton type="submit"  value="Submit"  action="#{eventBean.addEventForm()}" />

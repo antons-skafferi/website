@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entities;
 
 import java.io.Serializable;
@@ -74,8 +73,22 @@ public class Event implements Serializable {
         this.eventDate = eventDate;
         this.eventTitle = eventTitle;
     }
-    
-     public Event(Integer eventId, Date eventDate, String eventTitle, String description, String image){
+
+    public Event(Integer eventId, Date eventDate, String eventTitle, String image) {
+        this.eventId = eventId;
+        this.eventDate = eventDate;
+        this.eventTitle = eventTitle;
+        this.image = image;
+    }
+
+    public Event(Integer eventId, String description, Date eventDate, String eventTitle) {
+        this.eventId = eventId;
+        this.eventDate = eventDate;
+        this.eventTitle = eventTitle;
+        this.description = description;
+    }
+
+    public Event(Integer eventId, Date eventDate, String eventTitle, String description, String image) {
         this.eventId = eventId;
         this.eventDate = eventDate;
         this.eventTitle = eventTitle;
