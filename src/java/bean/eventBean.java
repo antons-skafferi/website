@@ -11,11 +11,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import java.util.List;
 import javax.ejb.EJB;
 
@@ -33,8 +29,19 @@ public class eventBean implements Serializable {
     private String strDate;
     private Date event_date;
     private String event_title;
+    
+    private List<Integer> selectedEventIDs;
+    
     @EJB
     private EventFacade eventFacade;
+    
+    public List<Integer> getSelectedEventIDs() {
+        return selectedEventIDs;
+    }
+    
+    public void setSelectedEventIDs(List<Integer> selectedEventIDs){
+        this.selectedEventIDs = selectedEventIDs;
+    }
 
     public String getStrDate() {
         return strDate;
@@ -88,12 +95,16 @@ public class eventBean implements Serializable {
         return eventFacade.findAll();
     }
     
- 
-
     public void addEventForm() throws ParseException{
         java.sql.Date sqlDate = new java.sql.Date(event_date.getTime());
 
         eventFacade.create(new Event(null, sqlDate, event_title));
+    }
+    
+    public void deleteEvent() {
+        for (Integer eventID : selectedEventIDs) {
+            eventFacade.deleteEvent(eventID);
+        }
     }
     
 }

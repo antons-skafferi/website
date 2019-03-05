@@ -143,12 +143,10 @@
                         </b:column>
                         <b:column span="6">
                             <legend>Maträtter</legend>
-                            <p:selectManyMenu>
-                                <c:forEach var="eventList" items="#{eventBean.eventList()}">
-                                    <f:selectItem itemLabel="#{eventList.eventTitle}" itemValue="#{eventList.eventId}"/>                                      
-                                </c:forEach>
+                            <p:selectManyMenu value="#{eventBean.selectedEventIDs}">
+                                <f:selectItems value="#{eventBean.eventList()}" var="event" itemLabel="#{event.eventTitle}" itemValue="#{event.eventId}"/>                            
                             </p:selectManyMenu>
-                             <h:commandButton type="submit"  value="Submit"/>
+                             <h:commandButton type="submit"  value="Delete" action="#{eventBean.deleteEvent()}"/>
                         </b:column>
                     </b:row>
 

@@ -29,4 +29,9 @@ public class EventFacade extends AbstractFacade<Event> {
         super(Event.class);
     }
     
+    public void deleteEvent(int eventID){
+        Event event = find(eventID);
+        remove(event);
+    }
+    
 }
