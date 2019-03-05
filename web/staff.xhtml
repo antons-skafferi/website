@@ -127,9 +127,9 @@
                                 <label for="lastname">Description</label><br />
                                 <p:inputTextarea id="event_description" value="#{eventBean.description}" rows="6" cols="33" /><br />
                                 
-                                <label for="image">Image</label><br />
+                                <label for="image">Bild</label><br />
                                 <p:inputText value="#{eventBean.image}" /><br />
-                                
+                                <label>Välj datum</label><br />
                                 <b:dateTimePicker value="#{eventBean.event_date}" format="YYYY-MM-DD">
   
                                 </b:dateTimePicker>
@@ -138,7 +138,7 @@
                             <h:commandButton type="submit"  value="Submit"  action="#{eventBean.addEventForm()}" />
                         </b:column>
                         <b:column span="6">
-                            <legend>Maträtter</legend>
+                            <legend>Evenemang</legend>
                             <p:selectManyMenu value="#{eventBean.selectedEventIDs}">
                                 <f:selectItems value="#{eventBean.eventList()}" var="event" itemLabel="#{event.eventTitle}" itemValue="#{event.eventId}"/>                            
                             </p:selectManyMenu>
