@@ -10,9 +10,11 @@ import facade.EventFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import java.util.List;
 import javax.ejb.EJB;
@@ -89,9 +91,9 @@ public class eventBean implements Serializable {
  
 
     public void addEventForm() throws ParseException{
-        Date d;
-        d = new Date(2019,11,03);
-        eventFacade.create(new Event(null,d , event_title));
+        java.sql.Date sqlDate = new java.sql.Date(event_date.getTime());
+
+        eventFacade.create(new Event(null, sqlDate, event_title));
     }
     
 }

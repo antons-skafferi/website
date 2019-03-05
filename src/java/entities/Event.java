@@ -7,10 +7,12 @@
 package entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -39,8 +41,8 @@ public class Event implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "event_id")
     private Integer eventId;
     @Size(max = 255)
@@ -52,6 +54,7 @@ public class Event implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "event_date")
+    @Temporal(TemporalType.DATE)
     private Date eventDate;
     @Basic(optional = false)
     @NotNull
@@ -72,6 +75,13 @@ public class Event implements Serializable {
         this.eventTitle = eventTitle;
     }
     
+     public Event(Integer eventId, Date eventDate, String eventTitle, String description, String image){
+        this.eventId = eventId;
+        this.eventDate = eventDate;
+        this.eventTitle = eventTitle;
+        this.description = description;
+        this.image = image;
+    }
 
     public Integer getEventId() {
         return eventId;
