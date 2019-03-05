@@ -103,6 +103,13 @@ and open the template in the editor.
                                             <p>#{food.description}</p>
                                         </div>          
                                     </ui:repeat>
+                                <ui:repeat value="#{lunchbean.getDessert()}" var="food">
+                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                            <h3>#{food.dish}</h3>
+                                            <p>#{food.description}
+                                            </p>
+                                        </div>          
+                                </ui:repeat>
                               </b:tab>
                                 <b:tab  title="Är du allergisk">
                                     <div style="min-height: 8rem; padding-top: 1rem; ">
