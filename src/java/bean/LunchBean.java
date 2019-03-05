@@ -134,5 +134,15 @@ public class LunchBean implements Serializable {
         
         return dessert;
     }
+    
+    public Lunch getLunch(Food food){
+        List<Lunch> lunches = lunchFacade.findAll();
+        for(Lunch lunch : lunches){
+            if(lunch.getFoodId() == food.getFoodId()){
+                return lunch;
+            }
+        }
+        return null;
+    }
 
 }

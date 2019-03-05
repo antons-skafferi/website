@@ -73,16 +73,20 @@ and open the template in the editor.
                             <b:tabView class="menu-tabs">
                               <b:tab title="Huvudmenyn">
                                         <ui:repeat value="#{lunchbean.getMainCourse()}" var="food">
-                                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                                    <h3>#{food.dish}</h3>
-                                                    <p>#{food.description}
-                                                    </p>
+                                                <div style="padding: 1rem; display: flex; flex-flow: row; justify-content: space-between;border-bottom: solid 1px white; min-height: 8rem; ">
+                                                    <div style="width: 80%;">
+                                                        <h3>#{food.dish}</h3>
+                                                        <p>#{food.description}</p>
+                                                    </div>
+                                                    <div style="display: flex; width: 20%; justify-content: center; align-items: center">
+                                                        <p>#{lunchbean.getLunch(food).price} kr</p>
+                                                    </div>
                                                 </div>          
                                         </ui:repeat>
                               </b:tab >
                               <b:tab title="Förrätt">
                                  <ui:repeat value="#{lunchbean.getStarter()}" var="food">
-                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                        <div style="border-bottom: solid 1px white; min-height: 8rem;">
                                             <h3>#{food.dish}</h3>
                                             <p>#{food.description}</p>
                                         </div>          
@@ -112,7 +116,7 @@ and open the template in the editor.
                                     </ui:repeat>
                               </b:tab>
                                 <b:tab  title="Är du allergisk">
-                                    <div style="min-height: 8rem; padding-top: 1rem; ">
+                                    <div style="min-height: 8rem; ">
                                         <p>Röda prickar, svårt att andas, ont i magen. En del tål inte mat som andra kan äta utan problem. <br></br>
                                             Det viktigaste du som är allergiker bör tänka på är att alltid läsa ingrediensförteckningen noga.<br></br>
                                             Det gäller även livsmedel som du handlar ofta eftersom innehållet kan ändras.

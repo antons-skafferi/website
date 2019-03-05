@@ -541,6 +541,15 @@ hr.hr1{
     
 }
 
+.menu-element{
+    padding: 1rem; 
+    display: flex; 
+    flex-flow: row; 
+    justify-content: space-between;
+    border-bottom: solid 1px white; 
+    min-height: 8rem;
+}
+
 * { box-sizing: border-box; }
 
 .menu-background-start{
