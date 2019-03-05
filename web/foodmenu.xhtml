@@ -70,84 +70,53 @@ and open the template in the editor.
                     <b:row  style="display: flex; justify-content: center; margin-top: 5%;">
                       <div class="menu-background">
                         <h:form  style="align-self: center;">
-                            <b:tabView >
+                            <b:tabView class="menu-tabs">
                               <b:tab title="Huvudmenyn">
                                         <ui:repeat value="#{lunchbean.getMainCourse()}" var="food">
-                                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                                    <h3>#{food.dish}</h3>
-                                                    <p>#{food.description}
-                                                    </p>
+                                                <div style="padding: 1rem; display: flex; flex-flow: row; justify-content: space-between;border-bottom: solid 1px white; min-height: 8rem; ">
+                                                    <div style="width: 80%;">
+                                                        <h3>#{food.dish}</h3>
+                                                        <p>#{food.description}</p>
+                                                    </div>
+                                                    <div style="display: flex; width: 20%; justify-content: center; align-items: center">
+                                                        <p>#{lunchbean.getLunch(food).price} kr</p>
+                                                    </div>
                                                 </div>          
                                         </ui:repeat>
                               </b:tab >
-                              <b:tab title="Barnmeny för barn upp till 12år">
-                                  <div style="border-bottom: solid 1px white; padding-top: 1rem; min-height: 8rem;">
-                                    <p>Hamburgare med ketchup <br></br>
-                                       omslutet av ett gyllenrostat sesambröd. Plus en överraskning! 
-                                        
-                                    </p>
-                                </div>
-                                  
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>
-                                        100% växtbaserad burgare med krispig isbergsallad och äggfri majonnäs <br></br>
-                                        allt omslutet av ett gyllenrostat sesambröd. Plus en överraskning!
-                                    </p>
-                                </div>
-                                
-                                <div style="min-height: 8rem; padding-top: 1rem; ">
-                                    <p>4 eller 6 frasiga, panerade vegetariska nuggets (med en bas av sojaprotein). <br></br>
-                                        Serveras med litet tillbehör, dip (Smältost +1 kr) och liten läsk. Plus en överraskning!
-                                    </p>
-                                </div>
-                              </b:tab>
                               <b:tab title="Förrätt">
-                                <div style="border-bottom: solid 1px white; padding-top: 1rem; min-height: 8rem;">
-                                    <p>Vitlöksbröd <br></br>
-                                        Smarrigt tilltugg gjort på levainbröd med cheddar och mozzarellaost samt dipp  
-                                        
-                                    </p>
-                                </div>
-                                  
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>
-                                        Koreansk biffsallad <br></br>
-                                        Mixad sallad, böngroddar, rödlök, hyvlad gurka med stekt ryggbiff blandas med <br></br>
-                                        asiatisk dressing och toppas med färsk koriander 
-                                    </p>
-                                </div>
-                                
-                                <div style="min-height: 8rem; padding-top: 1rem; ">
-                                    <p>Punch ´s variant på Skagentoast <br></br>
-                                        Röra på majonnäs, handskalade räkor, dill och riven Västerbottenost. Toppas med löjrom
-                                    </p>
-                                </div>
-                                  
-                                
+                                 <ui:repeat value="#{lunchbean.getStarter()}" var="food">
+                                        <div style="border-bottom: solid 1px white; min-height: 8rem;">
+                                            <h3>#{food.dish}</h3>
+                                            <p>#{food.description}</p>
+                                        </div>          
+                                    </ui:repeat>
                               </b:tab>
                               <b:tab title="Efterrätt">
-                                <div style="border-bottom: solid 1px white; padding-top: 1rem; min-height: 8rem;">
-                                    <p>SISTA MINUTEN kökets kreation på kokos och tropisk frukt <br></br>
-                                        “The last minute” the kitchen creation of coconut and tropical fruit 
-                                        
-                                    </p>
-                                </div>
-                                  
-                                <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                    <p>
-                                        YOGHURT- och BASILIKASORBET på brynt smör- och mandelkaka samt fransk maräng <br></br>
-                                        Yoghurt and basil sorbet on browned butter and almond cake with French meringue
-                                    </p>
-                                </div>
-                                
-                                <div style="min-height: 8rem; padding-top: 1rem; ">
-                                    <p>STJÄRNKLAR NATT- Van Gogh med mörk choklad, hasselnötter, blåa bär och guld <br></br>
-                                       “The starry night”-Van Gogh with dark chocolate, blue berries, hazelnuts and gold
-                                    </p>
-                                </div>
+                                <ui:repeat value="#{lunchbean.getDessert()}" var="food">
+                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                            <h3>#{food.dish}</h3>
+                                            <p>#{food.description}</p>
+                                        </div>          
+                                    </ui:repeat>
+                                <ui:repeat value="#{lunchbean.getDessert()}" var="food">
+                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                            <h3>#{food.dish}</h3>
+                                            <p>#{food.description}
+                                            </p>
+                                        </div>          
+                                </ui:repeat>
+                              </b:tab>
+                                <b:tab title="Barnmeny">
+                                  <ui:repeat value="#{lunchbean.getChildMenu()}" var="food">
+                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                            <h3>#{food.dish}</h3>
+                                            <p>#{food.description}</p>
+                                        </div>          
+                                    </ui:repeat>
                               </b:tab>
                                 <b:tab  title="Är du allergisk">
-                                    <div style="min-height: 8rem; padding-top: 1rem; ">
+                                    <div style="min-height: 8rem; ">
                                         <p>Röda prickar, svårt att andas, ont i magen. En del tål inte mat som andra kan äta utan problem. <br></br>
                                             Det viktigaste du som är allergiker bör tänka på är att alltid läsa ingrediensförteckningen noga.<br></br>
                                             Det gäller även livsmedel som du handlar ofta eftersom innehållet kan ändras.

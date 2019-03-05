@@ -5,8 +5,13 @@
  */
 package bean;
 
+import entities.Dinner;
+import entities.Food;
 import facade.DinnerFacade;
+import facade.FoodFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -25,6 +30,8 @@ public class DinnerBean implements Serializable {
     
     @EJB
     private DinnerFacade dinnerFacade;
+    @EJB
+    private FoodFacade foodFacade;
 
     public int getDinnerID() {
         return dinnerID;
@@ -50,5 +57,29 @@ public class DinnerBean implements Serializable {
         this.price = price;
     }
     
+        
+    public List<Food> getAllDinnerAsFood(){
+        List<Dinner> dinners = dinnerFacade.findAll();
+        List<Food> allFood = foodFacade.findAll();
+
+        List<Food> dinnerFood = new ArrayList<Food>();
+        for(Dinner dinner : dinners){
+            for(Food food : allFood){
+                if(dinner.getFoodId() == food.getFoodId()){
+                    dinnerFood.add(food);
+                }
+            }
+        }
+        return dinnerFood;
+    }
     
+    public Dinner getDinner(Food food){
+        List<Dinner> dinners = dinnerFacade.findAll();
+        for(Dinner dinner : dinners){
+            if(dinner.getFoodId() == food.getFoodId()){
+                return dinner;
+            }
+        }
+        return null;
+    }
 }

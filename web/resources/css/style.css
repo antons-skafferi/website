@@ -24,6 +24,14 @@ font-weight: normal;
 font-style: normal;
 }
 
+@font-face {
+font-family: "David Libre";
+
+src: url("#{resource['fonts/DavidLibre-Regular.ttf']}");
+font-weight: normal;
+font-style: normal;
+}
+
 html, body {
     margin: 0;
     height: 100%;
@@ -41,11 +49,7 @@ span{
     font-size: 1rem;
 }
 
-h2{
 
-    align-self: center;
-    font-size: 2rem;
-}
 
 h1{
     font-family: "David CLM";
@@ -53,6 +57,17 @@ h1{
     font-size: 4rem;
     margin-top: 0;
     padding: 0;
+}
+
+h2{
+
+    align-self: center;
+    font-size: 2rem;
+}
+
+h3{
+    font-family: "David Libre";
+    font-size: 1.5rem;
 }
 
 hr {
@@ -123,7 +138,7 @@ hr {
 
     min-height: 10rem;
     margin:0;
-    background: linear-gradient(rgba(35, 41, 50, 0.75), rgba(35, 41, 50, 0.75)), url(/website/resources/images/background-blur.jpg);
+    background-image: linear-gradient(to right, #122a3d, #182a3a, #1d2938, #202935, #232932);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -151,7 +166,7 @@ hr {
 
 .nav-tabs > li > a:hover{
     background: none;
-    color:#337ab7;
+    color: white;
     border-top: none;
     border-bottom: none;
     margin-top:1px; 
@@ -159,7 +174,7 @@ hr {
 }
 .nav-tabs > li.active > a:hover{
     background: none;
-    color:#337ab7;
+    color: white;
     border-top: none;
     border-bottom: none;
     margin-top:1px; 
@@ -167,14 +182,27 @@ hr {
 }
 .nav-tabs > li.active > a:focus{
     background: none;
-    color:#337ab7;
+    color: white;
     border-top: none;
     border-bottom: none;
     border-radius: 0px 0px 0px 0px;
 }
 .nav-tabs > li.active > a{
+    font-size: 1.5rem;
+    font-family: "David Libre";
     background: none;
-    color:#337ab7;
+    color: white;
+    border-top: none;
+    border-bottom: none;
+    margin-top:1px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.nav-tabs > li > a{
+    font-size: 1.5rem;
+    font-family: "David Libre";
+    background: none;
+    color: #bdc3c7;
     border-top: none;
     border-bottom: none;
     margin-top:1px;
@@ -314,9 +342,8 @@ display:inline-block;
 
 .footer-container{
     //background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url(/website/resources/images/background-blur.jpg);
-    background-color: #252120;
     //border-top: white solid 8px;
-     background-image: linear-gradient(to right, #122a3d, #182a3a, #1d2938, #202935, #232932);
+    background-image: linear-gradient(to right, #122a3d, #182a3a, #1d2938, #202935, #232932);
     
     background-size: cover;
     background-position: center center;
@@ -500,6 +527,29 @@ hr.hr1{
     max-width: 70%;
     
 }
+
+.menu-tabs{
+    display: flex; 
+    flex-flow: row; 
+    justify-content: center;
+    padding: 1rem;
+    
+}
+
+.menu-tab-title{
+    color: white;
+    
+}
+
+.menu-element{
+    padding: 1rem; 
+    display: flex; 
+    flex-flow: row; 
+    justify-content: space-between;
+    border-bottom: solid 1px white; 
+    min-height: 8rem;
+}
+
 * { box-sizing: border-box; }
 
 .menu-background-start{

@@ -5,7 +5,9 @@
  */
 package facade;
 
+
 import entities.Food;
+
 import entities.Lunch;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -38,10 +40,18 @@ public class LunchFacade extends AbstractFacade<Lunch> {
         return em.createNamedQuery("Lunch.findAll", Lunch.class).getResultList();
          
     }
+
     
     public List <Food> findAllFood() {
         return em.createNamedQuery("Lunch.findAllFood", Food.class).getResultList();
          
     }
     
+
+    public void deleteLunch(String lunchID){
+        Lunch lunch = find(lunchID);
+        remove(lunch);
+    }
+        
+
 }
