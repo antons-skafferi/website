@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bean;
+package bean.core;
 
 import com.sun.xml.rpc.processor.modeler.j2ee.xml.javaIdentifierType;
 import entities.Event;

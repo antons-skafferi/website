@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bean;
+package bean.core;
 
 import entities.Food;
 import facade.FoodFacade;
