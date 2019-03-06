@@ -4,8 +4,7 @@
 }
 
 .button-field{
-    display: flex; 
-    justify-content: flex-start;
+    width: 100%;
 }
 
 .fields > div{

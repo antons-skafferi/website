@@ -31,6 +31,9 @@ public class StaffBean implements Serializable {
     private String adress;
     private String phone;
     private String email;
+    
+    private int dinnerPrice;
+    
     @EJB
     private StaffFacade staffFacade;
 
@@ -82,7 +85,13 @@ public class StaffBean implements Serializable {
         this.email = email;
     }
 
+    public int getDinnerPrice() {
+        return dinnerPrice;
+    }
 
+    public void setDinnerPrice(int dinnerPrice) {
+        this.dinnerPrice = dinnerPrice;
+    }
 
     public void addForm() {
         try {
