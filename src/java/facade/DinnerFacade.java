@@ -6,6 +6,7 @@
 package facade;
 
 import entities.Dinner;
+import entities.Lunch;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,4 +31,8 @@ public class DinnerFacade extends AbstractFacade<Dinner> {
         super(Dinner.class);
     }
     
+    public void deleteDinner(String dinnerID){
+        Dinner dinner = find(dinnerID);
+        remove(dinner);
+    }
 }

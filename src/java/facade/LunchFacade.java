@@ -41,12 +41,10 @@ public class LunchFacade extends AbstractFacade<Lunch> {
          
     }
 
-    
     public List <Food> findAllFood() {
         return em.createNamedQuery("Lunch.findAllFood", Food.class).getResultList();
          
     }
-    
 
     public void deleteLunch(String lunchID){
         Lunch lunch = find(lunchID);

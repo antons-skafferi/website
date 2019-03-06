@@ -6,8 +6,10 @@
 package bean.staff;
 
 import bean.core.FoodBean;
+import entities.Dinner;
 import entities.Food;
 import entities.Lunch;
+import facade.DinnerFacade;
 import facade.FoodFacade;
 import facade.LunchFacade;
 import java.io.Serializable;
@@ -28,11 +30,14 @@ public class StaffMenuBean implements Serializable {
     
     private List<Integer> selectedFoodIDs;
     private List<String> selectedLunchIDs;
+    private List<String> selectedDinnerIDs;
     
     @EJB
     private FoodFacade foodFacade;
     @EJB
     private LunchFacade lunchFacade;
+    @EJB
+    private DinnerFacade dinnerFacade;
 
     
     @Inject
@@ -77,7 +82,7 @@ public class StaffMenuBean implements Serializable {
         this.foodBean = foodBean;
     }
     
-        public List<Integer> getSelectedFoodIDs() {
+    public List<Integer> getSelectedFoodIDs() {
         return selectedFoodIDs;
     }
 
@@ -91,6 +96,14 @@ public class StaffMenuBean implements Serializable {
 
     public void setSelectedLunchIDs(List<String> selectedLunchIDs) {
         this.selectedLunchIDs = selectedLunchIDs;
+    }
+    
+    public List<String> getSelectedDinnerIDs() {
+        return selectedDinnerIDs;
+    }
+
+    public void setSelectedDinnerIDs(List<String> selectedDinnerIDs) {
+        this.selectedDinnerIDs = selectedDinnerIDs;
     }
     
     public void addfoodForm() {
@@ -119,6 +132,18 @@ public class StaffMenuBean implements Serializable {
     public void deleteLunch() {
         for (String lunchID : selectedLunchIDs) {
             lunchFacade.deleteLunch(lunchID);
+        }
+    }
+    
+    public void addDinner() {
+      for (Integer foodID : selectedFoodIDs) {      
+            dinnerFacade.create(new Dinner("dinner"+foodID.toString(), foodID, 100) );
+       }
+    }
+    
+    public void deleteDinner() {
+        for (String dinnerID : selectedDinnerIDs) {
+            dinnerFacade.deleteDinner(dinnerID);
         }
     }
     
