@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(api.DinnerFacadeREST.class);
         resources.add(api.DrinkFacadeREST.class);
+        resources.add(api.FoodFacadeREST.class);
         resources.add(api.LoginFacadeREST.class);
         resources.add(api.LunchFacadeREST.class);
         resources.add(api.Order1FacadeREST.class);

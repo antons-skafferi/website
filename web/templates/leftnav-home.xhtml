@@ -10,32 +10,94 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
-<h:head></h:head>
+    <h:head>
+        
+    </h:head>
 <h:body>
-	
-	<ui:composition>
-	
-            <b:container fluid="true" class="daily-menu">
-                <b:row class="daily-menu-rows">
-                    <div class="daily-menu-div"><h3>Dagens lunch - Fredag</h3>
-                        <hr class="daily-menu-hr1"></hr>
-                        <br/>
-                        <div class="daily-menu-picture-div">
-                             <img src="../website/resources/images/dailymenuexample1.png" alt="Dagens lunch" style="width:100%"/> 
-                        </div>
-                        <br/>
-                        <p>Timjan marinerad grillbiff serveras med grönpepparsås samt potatisgratäng. Schnitzel serveras med rödvinssky, bearnaisesås, primörer samt stekt potatis. Lasagne.</p>
+    <ui:composition>      
+        <b:container fluid="true">
+            
+                <div class="homemenu" >
+                    <h3 style="text-align: center">Veckans Luncher!</h3>
+                <button id="clicker-mon" type="checkbox" >Måndag</button>
+                <button id="clicker-tis" type="checkbox" >Tisdag</button>
+                <button id="clicker-ons" type="checkbox" >Onsdag</button>
+                <button id="clicker-tor" type="checkbox" >Torsdag</button>
+                <button id="clicker-fre" type="checkbox" >Fredag</button>
+              
+                
+                <div class="panel-wrap-mon">
+                    <div class="panel-mon">
+                        <div>
+                            <div>
+                                <h3>måndag</h3>
+                                <p>måndag</p>
+                            </div>
+                            <div>
+                                <p>måndag</p>
+                            </div>
+                        </div>           
                     </div>
-                    <div class="daily-menu-price">
-                        <p>Lunch Mån-fre - 85:-</p>
+                </div>
+            
+                <div class="panel-wrap-tis">
+                    <div class="panel-tis"> 
+                        <div>
+                            <div>
+                                <h3>tisdag</h3>
+                                <p>tisag</p>
+                            </div>
+                            <div >
+                                <p>tisdag</p>
+                            </div>
+                        </div>          
                     </div>
-                    <hr class="daily-menu-hr1"></hr>
-                    <div class="daily-menu-more">
-                        <p><a href="http://localhost:8080/website/foodmenu.xhtml"> Mer av våra rätter &#8250;</a> </p>
+                </div>
+                
+                <div class="panel-wrap-ons">
+                    <div class="panel-ons"> 
+                        <div>
+                            <div>
+                                <h3>onsdag</h3>
+                                <p>onsdag</p>
+                            </div>
+                            <div >
+                                <p>onsdag</p>
+                            </div>
+                        </div>          
                     </div>
-                </b:row>
-            </b:container>
-	</ui:composition>
-	
+                </div>
+                
+                <div class="panel-wrap-tor">
+                    <div class="panel-tor"> 
+                        <div>
+                            <div>
+                                <h3>torsdag</h3>
+                                <p>torsdag</p>
+                            </div>
+                            <div >
+                                <p>torsdag</p>
+                            </div>
+                        </div>          
+                    </div>
+                </div>
+                
+                <div class="panel-wrap-fre">
+                    <div class="panel-fre"> 
+                        <div>
+                            <div>
+                                <h3>fredag</h3>
+                                <p>fredag</p>
+                            </div>
+                            <div >
+                                <p>fredag</p>
+                            </div>
+                        </div>          
+                    </div>
+                </div>
+                
+             </div>
+        </b:container>      
+    </ui:composition>	
 </h:body>
 </html>
