@@ -13,6 +13,7 @@ import facade.DinnerFacade;
 import facade.FoodFacade;
 import facade.LunchFacade;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -27,6 +28,9 @@ public class StaffMenuBean implements Serializable {
     private String description;
     private String ingrediens;
     private String category;
+    
+    private int dinnerPrice;
+    private Date lunchDate;
     
     private List<Integer> selectedFoodIDs;
     private List<String> selectedLunchIDs;
@@ -76,6 +80,22 @@ public class StaffMenuBean implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+    
+    public int getDinnerPrice() {
+        return dinnerPrice;
+    }
+
+    public void setDinnerPrice(int dinnerPrice) {
+        this.dinnerPrice = dinnerPrice;
+    }
+    
+    public Date getLunchDate() {
+        return lunchDate;
+    }
+
+    public void setLunchDate(Date lunchDate) {
+        this.lunchDate = lunchDate;
     }
     
     public void setFoodBean(FoodBean foodBean) {
@@ -137,7 +157,7 @@ public class StaffMenuBean implements Serializable {
     
     public void addDinner() {
       for (Integer foodID : selectedFoodIDs) {      
-            dinnerFacade.create(new Dinner("dinner"+foodID.toString(), foodID, 100) );
+            dinnerFacade.create(new Dinner("dinner"+foodID.toString(), foodID, dinnerPrice) );
        }
     }
     

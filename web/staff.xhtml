@@ -48,7 +48,7 @@
                     </fieldset>
                     <input type="reset" value="Rensa" />
 
-                    <h:commandButton type="submit"  value="Lägg till"  action="#{foodbean.addfoodForm()}" />
+                    <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}" />
                 </p:tab>
 
                 <p:tab title="Mat">
@@ -79,18 +79,18 @@
                             </div>
 
                         </b:column>
-                        <b:column span="4" class="fields">
+                        <b:column id="lunch" span="4" class="fields">
                             <legend>Maträtter</legend>
                             <p:selectManyMenu value="#{staffMenuBean.selectedFoodIDs}">
                                 <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
                             </p:selectManyMenu>
                             <div class="button-field">
-                                <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
-                                <h:commandButton type="submit"  value="Lägg till i Luncher"  action="#{staffMenuBean.addLunch()}"/>
-                                <h:commandButton type="submit"  value="Lägg till i Meny"  action="#{staffMenuBean.addDinner()}"/>
+                                <p:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
+                                <p:commandButton type="submit"  value="Lägg till i Luncher"  oncomplete="PF('dlgLunch').show()"/>
+                                <p:commandButton type="submit"  value="Lägg till i Meny"  oncomplete="PF('dlgDinner').show()"/>
                             </div>
                         </b:column>
-                        <b:column span="4" class="fields">
+                        <b:column id="dinner" span="4" class="fields">
                             <legend>Luncher</legend>
                             <p:selectManyMenu value="#{staffMenuBean.selectedLunchIDs}">
                                 <f:selectItems value="#{lunchbean.allLunchAsFood}" var="food" itemLabel="#{food.dish}" itemValue="#{lunchbean.getLunch(food).lunchId}" />
@@ -148,6 +148,35 @@
                 </p:tab>
 
             </p:tabView>
+           
+        </h:form>
+        
+        <h:form>
+            <p:growl showDetail="true"  />
+            <p:dialog header="Ny lunch maträtt" widgetVar="dlgLunch" resizable="false">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="lunchDate" value="Pris:" />
+                    <b:dateTimePicker value="#{staffMenuBean.lunchDate}" format="YYYY-MM-DD"> </b:dateTimePicker>
+                    <f:facet name="footer">
+                        <p:commandButton value="Lägg till" action="#{staffMenuBean.addLunch()}" 
+                                    oncomplete="PF('dlgLunch').hide()"/>
+                    </f:facet>  
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+        <h:form>
+            <p:growl showDetail="true"  />
+                <p:dialog header="Ny meny maträtt" widgetVar="dlgDinner" resizable="false">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="dinnerPrice" value="Pris:" />
+                    <p:inputText id="dinnerPrice" value="#{staffMenuBean.dinnerPrice}" required="true" label="Maträtt pris" />
+
+                    <f:facet name="footer">
+                        <p:commandButton ajax="true" value="Lägg till" action="#{staffMenuBean.addDinner}" 
+                                         oncomplete="PF('dlgDinner').hide()"/>
+                    </f:facet>  
+                </h:panelGrid>
+            </p:dialog>  
         </h:form>
     </h:body>
 </html>
