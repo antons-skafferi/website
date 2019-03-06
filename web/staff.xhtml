@@ -53,7 +53,7 @@
 
                 <p:tab title="Mat">
                     <b:row>
-                        <b:column span="4" style="dislay: flex">
+                        <b:column span="4" class="fields">
                             <fieldset class="fields">
                                 <legend>Lägg till ny maträtt</legend>
                                 <label for="Dish">Maträttens namn</label><br />
@@ -74,7 +74,9 @@
                                 </p:selectOneMenu>
 
                             </fieldset>
-                            <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}"/>
+                            <div class="button-field">
+                                <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}"/>
+                            </div>
 
                         </b:column>
                         <b:column span="4" class="fields">
