@@ -1,0 +1,14 @@
+.fields{
+    display: flex;
+    flex-flow: column;
+}
+
+.button-field{
+    display: flex; 
+    justify-content: flex-start;
+}
+
+.fields > div{
+
+    width: 100%;
+}

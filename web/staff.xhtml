@@ -9,7 +9,7 @@
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Personal</title>
-
+        <h:outputStylesheet position="last"  library="css" name="staffstyle.css" />
     </h:head>
 
     <h:body>
@@ -24,12 +24,10 @@
                     <h3>Inventarie</h3>
                 </p:tab>
 
-                <p:tab title="Johnform">
-                    <h3>Pog</h3>
-
+                <p:tab title="Personal">
                     <fieldset>
-                        <legend>Personal information</legend>
-                        <label for="firstname">PersonNummer</label><br />
+                        <legend>Lägg till ny personal</legend>
+                        <label for="firstname">Personnummer</label><br />
                         <p:inputText id="staff_id" value="#{staffbean.staff_id}" /><br />
 
                         <label for="lastname">Namn</label><br />
@@ -38,38 +36,28 @@
                         <label for="lastname">Efternamn</label><br />
                         <p:inputText id="lastname" value="#{staffbean.lastname}" /><br />
 
-                        <label for="start">adress:</label><br />
+                        <label for="start">Adress</label><br />
                         <p:inputText id="adress" value="#{staffbean.adress}" /><br />
 
-                        <label for="lastname">telefonnummer</label><br />
+
+                        <label for="lastname">Telefonnummer</label><br />
                         <p:inputText id="phone" value="#{staffbean.phone}" /><br />
 
                         <label for="lastname">Email</label><br />
                         <p:inputText id="email" value="#{staffbean.email}" /><br />
                     </fieldset>
-                    <input type="reset" value="Clear" />
+                    <input type="reset" value="Rensa" />
 
-                    <h:commandButton type="submit"  value="Submit"  action="#{foodbean.addfoodForm()}" />
-
-
+                    <h:commandButton type="submit"  value="Lägg till"  action="#{foodbean.addfoodForm()}" />
                 </p:tab>
 
-                <p:tab title="lunch">
-                    <h3>LUNCH</h3>
-
-                    <h:form>
-
-                    </h:form>
-
-                </p:tab>
-
-                <p:tab title="Menu">
+                <p:tab title="Mat">
                     <b:row>
-                        <b:column span="3" style="dislay: flex">
-                            <fieldset>
+                        <b:column span="4" style="dislay: flex">
+                            <fieldset class="fields">
                                 <legend>Lägg till ny maträtt</legend>
                                 <label for="Dish">Maträttens namn</label><br />
-                                <p:inputText id="food_id" value="#{staffMenuBean.dish}" /><br />
+                                <p:inputText  id="food_id" value="#{staffMenuBean.dish}" /><br />
 
                                 <label for="lastname">Beskriving</label><br />
                                 <p:inputTextarea id="description" value="#{staffMenuBean.description}" rows="6" cols="33" /><br />
@@ -89,28 +77,34 @@
                             <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}"/>
 
                         </b:column>
-                        <b:column span="6">
+                        <b:column span="4" class="fields">
                             <legend>Maträtter</legend>
                             <p:selectManyMenu value="#{staffMenuBean.selectedFoodIDs}">
                                 <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
-                            <h:commandButton type="submit"  value="Lägg till i Luncher"  action="#{staffMenuBean.addLunch()}"/>
-                            <h:commandButton type="submit"  value="Lägg till i Meny"  action="#{staffMenuBean.addDinner()}"/>
+                            <div class="button-field">
+                                <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
+                                <h:commandButton type="submit"  value="Lägg till i Luncher"  action="#{staffMenuBean.addLunch()}"/>
+                                <h:commandButton type="submit"  value="Lägg till i Meny"  action="#{staffMenuBean.addDinner()}"/>
+                            </div>
                         </b:column>
-                        <b:column span="9">
+                        <b:column span="4" class="fields">
                             <legend>Luncher</legend>
                             <p:selectManyMenu value="#{staffMenuBean.selectedLunchIDs}">
                                 <f:selectItems value="#{lunchbean.allLunchAsFood}" var="food" itemLabel="#{food.dish}" itemValue="#{lunchbean.getLunch(food).lunchId}" />
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteLunch()}"/>
+                            <div class="button-field">
+                                <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteLunch()}"/>
+                            </div>
                         </b:column>
-                        <b:column span="9">
+                        <b:column span="4" class="fields">
                             <legend>Meny</legend>
                             <p:selectManyMenu value="#{staffMenuBean.selectedDinnerIDs}">
                                 <f:selectItems value="#{dinnerbean.allDinnerAsFood}" var="food" itemLabel="#{food.dish}" itemValue="#{dinnerbean.getDinner(food).dinnerId}" />
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteDinner()}"/>
+                            <div class="button-field">
+                                <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteDinner()}"/>
+                            </div>
                         </b:column>
 
                     </b:row>
