@@ -72,20 +72,20 @@ and open the template in the editor.
                         <h:form  style="align-self: center;">
                             <b:tabView class="menu-tabs">
                               <b:tab title="Huvudmenyn">
-                                        <ui:repeat value="#{lunchbean.getMainCourse()}" var="food">
+                                        <ui:repeat value="#{dinnerbean.getMainCourse()}" var="food">
                                                 <div class="menu-element">
                                                     <div style="width: 80%;">
                                                         <h3>#{food.dish}</h3>
                                                         <p>#{food.description}</p>
                                                     </div>
                                                     <div style="display: flex; width: 20%; justify-content: center; align-items: center">
-                                                        <p>#{lunchbean.getLunch(food).price} kr</p>
+                                                        <p>#{dinnerbean.getDinner(food).price} kr</p>
                                                     </div>
                                                 </div>          
                                         </ui:repeat>
                               </b:tab >
                               <b:tab title="Förrätt">
-                                 <ui:repeat value="#{lunchbean.getStarter()}" var="food">
+                                 <ui:repeat value="#{dinnerbean.getStarter()}" var="food">
                                         <div style="border-bottom: solid 1px white; min-height: 8rem;">
                                             <h3>#{food.dish}</h3>
                                             <p>#{food.description}</p>
@@ -93,13 +93,13 @@ and open the template in the editor.
                                     </ui:repeat>
                               </b:tab>
                               <b:tab title="Efterrätt">
-                                <ui:repeat value="#{lunchbean.getDessert()}" var="food">
+                                <ui:repeat value="#{dinnerbean.getDessert()}" var="food">
                                         <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
                                             <h3>#{food.dish}</h3>
                                             <p>#{food.description}</p>
                                         </div>          
                                     </ui:repeat>
-                                <ui:repeat value="#{lunchbean.getDessert()}" var="food">
+                                <ui:repeat value="#{dinnerbean.getDessert()}" var="food">
                                         <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
                                             <h3>#{food.dish}</h3>
                                             <p>#{food.description}
@@ -108,7 +108,7 @@ and open the template in the editor.
                                 </ui:repeat>
                               </b:tab>
                                 <b:tab title="Barnmeny">
-                                  <ui:repeat value="#{lunchbean.getChildMenu()}" var="food">
+                                  <ui:repeat value="#{dinnerbean.getChildMenu()}" var="food">
                                         <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
                                             <h3>#{food.dish}</h3>
                                             <p>#{food.description}</p>

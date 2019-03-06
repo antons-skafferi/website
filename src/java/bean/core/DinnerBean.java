@@ -73,6 +73,54 @@ public class DinnerBean implements Serializable {
         return dinnerFood;
     }
     
+    public List<Food> getMainCourse(){
+        List<Food> dinners = getAllDinnerAsFood();
+        List<Food> mainCourse = new ArrayList<Food>();
+        
+        for(Food food : dinners){
+            if(food.getCategory().equals("main_menu")){
+                mainCourse.add(food);
+            }
+        }  
+        return mainCourse;
+    }
+    
+    public List<Food> getChildMenu(){
+        List<Food> dinners = getAllDinnerAsFood();
+        List<Food> childMenu = new ArrayList<Food>();
+        
+        for(Food food : dinners){
+            if(food.getCategory().equals("child_menu")){
+                childMenu.add(food);
+            }
+        }   
+        return childMenu;
+    }
+    
+    public List<Food> getStarter(){
+        List<Food> dinners = getAllDinnerAsFood();
+        List<Food> starter = new ArrayList<Food>();
+        
+        for(Food food : dinners){
+            if(food.getCategory().equals("appetizer_menu")){
+                starter.add(food);
+            }
+        }  
+        return starter;
+    }
+    
+    public List<Food> getDessert(){
+        List<Food> dinners = getAllDinnerAsFood();
+        List<Food> dessert = new ArrayList<Food>();
+        
+        for(Food food : dinners){
+            if(food.getCategory().equals("dessert_menu")){
+                dessert.add(food);
+            }
+        }
+        return dessert;
+    }
+    
     public Dinner getDinner(Food food){
         List<Dinner> dinners = dinnerFacade.findAll();
         for(Dinner dinner : dinners){
