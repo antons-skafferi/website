@@ -11,95 +11,87 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        
+
     </h:head>
-<h:body>
-    <ui:composition>      
-        <b:container fluid="true">
-            
+    <h:body>
+        <ui:composition>      
+            <b:container fluid="true">
+
                 <div class="homemenu" >
                     <h3 style="text-align: center">Veckans Luncher!</h3>
-                <button id="clicker-mon" type="checkbox" >Måndag</button>
-                <button id="clicker-tis" type="checkbox" >Tisdag</button>
-                <button id="clicker-ons" type="checkbox" >Onsdag</button>
-                <button id="clicker-tor" type="checkbox" >Torsdag</button>
-                <button id="clicker-fre" type="checkbox" >Fredag</button>
-              
-                
-                <div class="panel-wrap-mon">
-                    <div class="panel-mon">
-                        <ui:repeat value="#{lunchbean.allLunchAsFood}" var="food">
-                            <div>
+                    <button id="clicker-mon" type="checkbox" >Måndag</button>
+                    <button id="clicker-tis" type="checkbox" >Tisdag</button>
+                    <button id="clicker-ons" type="checkbox" >Onsdag</button>
+                    <button id="clicker-tor" type="checkbox" >Torsdag</button>
+                    <button id="clicker-fre" type="checkbox" >Fredag</button>
+
+
+                    <div class="panel-wrap-mon">
+                        <div class="panel-mon">
+                            <ui:repeat value="#{lunchbean.mondaysLunch}" var="food">
                                 <div>
-                                    <h3>#{food.dish}</h3>
-                                    <p>#{food.description}</p>
-                                </div>
+                                    <div>
+                                        <h3>#{food.dish}</h3>
+                                        <p>#{food.description}</p>
+                                    </div>
+                                </div> 
+                            </ui:repeat>
+                        </div>
+                    </div>
+
+                    <div class="panel-wrap-tis">
+                        <div class="panel-tis"> 
+                            <ui:repeat value="#{lunchbean.tuesdayLunch}" var="food">
                                 <div>
-                                    <p>måndag</p>
-                                </div>
-                            </div> 
-                        </ui:repeat>
+                                    <div>
+                                        <h3>#{food.dish}</h3>
+                                        <p>#{food.description}</p>
+                                    </div>                                
+                                </div> 
+                            </ui:repeat>
+                        </div>
                     </div>
-                </div>
-            
-                <div class="panel-wrap-tis">
-                    <div class="panel-tis"> 
-                        <div>
-                            <div>
-                                <h3>tisdag</h3>
-                                <p>tisag</p>
-                            </div>
-                            <div >
-                                <p>tisdag</p>
-                            </div>
-                        </div>          
+
+                    <div class="panel-wrap-ons">
+                        <div class="panel-ons"> 
+                            <ui:repeat value="#{lunchbean.wednesdayLunch}" var="food">
+                                <div>
+                                    <div>
+                                        <h3>#{food.dish}</h3>
+                                        <p>#{food.description}</p>
+                                    </div>
+                                </div> 
+                            </ui:repeat>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="panel-wrap-ons">
-                    <div class="panel-ons"> 
-                        <div>
-                            <div>
-                                <h3>onsdag</h3>
-                                <p>onsdag</p>
-                            </div>
-                            <div >
-                                <p>onsdag</p>
-                            </div>
-                        </div>          
+
+                    <div class="panel-wrap-tor">
+                        <div class="panel-tor"> 
+                            <ui:repeat value="#{lunchbean.thursdayLunch}" var="food">
+                                <div>
+                                    <div>
+                                        <h3>#{food.dish}</h3>
+                                        <p>#{food.description}</p>
+                                    </div>
+                                </div> 
+                            </ui:repeat>          
+                        </div>
                     </div>
+
+                    <div class="panel-wrap-fre">
+                        <div class="panel-fre"> 
+                            <ui:repeat value="#{lunchbean.fridayLunch}" var="food">
+                                <div>
+                                    <div>
+                                        <h3>#{food.dish}</h3>
+                                        <p>#{food.description}</p>
+                                    </div>
+                                </div> 
+                            </ui:repeat>          
+                        </div>
+                    </div>                
                 </div>
-                
-                <div class="panel-wrap-tor">
-                    <div class="panel-tor"> 
-                        <div>
-                            <div>
-                                <h3>torsdag</h3>
-                                <p>torsdag</p>
-                            </div>
-                            <div >
-                                <p>torsdag</p>
-                            </div>
-                        </div>          
-                    </div>
-                </div>
-                
-                <div class="panel-wrap-fre">
-                    <div class="panel-fre"> 
-                        <div>
-                            <div>
-                                <h3>fredag</h3>
-                                <p>fredag</p>
-                            </div>
-                            <div >
-                                <p>fredag</p>
-                            </div>
-                        </div>          
-                    </div>
-                </div>
-                
-             </div>
-        </b:container>      
-    </ui:composition>	
-</h:body>
+            </b:container>      
+        </ui:composition>	
+    </h:body>
 </html>
