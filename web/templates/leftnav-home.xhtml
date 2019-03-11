@@ -28,15 +28,17 @@ and open the template in the editor.
                 
                 <div class="panel-wrap-mon">
                     <div class="panel-mon">
-                        <div>
+                        <ui:repeat value="#{lunchbean.allLunchAsFood}" var="food">
                             <div>
-                                <h3>måndag</h3>
-                                <p>måndag</p>
-                            </div>
-                            <div>
-                                <p>måndag</p>
-                            </div>
-                        </div>           
+                                <div>
+                                    <h3>#{food.dish}</h3>
+                                    <p>#{food.description}</p>
+                                </div>
+                                <div>
+                                    <p>måndag</p>
+                                </div>
+                            </div> 
+                        </ui:repeat>
                     </div>
                 </div>
             
