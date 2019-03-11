@@ -48,8 +48,8 @@ public class StaffMenuBean implements Serializable {
     @Inject
     private FoodBean foodBean; // +setter (no getter!)
     
-    java.util.Date uDate = new java.util.Date();
-    java.sql.Date sDate = convertUtilToSql(uDate);   
+   // java.util.Date uDate = new java.util.Date();
+    java.sql.Date sDate = convertUtilToSql(lunchDate);   
 
         public String getDish() {
         return dish;
