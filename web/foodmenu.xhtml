@@ -57,13 +57,14 @@ and open the template in the editor.
                             <h3 style="align-self: center; padding-left: 10%; padding-right: 10%;" >Dagens Lunch består av</h3>
                                 
                         </div>
-                        
-                        <div style="display: flex; justify-content: center;">
-                            
-                            <p style="align-self: center; width: 40%; font-style: italic;" >Timjan marinerad grillbiff serveras med grönpepparsås samt potatisgratäng.
-                                Schnitzel serveras med rödvinssky, bearnaisesås, primörer samt stekt potatis. Lasagne.</p>
-                                
-                        </div>
+                        <ui:repeat value="#{lunchbean.todaysLunch}" var="food">
+                                                <div style="display: flex; flex-flow: column; justify-content: center; align-items: center">
+                                                        <h3>#{food.dish}</h3>
+                                                        <p>#{food.description}</p>
+
+                                                </div>          
+                        </ui:repeat>
+
                         
                     </b:row>
                     

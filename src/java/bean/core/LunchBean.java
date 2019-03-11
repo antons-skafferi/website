@@ -11,6 +11,8 @@ import entities.Lunch;
 import facade.LunchFacade;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -142,7 +144,31 @@ public class LunchBean implements Serializable {
         return null;
     }
     
-    public List<Lunch> lunchList() {
-        return lunchFacade.findAll();
+    public Food getFood(Lunch lunch){
+        List<Food> allFood = foodFacade.findAll();
+        for(Food food : allFood){
+            if(food.getFoodId() == lunch.getFoodId()){
+                return food;
+            }
+        }
+        return null;
+    }
+    
+    public List<Food> getTodaysLunch() {
+        List<Lunch> lunchList = lunchFacade.findAll();
+        ZoneId z = ZoneId.of( "Europe/Stockholm" );
+        ZonedDateTime zdt = ZonedDateTime.now( z );
+
+        List<Food> todaysLunch = new ArrayList<>();
+        for(Lunch lunch : lunchList){
+            ZonedDateTime lunchZdt = lunch.getDate().toInstant().atZone(z);
+
+            if(lunchZdt.getYear() == zdt.getYear() &&
+                    lunchZdt.getMonth() == zdt.getMonth() &&
+                    lunchZdt.getDayOfWeek() == zdt.getDayOfWeek()){
+                todaysLunch.add(getFood(lunch));
+            }
+        }
+        return todaysLunch;
     }
 }

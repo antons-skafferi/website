@@ -14,6 +14,7 @@ import facade.FoodFacade;
 import facade.LunchFacade;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -137,9 +138,34 @@ public class StaffMenuBean implements Serializable {
     }
 
     public void deleteFood() {
+        List<Lunch> allLunch = lunchFacade.findAll();
+        List<Dinner> allDinner = dinnerFacade.findAll();
         for (Integer foodID : selectedFoodIDs) {
             foodFacade.deleteFood(foodID);
-
+            
+            for(Lunch lunch : allLunch){
+                if(lunch.getFoodId() == foodID){
+                    lunchFacade.remove(lunch);
+                }
+            }
+            for(Dinner dinner : allDinner){
+                if(dinner.getFoodId() == foodID){
+                    dinnerFacade.remove(dinner);
+                }
+            }
+            /*
+            Iterator<Lunch> iterator = allLunch.iterator();
+            while (iterator.hasNext()) {
+              Lunch lunch = iterator.next();
+              if (lunch.getFoodId() == foodID) iterator.remove();
+            }
+            
+            Iterator<Dinner> dinnerItr = allDinner.iterator();
+            while (dinnerItr.hasNext()) {
+              Dinner dinner = dinnerItr.next();
+              if (dinner.getFoodId() == foodID) dinnerItr.remove();
+            }
+            */
         }
     }
 
