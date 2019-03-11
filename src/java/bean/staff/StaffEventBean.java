@@ -7,10 +7,18 @@ package bean.staff;
 
 import entities.Event;
 import facade.EventFacade;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -18,6 +26,9 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
@@ -116,20 +127,42 @@ public class StaffEventBean implements Serializable {
     
  
 
-    public void addEventForm() throws ParseException{
+    public void addEventForm() throws ParseException, FileNotFoundException, IOException{
         int x = 0;
         java.sql.Date sqlDate = new java.sql.Date(event_date.getTime());
 
+
+        InputStream input = null;
+        OutputStream output = null;
+        String filename = FilenameUtils.getName(file.getFileName());
+        File newFile = new File("/antonsskafferi/events", filename);
+        String newFilePath = newFile.toPath().toString();
+        newFile.getParentFile().mkdirs();
+                    
+            input = file.getInputstream();
+            output = FileUtils.openOutputStream(newFile);
+        try {
+
+            IOUtils.copy(input, output);
+        } catch (IOException ex) {
+            Logger.getLogger(StaffEventBean.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            IOUtils.closeQuietly(input);
+            IOUtils.closeQuietly(output);
+        }
+        
         if (description == null) {
             if (file == null) {
                 eventFacade.create(new Event(null, sqlDate, event_title));
             }
-            eventFacade.create(new Event(null, sqlDate, event_title, file.getFileName()));
+            eventFacade.create(new Event(null, sqlDate, event_title, newFilePath));
         } else if (file == null) {
             eventFacade.create(new Event(null, description, sqlDate, event_title));
         } else {
-            eventFacade.create(new Event(null, sqlDate, event_title, description, file.getFileName()));
+            eventFacade.create(new Event(null, sqlDate, event_title, description, newFilePath));
         }
+        
+
 
     }
     
