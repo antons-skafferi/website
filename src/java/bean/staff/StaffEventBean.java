@@ -3,30 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bean.core;
+package bean.staff;
 
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.javaIdentifierType;
 import entities.Event;
 import facade.EventFacade;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.Date;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
+import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
+import javax.inject.Named;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
- * @author Max Wågberg
+ * @author gustav
  */
-@Named(value = "eventBean")
+@Named(value = "staffEventBean")
+@ManagedBean
 @SessionScoped
-public class eventBean implements Serializable {
-
+public class StaffEventBean implements Serializable {
     private String event_id;
     private String description;
-    private String image;
     private String strDate;
     private Date event_date;
     private String event_title;
@@ -35,6 +39,28 @@ public class eventBean implements Serializable {
     
     @EJB
     private EventFacade eventFacade;
+    
+    private UploadedFile file;
+ 
+    public UploadedFile getFile() {
+        return file;
+    }
+ 
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+     
+    public void upload() {
+        if(file != null) {
+            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+     
+    public void handleFileUpload(FileUploadEvent event) {
+        FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
     
     public List<Integer> getSelectedEventIDs() {
         return selectedEventIDs;
@@ -76,14 +102,6 @@ public class eventBean implements Serializable {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public Date getEvent_date() {
         return event_date;
     }
@@ -99,17 +117,18 @@ public class eventBean implements Serializable {
  
 
     public void addEventForm() throws ParseException{
+        int x = 0;
         java.sql.Date sqlDate = new java.sql.Date(event_date.getTime());
 
         if (description == null) {
-            if (image == null) {
+            if (file == null) {
                 eventFacade.create(new Event(null, sqlDate, event_title));
             }
-            eventFacade.create(new Event(null, sqlDate, event_title, image));
-        } else if (image == null) {
+            eventFacade.create(new Event(null, sqlDate, event_title, file.getFileName()));
+        } else if (file == null) {
             eventFacade.create(new Event(null, description, sqlDate, event_title));
         } else {
-            eventFacade.create(new Event(null, sqlDate, event_title, description, image));
+            eventFacade.create(new Event(null, sqlDate, event_title, description, file.getFileName()));
         }
 
     }
@@ -118,6 +137,11 @@ public class eventBean implements Serializable {
         for (Integer eventID : selectedEventIDs) {
             eventFacade.deleteEvent(eventID);
         }
+    }
+    /**
+     * Creates a new instance of StaffEventBean
+     */
+    public StaffEventBean() {
     }
     
 }

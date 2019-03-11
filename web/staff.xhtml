@@ -14,7 +14,7 @@
 
     <h:body>
         <h2> Personal </h2>
-        <h:form id="tabform">
+        <h:form id="tabform" enctype="multipart/form-data">
             <p:tabView>
                 <p:tab title="Schema">
                     <h3>Schemaläggning</h3>
@@ -118,30 +118,29 @@
 
                     <b:row>
                         <b:column span="3">
-                            <fieldset style="float:left">
+                            <fieldset>
                                 <legend>Event</legend>
                                 <label for="Title">Titel</label><br />
-                                <p:inputText id="event_id" value="#{eventBean.event_title}" /><br />
+                                <p:inputText id="event_id" value="#{staffEventBean.event_title}" /><br />
 
                                 <label for="lastname">Description</label><br />
-                                <p:inputTextarea id="event_description" value="#{eventBean.description}" rows="6" cols="33" /><br />
+                                <p:inputTextarea id="event_description" value="#{staffEventBean.description}" rows="6" cols="33" /><br />
 
                                 <label for="image">Bild</label><br />
-                                <p:fileUpload value="#{eventBean.image}" mode="simple" /><br />
+                                <p:fileUpload value="#{staffEventBean.file}" mode="simple" /><br />
                                 <label>Välj datum</label><br />
-                                <b:dateTimePicker value="#{eventBean.event_date}" format="YYYY-MM-DD">
+                                <b:dateTimePicker value="#{staffEventBean.event_date}" format="YYYY-MM-DD">
 
                                 </b:dateTimePicker>
-
+                                <h:commandButton type="submit"  value="Submit"  action="#{staffEventBean.addEventForm()}" />
                             </fieldset>
-                            <h:commandButton type="submit"  value="Submit"  action="#{eventBean.addEventForm()}" />
                         </b:column>
                         <b:column span="6">
                             <legend>Evenemang</legend>
-                            <p:selectManyMenu value="#{eventBean.selectedEventIDs}">
-                                <f:selectItems value="#{eventBean.eventList()}" var="event" itemLabel="#{event.eventTitle}" itemValue="#{event.eventId}"/>                            
+                            <p:selectManyMenu value="#{staffEventBean.selectedEventIDs}">
+                                <f:selectItems value="#{staffEventBean.eventList()}" var="event" itemLabel="#{event.eventTitle}" itemValue="#{event.eventId}"/>                            
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Delete" action="#{eventBean.deleteEvent()}"/>
+                            <h:commandButton type="submit"  value="Delete" action="#{staffEventBean.deleteEvent()}"/>
                         </b:column>
                     </b:row>
 
