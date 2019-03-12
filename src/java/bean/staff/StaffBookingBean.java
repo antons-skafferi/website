@@ -8,6 +8,8 @@ package bean.staff;
 import entities.Booking;
 import facade.BookingFacade;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.ManagedBean;
@@ -130,6 +132,21 @@ public class StaffBookingBean implements Serializable {
     
     public List<Booking> bookingList() {
         return bookingFacade.findAll();
+    }
+    
+      public void addBookingForm() throws ParseException{
+        int x = 0;
+        java.sql.Date sqlDate = new java.sql.Date(bookingDate.getTime());
+        String testStartTime = "10:00:00";
+        
+        SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:dd");
+        java.util.Date startTime = sdf1.parse(testStartTime);
+        java.sql.Date sqlStartTime = new java.sql.Date(startTime.getTime());
+        
+        System.out.println(sqlStartTime);
+        System.out.println(sqlDate);
+        
+        bookingFacade.create(new Booking(null, "1", 1, sqlStartTime, sqlStartTime, sqlDate, name, "efternamnxd", phone, email));
     }
     
      public void deleteBooking() {
