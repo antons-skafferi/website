@@ -14,18 +14,32 @@ and open the template in the editor.
         
     </h:head>
 <h:body>
+    
     <ui:composition>      
         <b:container fluid="true">
             
                 <div class="homemenu" >
                     <h3 style="text-align: center">Veckans Luncher!</h3>
-                <button id="clicker-mon" type="checkbox" >Måndag</button>
-                <button id="clicker-tis" type="checkbox" >Tisdag</button>
-                <button id="clicker-ons" type="checkbox" >Onsdag</button>
-                <button id="clicker-tor" type="checkbox" >Torsdag</button>
-                <button id="clicker-fre" type="checkbox" >Fredag</button>
+                    <button id="clicker-mon" type="checkbox" >Måndag</button>
+                    <button id="clicker-tis" type="checkbox" >Tisdag</button>
+                    <button id="clicker-ons" type="checkbox" >Onsdag</button>
+                    <button id="clicker-tor" type="checkbox" >Torsdag</button>
+                    <button id="clicker-fre" type="checkbox" >Fredag</button>
               
-                
+                <div class="panel-wrap-todays">
+                    <div class="panel-todays">
+                        <ui:repeat value="#{lunchbean.todaysLunch}" var="food">
+                            <div>
+                                <div>
+                                    <h3>#{food.dish}</h3>
+                                    <p>#{food.description}</p>
+                                </div>                                
+                            </div> 
+                        </ui:repeat>
+                    </div>
+                </div>
+                    
+                    
                 <div class="panel-wrap-mon">
                     <div class="panel-mon">
                         <ui:repeat value="#{lunchbean.mondaysLunch}" var="food">
