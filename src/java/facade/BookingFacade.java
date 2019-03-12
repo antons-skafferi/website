@@ -29,4 +29,9 @@ public class BookingFacade extends AbstractFacade<Booking> {
         super(Booking.class);
     }
     
+    public void deleteBooking(int bookingID){
+        Booking booking = find(bookingID);
+        remove(booking);
+    }
+    
 }
