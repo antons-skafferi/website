@@ -145,6 +145,20 @@
                     </b:row>
 
                 </p:tab>
+                
+                <p:tab title="Bordsbokning">
+                    <h3>Bordsbokning</h3>
+
+                    <b:row>
+                        <b:column span="8">
+                            <p:selectManyMenu class="staff-booking-container" value="#{staffBookingBean.selectedBookingIDs}">
+                                <f:selectItems value="#{staffBookingBean.bookingList()}" var="booking" itemLabel="#{booking.getFullInfo()}" itemValue="#{booking.bookingId}"/>                            
+                            </p:selectManyMenu>
+                            <h:commandButton type="submit"  value="Avboka" action="#{staffBookingBean.deleteBooking()}"/>
+                        </b:column>
+                    </b:row>
+
+                </p:tab>
 
             </p:tabView>
            

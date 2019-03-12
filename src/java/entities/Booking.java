@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -24,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Tobias
+ * @author Max Wågberg
  */
 @Entity
 @Table(name = "booking")
@@ -34,9 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Booking.findByBookingId", query = "SELECT b FROM Booking b WHERE b.bookingId = :bookingId")
     , @NamedQuery(name = "Booking.findByTableId", query = "SELECT b FROM Booking b WHERE b.tableId = :tableId")
     , @NamedQuery(name = "Booking.findByPeople", query = "SELECT b FROM Booking b WHERE b.people = :people")
-    , @NamedQuery(name = "Booking.findByFrom", query = "SELECT b FROM Booking b WHERE b.from = :from")
-    , @NamedQuery(name = "Booking.findByTo", query = "SELECT b FROM Booking b WHERE b.to = :to")
-    , @NamedQuery(name = "Booking.findByDate", query = "SELECT b FROM Booking b WHERE b.date = :date")
+    , @NamedQuery(name = "Booking.findByBookingFrom", query = "SELECT b FROM Booking b WHERE b.bookingFrom = :bookingFrom")
+    , @NamedQuery(name = "Booking.findByBookingTo", query = "SELECT b FROM Booking b WHERE b.bookingTo = :bookingTo")
+    , @NamedQuery(name = "Booking.findByBookingDate", query = "SELECT b FROM Booking b WHERE b.bookingDate = :bookingDate")
     , @NamedQuery(name = "Booking.findByName", query = "SELECT b FROM Booking b WHERE b.name = :name")
     , @NamedQuery(name = "Booking.findByLastname", query = "SELECT b FROM Booking b WHERE b.lastname = :lastname")
     , @NamedQuery(name = "Booking.findByPhone", query = "SELECT b FROM Booking b WHERE b.phone = :phone")
@@ -60,19 +62,19 @@ public class Booking implements Serializable {
     private int people;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "from")
+    @Column(name = "booking_from")
     @Temporal(TemporalType.TIME)
-    private Date from;
+    private Date bookingFrom;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "to")
+    @Column(name = "booking_to")
     @Temporal(TemporalType.TIME)
-    private Date to;
+    private Date bookingTo;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "date")
+    @Column(name = "booking_date")
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date bookingDate;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -103,13 +105,13 @@ public class Booking implements Serializable {
         this.bookingId = bookingId;
     }
 
-    public Booking(Integer bookingId, String tableId, int people, Date from, Date to, Date date, String name, String lastname, String phone, String email) {
+    public Booking(Integer bookingId, String tableId, int people, Date bookingFrom, Date bookingTo, Date bookingDate, String name, String lastname, String phone, String email) {
         this.bookingId = bookingId;
         this.tableId = tableId;
         this.people = people;
-        this.from = from;
-        this.to = to;
-        this.date = date;
+        this.bookingFrom = bookingFrom;
+        this.bookingTo = bookingTo;
+        this.bookingDate = bookingDate;
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
@@ -140,28 +142,28 @@ public class Booking implements Serializable {
         this.people = people;
     }
 
-    public Date getFrom() {
-        return from;
+    public Date getBookingFrom() {
+        return bookingFrom;
     }
 
-    public void setFrom(Date from) {
-        this.from = from;
+    public void setBookingFrom(Date bookingFrom) {
+        this.bookingFrom = bookingFrom;
     }
 
-    public Date getTo() {
-        return to;
+    public Date getBookingTo() {
+        return bookingTo;
     }
 
-    public void setTo(Date to) {
-        this.to = to;
+    public void setBookingTo(Date bookingTo) {
+        this.bookingTo = bookingTo;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getBookingDate() {
+        return bookingDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
     }
 
     public String getName() {
@@ -195,6 +197,17 @@ public class Booking implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public String getFullInfo() {
+        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM-yyyy");
+        
+        String bookingStartDate = sdfDate.format(getBookingDate());
+        String bookingStartTime = sdfTime.format(getBookingFrom());
+        String bookingEndTime = sdfTime.format(getBookingTo());
+        
+        return getName() + " " + getLastname() + "-"+ bookingStartDate +" Från " + bookingStartTime + " Till " + bookingEndTime;
+    }
 
     @Override
     public int hashCode() {
@@ -220,5 +233,5 @@ public class Booking implements Serializable {
     public String toString() {
         return "entities.Booking[ bookingId=" + bookingId + " ]";
     }
-    
+
 }
