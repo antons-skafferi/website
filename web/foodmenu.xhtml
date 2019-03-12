@@ -13,8 +13,8 @@ and open the template in the editor.
     </h:head>
     <h:body >
         <ui:composition template = "/templates/common.xhtml">
-            			
-         
+
+
             <ui:define name = "content">
                 <b:container  fluid="true">
                     <b:row style="margin-bottom: 2rem;">
@@ -26,10 +26,10 @@ and open the template in the editor.
                         </div>
                     </b:row>
                     <b:row class="menu-background-start" style="display: flex; justify-content: center; align-content: center; ">
-                       
+
                         <div>
-                            
-                            
+
+
                             <b:carousel id="parque2" disabled="true">
                                 <b:carouselItem>
                                     <img src="/website/resources/images/carosell_1.jpg" alt="Valladolid" />
@@ -41,98 +41,121 @@ and open the template in the editor.
                                     <img src="/website/resources/images/carosell_3.jpg" alt="Valladolid"  />
                                 </b:carouselItem>
                             </b:carousel>
-                           
-       
                         </div>
-                              
-                            
-                          
-                        
-                        <!-- contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-top: 1px solid #ddd;padding:10px" -->
                     </b:row>
                     <b:row> 
-                        
                         <div style="display: flex; justify-content: center;">
-                            
                             <h3 style="align-self: center; padding-left: 10%; padding-right: 10%;" >Dagens Lunch består av</h3>
-                                
                         </div>
                         <ui:repeat value="#{lunchbean.todaysLunch}" var="food">
-                                                <div style="display: flex; flex-flow: column; justify-content: center; align-items: center">
-                                                        <h3>#{food.dish}</h3>
-                                                        <p>#{food.description}</p>
-
-                                                </div>          
-                        </ui:repeat>
-
-                        
+                            <div style="display: flex; flex-flow: column; justify-content: center; align-items: center">
+                                <h3>#{food.dish}</h3>
+                                <p>#{food.description}</p>
+                            </div>          
+                        </ui:repeat> 
                     </b:row>
-                    
                     <b:row  style="display: flex; justify-content: center; margin-top: 5%;">
-                      <div class="menu-background">
-                        <h:form  style="align-self: center;">
-                            <b:tabView class="menu-tabs">
-                              <b:tab title="Huvudmenyn">
+                        <div class="menu-background">
+                            <h:form  style="align-self: center;">
+                                <b:tabView class="menu-tabs">
+                                    <b:tab title="Huvudmenyn">
                                         <ui:repeat value="#{dinnerbean.getMainCourse()}" var="food">
-                                                <div class="menu-element">
-                                                    <div style="width: 80%;">
-                                                        <h3>#{food.dish}</h3>
-                                                        <p>#{food.description}</p>
-                                                    </div>
-                                                    <div style="display: flex; width: 20%; justify-content: center; align-items: center">
-                                                        <p>#{dinnerbean.getDinner(food).price} kr</p>
-                                                    </div>
-                                                </div>          
+                                            <div class="menu-element">
+                                                <div style="width: 80%;">
+                                                    <h3>#{food.dish}</h3>
+                                                    <p>#{food.description}</p>
+                                                </div>
+                                                <div style="display: flex; width: 20%; justify-content: center; align-items: center">
+                                                    <p>#{dinnerbean.getDinner(food).price} kr</p>
+                                                </div>
+                                            </div>          
                                         </ui:repeat>
-                              </b:tab >
-                              <b:tab title="Förrätt">
-                                 <ui:repeat value="#{dinnerbean.getStarter()}" var="food">
-                                        <div style="border-bottom: solid 1px white; min-height: 8rem;">
-                                            <h3>#{food.dish}</h3>
-                                            <p>#{food.description}</p>
-                                        </div>          
-                                    </ui:repeat>
-                              </b:tab>
-                              <b:tab title="Efterrätt">
-                                <ui:repeat value="#{dinnerbean.getDessert()}" var="food">
-                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                            <h3>#{food.dish}</h3>
-                                            <p>#{food.description}</p>
-                                        </div>          
-                                    </ui:repeat>
-                                <ui:repeat value="#{dinnerbean.getDessert()}" var="food">
-                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                            <h3>#{food.dish}</h3>
-                                            <p>#{food.description}
-                                            </p>
-                                        </div>          
-                                </ui:repeat>
-                              </b:tab>
-                                <b:tab title="Barnmeny">
-                                  <ui:repeat value="#{dinnerbean.getChildMenu()}" var="food">
-                                        <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
-                                            <h3>#{food.dish}</h3>
-                                            <p>#{food.description}</p>
-                                        </div>          
-                                    </ui:repeat>
-                              </b:tab>
-                                <b:tab  title="Är du allergisk">
-                                    <div style="min-height: 8rem; ">
-                                        <p>Röda prickar, svårt att andas, ont i magen. En del tål inte mat som andra kan äta utan problem. <br></br>
-                                            Det viktigaste du som är allergiker bör tänka på är att alltid läsa ingrediensförteckningen noga.<br></br>
-                                            Det gäller även livsmedel som du handlar ofta eftersom innehållet kan ändras.
-
-                                        </p>
-                                    </div>
-                                </b:tab>
-                            </b:tabView>
-                        </h:form>
+                                    </b:tab >
+                                    <b:tab title="Förrätt">
+                                        <ui:repeat value="#{dinnerbean.getStarter()}" var="food">
+                                            <div style="border-bottom: solid 1px white; min-height: 8rem;">
+                                                <h3>#{food.dish}</h3>
+                                                <p>#{food.description}</p>
+                                            </div>          
+                                        </ui:repeat>
+                                    </b:tab>
+                                    <b:tab title="Efterrätt">
+                                        <ui:repeat value="#{dinnerbean.getDessert()}" var="food">
+                                            <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                                <h3>#{food.dish}</h3>
+                                                <p>#{food.description}</p>
+                                            </div>          
+                                        </ui:repeat>
+                                        <ui:repeat value="#{dinnerbean.getDessert()}" var="food">
+                                            <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                                <h3>#{food.dish}</h3>
+                                                <p>#{food.description}
+                                                </p>
+                                            </div>          
+                                        </ui:repeat>
+                                    </b:tab>
+                                    <b:tab title="Barnmeny">
+                                        <ui:repeat value="#{dinnerbean.getChildMenu()}" var="food">
+                                            <div style="border-bottom: solid 1px white; min-height: 8rem; padding-top: 1rem; ">
+                                                <h3>#{food.dish}</h3>
+                                                <p>#{food.description}</p>
+                                            </div>          
+                                        </ui:repeat>
+                                    </b:tab>
+                                    <b:tab  title="Lunch">
+                                        <ui:repeat value="#{lunchbean.mondaysLunch}" var="food">
+                                            <div class="menu-element"> 
+                                                <div style="width: 100%;">
+                                                    <h3 style="float:right;">Måndag</h3>
+                                                    <h3>#{food.dish}</h3>
+                                                    
+                                                    <p>#{food.description}</p>
+                                                </div> 
+                                            </div>  
+                                        </ui:repeat>
+                                        <ui:repeat value="#{lunchbean.tuesdayLunch}" var="food">
+                                            <div class="menu-element">     
+                                                <div style="width: 100%;">
+                                                    <h3 style="float:right;">Tisdag</h3>
+                                                    <h3>#{food.dish}</h3>
+                                                    <p>#{food.description}</p>
+                                                </div> 
+                                            </div> 
+                                        </ui:repeat>
+                                        <ui:repeat value="#{lunchbean.wednesdayLunch}" var="food">
+                                            <div class="menu-element">     
+                                                <div style="width: 100%;">
+                                                    <h3 style="float:right;">Onsdag</h3>
+                                                    <h3>#{food.dish}</h3>
+                                                    <p>#{food.description}</p>
+                                                </div>      
+                                            </div>
+                                        </ui:repeat>
+                                        <ui:repeat value="#{lunchbean.thursdayLunch}" var="food">
+                                            <div class="menu-element">     
+                                                <div style="width: 100%;">
+                                                    <h3 style="float:right;">Torsdag</h3>
+                                                    <h3>#{food.dish}</h3>
+                                                    <p>#{food.description}</p>
+                                                </div> 
+                                            </div>  
+                                        </ui:repeat>
+                                        <ui:repeat value="#{lunchbean.fridayLunch}" var="food">
+                                            <div class="menu-element">    
+                                                <div style="width: 100%;">
+                                                    <h3 style="float:right;">Fredag</h3>
+                                                    <h3>#{food.dish}</h3>
+                                                    <p>#{food.description}</p>
+                                                </div>     
+                                            </div>
+                                        </ui:repeat>
+                                    </b:tab>
+                                </b:tabView>
+                            </h:form>
                         </div>  
                     </b:row>
                 </b:container>
             </ui:define> 
-         
-            			
         </ui:composition>
     </h:body>
 </html>
