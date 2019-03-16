@@ -11,6 +11,8 @@ import entities.Lunch;
 import facade.LunchFacade;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -155,20 +157,63 @@ public class LunchBean implements Serializable {
     }
     
     public List<Food> getTodaysLunch() {
-        List<Lunch> lunchList = lunchFacade.findAll();
-        ZoneId z = ZoneId.of( "Europe/Stockholm" );
-        ZonedDateTime zdt = ZonedDateTime.now( z );
+        ZoneId z = ZoneId.of("Europe/Stockholm");
+        ZonedDateTime zdt = ZonedDateTime.now(z);
+        return getLunchFromDate(zdt);
+    }
 
+    public List<Food> getMondaysLunch() {
+        ZoneId z = ZoneId.of("Europe/Stockholm");
+        ZonedDateTime zdt = ZonedDateTime.of(LocalDateTime.now().with(DayOfWeek.MONDAY), z);
+
+        return getLunchFromDate(zdt);
+    }
+
+    public List<Food> getTuesdayLunch() {
+        
+        ZoneId z = ZoneId.of("Europe/Stockholm");
+        ZonedDateTime zdt = ZonedDateTime.of(LocalDateTime.now().with(DayOfWeek.TUESDAY), z);
+
+        return getLunchFromDate(zdt);
+    }
+
+    public List<Food> getWednesdayLunch() {
+        ZoneId z = ZoneId.of("Europe/Stockholm");
+        ZonedDateTime zdt = ZonedDateTime.of(LocalDateTime.now().with(DayOfWeek.WEDNESDAY), z);
+
+        return getLunchFromDate(zdt);
+    }
+
+    public List<Food> getThursdayLunch() {
+        ZoneId z = ZoneId.of("Europe/Stockholm");
+        ZonedDateTime zdt = ZonedDateTime.of(LocalDateTime.now().with(DayOfWeek.THURSDAY), z);
+
+        return getLunchFromDate(zdt);
+    }
+
+    public List<Food> getFridayLunch() {
+        ZoneId z = ZoneId.of("Europe/Stockholm");
+        ZonedDateTime zdt = ZonedDateTime.of(LocalDateTime.now().with(DayOfWeek.FRIDAY), z);
+
+        return getLunchFromDate(zdt);
+    }
+
+    public List<Food> getLunchFromDate(ZonedDateTime zdt) {
+        List<Lunch> lunchList = lunchFacade.findAll();
+        ZoneId z = ZoneId.of("Europe/Stockholm");
         List<Food> todaysLunch = new ArrayList<>();
-        for(Lunch lunch : lunchList){
+
+        for (Lunch lunch : lunchList) {
             ZonedDateTime lunchZdt = lunch.getDate().toInstant().atZone(z);
 
-            if(lunchZdt.getYear() == zdt.getYear() &&
-                    lunchZdt.getMonth() == zdt.getMonth() &&
-                    lunchZdt.getDayOfWeek() == zdt.getDayOfWeek()){
+            if (lunchZdt.getYear() == zdt.getYear()
+                    && lunchZdt.getMonth() == zdt.getMonth()
+                    && lunchZdt.getDayOfMonth() == zdt.getDayOfMonth()) {
                 todaysLunch.add(getFood(lunch));
             }
         }
         return todaysLunch;
     }
+        
+    
 }
