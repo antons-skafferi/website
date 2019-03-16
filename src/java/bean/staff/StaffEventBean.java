@@ -162,7 +162,7 @@ public class StaffEventBean implements Serializable {
             eventFacade.create(new Event(null, sqlDate, event_title, description, newFilePath));
         }
         
-
+        
 
     }
     

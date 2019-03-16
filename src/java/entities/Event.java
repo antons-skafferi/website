@@ -6,6 +6,8 @@
 package entities;
 
 import java.io.Serializable;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -134,6 +136,12 @@ public class Event implements Serializable {
 
     public void setEventTitle(String eventTitle) {
         this.eventTitle = eventTitle;
+    }
+    
+    public String getImageFileName(){
+        Path p = Paths.get(image);
+        String stringPath = p.getFileName().toString();
+        return stringPath;
     }
 
     @Override

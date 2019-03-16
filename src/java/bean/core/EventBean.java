@@ -5,26 +5,28 @@
  */
 package bean.core;
 
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.javaIdentifierType;
 import entities.Event;
 import facade.EventFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.Date;
-import java.text.ParseException;
+import java.util.Comparator;
 import java.util.List;
 import javax.ejb.EJB;
-import org.primefaces.model.UploadedFile;
 
-/**
- *
- * @author Max Wågberg
- */
 @Named(value = "eventBean")
 @SessionScoped
 public class EventBean implements Serializable {
-
-
+    @EJB  
+    private EventFacade eventFacade;
     
+    
+    public List<Event> getUpcomingEvents(int count){
+        List<Event> events = eventFacade.findAll();
+        
+        events.sort(Comparator.comparing(Event::getEventDate));
+        
+        return events;
+    }
+
 }

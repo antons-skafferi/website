@@ -10,6 +10,8 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions"
+      xmlns:o="http://omnifaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
@@ -21,7 +23,7 @@ and open the template in the editor.
         <ui:composition template = "/templates/common.xhtml">			
             <ui:define name = "content">
                 <b:container fluid="true" class="content-container">
-                    
+
                     <b:row style="margin-bottom: 2rem;">
                         <div style="display: flex; flex-flow: column; align-items: center;">
                             <div style="display: flex; flex-flow: column; align-items: center; justify-content: center">
@@ -31,154 +33,112 @@ and open the template in the editor.
                         </div>
                     </b:row>
                     <b:row> 
-                        
+
                         <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
-                            
+
                             <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Våra kommande event!</h3>
-                                
+
                         </div>
                     </b:row>
-                    
+
                     <b:row style="justify-content: space-between">
-                        <b:column span="4" style="display: flex; margin-bottom: 2rem;">
-                            <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                <div class="event-news-first">
-                                    <div style="padding: 0rem;">
-                                        <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
+                        <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event">
+                            <b:column span="4" style="display: flex; margin-bottom: 2rem;">
+                                <a id="atrigger"  href="#amodal" data-toggle="modal"> 
+                                    <div class="event-news-first">
+                                        <div style="padding: 0rem;">
+
+                                            <o:graphicImage value="#{imageReader.getImageByPath('/antonsskafferi/events/header.jpg')}"/>
+                                            <img class="event-news-first-image" src="/events/#{event.imageFileName}"/>
+                                        </div>
+                                        <div class="event-content">
+                                            <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
+
+                                            <p class="event-news-first-text">
+                                                #{event.description}
+                                            </p>
+                                            <hr class="underline-dark"/>
+                                            <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
+                                        </div>
                                     </div>
-                                    <div class="event-content">
-                                        <h4 style="font-weight: bold; color:black;">Välkommen in till oss på Antons Skafferi</h4>
-                                        
-                                        <p class="event-news-first-text">
-                                            På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 och erbjuder då valfri planka för 198 kr
-                                            och andra enklare rätter som kommer upp under menyer, onsdag varje vecka.
-                                        </p>
-                                        <hr class="underline-dark"/>
-                                        <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
-                                    </div>
-                               
-                                </div>
-                            </a>
-                        </b:column>
-                          
-                          <b:column span="4" style="display: flex; margin-bottom: 2rem;">
-                            <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                <div class="event-news-first">
-                                    <div style="padding: 0rem;">
-                                        <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
-                                    </div>
-                                    <div class="event-content">
-                                        <h4 style="font-weight: bold; color:black;">Välkommen in till oss på Antons Skafferi</h4>
-                                        
-                                        <p class="event-news-first-text">
-                                            På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 och erbjuder då valfri planka för 198 kr
-                                            och andra enklare rätter som kommer upp under menyer, onsdag varje vecka.
-                                        </p>
-                                        <hr class="underline-dark"/>
-                                        <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
-                                    </div>
-                               
-                                </div>
-                            </a>
-                        </b:column>
-                        <b:column span="4" style="display: flex; margin-bottom: 2rem;">
-                            <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                <div class="event-news-first">
-                                    <div style="padding: 0rem;">
-                                        <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
-                                    </div>
-                                    <div class="event-content">
-                                        <h4 style="font-weight: bold; color:black;">Välkommen in till oss på Antons Skafferi</h4>
-                                        
-                                        <p class="event-news-first-text">
-                                            På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 och erbjuder då valfri planka för 198 kr
-                                            och andra enklare rätter som kommer upp under menyer, onsdag varje vecka.
-                                        </p>
-                                        <hr class="underline-dark"/>
-                                        <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
-                                    </div>
-                               
-                                </div>
-                            </a>
-                        </b:column>
-                          
-                         
-                         
+                                </a>
+                            </b:column>
+                        </ui:repeat>
 
                     </b:row >  
-                    
+
                     <hr class="underline-event"/>
-                    
- 
-                     <b:row> 
-                        
+
+
+                    <b:row> 
+
                         <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
-                            
+
                             <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Kolla även in våra föregående event!</h3>
-                                
+
                         </div>
-                        
+
                     </b:row>
-                    
-                    
+
+
                     <b:row style="display: flex; justify-content: center;">
-                        
+
                         <b:modal  id="amodal" title="Modal Example" >
-                        
+
                             <div>
                                 <img style="max-height: 20rem; width: 100%; border-radius: 5px 5px 0px 0px;" src="/website/resources/images/header2.jpg"></img>
                             </div>
                             <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
-                                        <h4 style="font-weight: bold; color:black; align-self: center;">Välkommen in till oss på Antons Skafferi</h4>
-                                        
-                                        <p class="event-news-first-text">
-                                            På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 och erbjuder då valfri planka för 198 kr
-                                            och andra enklare rätter som kommer upp under menyer, onsdag varje vecka.
-                                        </p>
-                                        <hr class="underline-dark"/>
-                                        <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
-                                    </div>
+                                <h4 style="font-weight: bold; color:black; align-self: center;">Välkommen in till oss på Antons Skafferi</h4>
 
-                        <f:facet name="footer">
-                          
-                        </f:facet>
-                       </b:modal>
-                        
-                        
+                                <p class="event-news-first-text">
+                                    På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 och erbjuder då valfri planka för 198 kr
+                                    och andra enklare rätter som kommer upp under menyer, onsdag varje vecka.
+                                </p>
+                                <hr class="underline-dark"/>
+                                <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
+                            </div>
+
+                            <f:facet name="footer">
+
+                            </f:facet>
+                        </b:modal>
+
+
                         <b:column span="7" style="display: flex; flex-flow: column; align-content: center;">
                             <b:carousel  id="tiovivo" style="width:600px;" interval="2500">
 
                                 <b:carouselItem >
                                     <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                  <img  src="/website/resources/images/header2.jpg"></img>
-                                  <b:carouselCaption>
-                                    <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
-                                    <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
-                                    </p>
-                                  </b:carouselCaption>
-                                  </a>
+                                        <img  src="/website/resources/images/header2.jpg"></img>
+                                        <b:carouselCaption>
+                                            <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
+                                            <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
+                                            </p>
+                                        </b:carouselCaption>
+                                    </a>
                                 </b:carouselItem>
 
                                 <b:carouselItem >
                                     <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                  <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
-                                  <b:carouselCaption>
-                                    <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
-                                    <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
-                                    </p>
-                                  </b:carouselCaption>
-                                  </a>
+                                        <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
+                                        <b:carouselCaption>
+                                            <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
+                                            <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
+                                            </p>
+                                        </b:carouselCaption>
+                                    </a>
                                 </b:carouselItem>
 
                                 <b:carouselItem >
                                     <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                  <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
-                                  <b:carouselCaption>
-                                    <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
-                                    <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
-                                    </p>
-                                  </b:carouselCaption>
-                                  </a>
+                                        <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
+                                        <b:carouselCaption>
+                                            <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
+                                            <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
+                                            </p>
+                                        </b:carouselCaption>
+                                    </a>
                                 </b:carouselItem>
                             </b:carousel>
                         </b:column>
