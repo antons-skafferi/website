@@ -47,9 +47,7 @@ and open the template in the editor.
                                 <a id="atrigger"  href="#amodal" data-toggle="modal"> 
                                     <div class="event-news-first">
                                         <div style="padding: 0rem;">
-
-                                            <o:graphicImage value="#{imageReader.getImageByPath('/antonsskafferi/events/header.jpg')}"/>
-                                            <img class="event-news-first-image" src="/events/#{event.imageFileName}"/>
+                                            <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
                                         </div>
                                         <div class="event-content">
                                             <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
@@ -58,7 +56,6 @@ and open the template in the editor.
                                                 #{event.description}
                                             </p>
                                             <hr class="underline-dark"/>
-                                            <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
                                         </div>
                                     </div>
                                 </a>

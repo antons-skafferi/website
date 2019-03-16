@@ -17,7 +17,7 @@ import javax.inject.Named;
  * @author gustav
  */
 
-@Named
+@Named(value = "imageReader")
 @ApplicationScoped
 public class ImageReader {
 
