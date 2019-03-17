@@ -8,6 +8,8 @@ package entities;
 import java.io.Serializable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -128,6 +130,11 @@ public class Event implements Serializable {
 
     public void setEventDate(Date eventDate) {
         this.eventDate = eventDate;
+    }
+    
+    public String getEventDateFormated() {
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(eventDate);
     }
 
     public String getEventTitle() {

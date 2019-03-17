@@ -29,12 +29,15 @@ and open the template in the editor.
                         <div>
                             <img style="max-height: 20rem; width: 100%; border-radius: 5px 5px 0px 0px;" src="/website/resources/images/header2.jpg"></img>
                         </div>
-                        <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
+                        <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center; text-align: center;">
                             <h4 style="font-weight: bold; color:black; align-self: center;">#{event.eventTitle}</h4>
                             <p class="event-news-first-text">
                                 #{event.description}
                             </p>
                             <hr class="underline-dark"/>
+                            <p class="event-news-first-text">
+                                #{event.getEventDateFormated()}
+                            </p>
                         </div>
                         <f:facet name="footer">
                         </f:facet>
@@ -55,9 +58,8 @@ and open the template in the editor.
 
                 <b:row style="justify-content: space-between">
                     <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
-                        <b:column span="4" style="display: flex; margin-bottom: 2rem;">
-                            <a id="atrigger"  onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
-                                <div class="event-news-first">
+                        <b:column span="4" style="display: flex; margin-bottom: 2rem; flex: 2; overflow: hidden;">
+                                <div class="event-news-first" onclick="$('.event-modal' + #{varStatus.index}).modal()">
                                     <div style="padding: 0rem;">
                                         <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
                                     </div>
@@ -68,9 +70,11 @@ and open the template in the editor.
                                             #{event.description}
                                         </p>
                                         <hr class="underline-dark"/>
+                                        <p class="event-news-first-text">
+                                            #{event.getEventDateFormated()}
+                                        </p>
                                     </div>
                                 </div>
-                            </a>
                         </b:column>
                     </ui:repeat>
                 </b:row >  
@@ -93,8 +97,10 @@ and open the template in the editor.
                                 </div>
                                 <div class="event-content">
                                     <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
-
                                     <hr class="underline-dark"/>
+                                    <p class="event-news-first-text">
+                                        #{event.getEventDateFormated()}
+                                    </p>
                                 </div>
                             </div>
                         </div>
