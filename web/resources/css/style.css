@@ -36,6 +36,7 @@ html, body {
     margin: 0;
     height: 100%;
     font-size: 16px;
+    scrollbar-width: none;
 }
 
 body{
@@ -43,6 +44,11 @@ body{
     margin:0;
     font-size: 1rem;
     color: white;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 
 span{
@@ -406,6 +412,33 @@ hr.hr1{
     border: solid 2px threedface;
 
 }
+
+.events-old-container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    max-height: 30rem;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+    padding: 2rem 6rem 0rem 6rem;
+
+}
+
+.event-old-container{
+    background-color: white;
+    max-height: 35rem;
+    max-width: 35rem;
+    border: solid 2px threedface;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .event-news-first-text {
     color:black;
     padding:1rem;
@@ -417,7 +450,7 @@ hr.hr1{
     flex-flow: column;
     justify-content: center;
     text-align: center;
-    min-height: 100%;
+    flex: 1;
 }
 
 .event-news-first-image{
@@ -426,6 +459,7 @@ hr.hr1{
 }
 
 .event-image{
+    flex: 1;
     width: 100%;
 
 }
