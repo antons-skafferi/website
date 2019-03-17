@@ -24,10 +24,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @javax.persistence.Table(name = "table")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "Table.findAll", query = "SELECT t FROM Table t")
     , @NamedQuery(name = "Table.findByTableId", query = "SELECT t FROM Table t WHERE t.tableId = :tableId")
-    , @NamedQuery(name = "Table.findBySeat", query = "SELECT t FROM Table t WHERE t.seat = :seat")})
+    , @NamedQuery(name = "Table.findBySeat", query = "SELECT t FROM Table t WHERE t.seat = :seat")}) */
 public class Table implements Serializable {
 
     private static final long serialVersionUID = 1L;
