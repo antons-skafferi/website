@@ -211,25 +211,24 @@ public class StaffBookingBean implements Serializable {
         
     }
     
-     public void deleteBooking() {
+    public void deleteBooking() {
         for (Integer bookingID : selectedBookingIDs) {
             bookingFacade.deleteBooking(bookingID);
         }
     }
      
-     
-     
-     
-     /* -
-     public List<Dinnertable> availableTables(Date date){
+    public List<Dinnertable> availableTables(Date date){
         List<Booking> Booked = bookingFacade.findAll();
         List<Dinnertable> tables = dinnertableFacade.findAll();
         List<Dinnertable> availableTables = new ArrayList<Dinnertable>();
         List<Dinnertable> bookedTables = new ArrayList<Dinnertable>();
         
+        Date dateEnd = (Date) date.clone();
+        dateEnd.setTime(dateEnd.getTime() + TimeUnit.HOURS.toMillis(1));
+        
         for(Booking booked : Booked){
             
-           if(booked.getBookingDate().equals(date)){
+           if(booked.getBookingDate().equals(date) || booked.getBookingDate().equals(dateEnd)){
                 for(Dinnertable table : tables){
                     if(booked.getTableId().equals(table.getTableId())){
                         bookedTables.add(table);
@@ -245,20 +244,5 @@ public class StaffBookingBean implements Serializable {
         }
         return availableTables;
      } 
-        
-     */
-        
-        
-        
-        
-        
 
-    
-    /**
-     * Creates a new instance of StaffBookingBean
-     */
-
-    
-    
-    
 }
