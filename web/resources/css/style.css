@@ -1071,3 +1071,7 @@ for simplicity
     padding-left: 0rem;
     padding-bottom: 0rem;
 }
+
+.carousel-inner{
+    height: 800px;
+}

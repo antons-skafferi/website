@@ -10,6 +10,7 @@ import facade.EventFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,11 +23,24 @@ public class EventBean implements Serializable {
     
     
     public List<Event> getUpcomingEvents(int count){
-        List<Event> events = eventFacade.findAll();
-        
+        List<Event> events = eventFacade.findAll();       
         events.sort(Comparator.comparing(Event::getEventDate));
         
-        return events;
+        if(count > events.size()){
+            count = events.size();
+        }
+        
+        return events.subList(0, count);
+    }
+    
+    public List<Event> getEventsAfter(int count){
+        List<Event> events = eventFacade.findAll();       
+        events.sort(Comparator.comparing(Event::getEventDate));
+        
+        if(count >= events.size())
+            return new ArrayList<Event>();
+        
+        return events.subList(count, events.size());
     }
 
 }
