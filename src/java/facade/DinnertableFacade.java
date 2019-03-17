@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entities.Table;
+import entities.Dinnertable;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Tobias
  */
 @Stateless
-public class TableFacade extends AbstractFacade<Table> {
+public class DinnertableFacade extends AbstractFacade<Dinnertable> {
 
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class TableFacade extends AbstractFacade<Table> {
         return em;
     }
 
-    public TableFacade() {
-        super(Table.class);
+    public DinnertableFacade() {
+        super(Dinnertable.class);
     }
     
 }

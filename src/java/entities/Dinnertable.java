@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -22,13 +23,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Tobias
  */
 @Entity
-@javax.persistence.Table(name = "table")
+@Table(name = "dinnertable")
 @XmlRootElement
-/*@NamedQueries({
-    @NamedQuery(name = "Table.findAll", query = "SELECT t FROM Table t")
-    , @NamedQuery(name = "Table.findByTableId", query = "SELECT t FROM Table t WHERE t.tableId = :tableId")
-    , @NamedQuery(name = "Table.findBySeat", query = "SELECT t FROM Table t WHERE t.seat = :seat")}) */
-public class Table implements Serializable {
+@NamedQueries({
+    @NamedQuery(name = "Dinnertable.findAll", query = "SELECT d FROM Dinnertable d")
+    , @NamedQuery(name = "Dinnertable.findByTableId", query = "SELECT d FROM Dinnertable d WHERE d.tableId = :tableId")
+    , @NamedQuery(name = "Dinnertable.findBySeat", query = "SELECT d FROM Dinnertable d WHERE d.seat = :seat")})
+public class Dinnertable implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,14 +42,14 @@ public class Table implements Serializable {
     @Column(name = "seat")
     private short seat;
 
-    public Table() {
+    public Dinnertable() {
     }
 
-    public Table(Integer tableId) {
+    public Dinnertable(Integer tableId) {
         this.tableId = tableId;
     }
 
-    public Table(Integer tableId, short seat) {
+    public Dinnertable(Integer tableId, short seat) {
         this.tableId = tableId;
         this.seat = seat;
     }
@@ -79,10 +80,10 @@ public class Table implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Table)) {
+        if (!(object instanceof Dinnertable)) {
             return false;
         }
-        Table other = (Table) object;
+        Dinnertable other = (Dinnertable) object;
         if ((this.tableId == null && other.tableId != null) || (this.tableId != null && !this.tableId.equals(other.tableId))) {
             return false;
         }
@@ -91,7 +92,7 @@ public class Table implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Table[ tableId=" + tableId + " ]";
+        return "entities.Dinnertable[ tableId=" + tableId + " ]";
     }
     
 }
