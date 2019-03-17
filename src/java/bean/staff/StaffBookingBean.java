@@ -188,16 +188,10 @@ public class StaffBookingBean implements Serializable {
                 }
         }
         return availableTables;
-     }
+     } 
         
+     }
      */
-        
-        
-        
-        
-        
-        
-     }
     
     /**
      * Creates a new instance of StaffBookingBean
