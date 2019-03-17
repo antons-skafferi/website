@@ -12,7 +12,8 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:of="http://omnifaces.org/functions"
       xmlns:o="http://omnifaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Events</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -108,41 +109,36 @@ and open the template in the editor.
 
 
                         <b:column span="7" style="display: flex; flex-flow: column; align-content: center;">
-                            <b:carousel  id="tiovivo" style="width:600px;" interval="2500">
+                            <b:panelGrid columns="3">
+                                <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
 
-                                <b:carouselItem >
-                                    <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                        <img  src="/website/resources/images/header2.jpg"></img>
-                                        <b:carouselCaption>
-                                            <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
-                                            <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
-                                            </p>
-                                        </b:carouselCaption>
-                                    </a>
-                                </b:carouselItem>
+                                            <div onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
+                                                <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
+                                                <b:carouselCaption>
+                                                    <h4 style="font-style: oblique;">#{event.eventTitle}</h4>
+                                                    <p>#{event.description}
+                                                    </p>
+                                                </b:carouselCaption>
+                                            </div>
 
-                                <b:carouselItem >
-                                    <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                        <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
-                                        <b:carouselCaption>
-                                            <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
-                                            <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
-                                            </p>
-                                        </b:carouselCaption>
-                                    </a>
-                                </b:carouselItem>
+                                </ui:repeat>
+                                <b:carousel  id="tiovivo" style="width:600px;" interval="2500">
+                                    <c:forEach items="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
+                                        <b:carouselItem style="height:100%">
+                                            <div style="height:100%"  onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
+                                                <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
+                                                <b:carouselCaption>
+                                                    <h4 style="font-style: oblique;">#{event.eventTitle}</h4>
+                                                    <p>#{event.description}
+                                                    </p>
+                                                </b:carouselCaption>
+                                            </div>
+                                        </b:carouselItem>
 
-                                <b:carouselItem >
-                                    <a id="atrigger"  href="#amodal" data-toggle="modal"> 
-                                        <img class="event-news-first-image" src="/website/resources/images/header2.jpg"></img>
-                                        <b:carouselCaption>
-                                            <h4 style="font-style: oblique;">Välkommen in till oss på Antons Skafferi</h4>
-                                            <p>På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 [...]
-                                            </p>
-                                        </b:carouselCaption>
-                                    </a>
-                                </b:carouselItem>
-                            </b:carousel>
+                                    </c:forEach>
+
+                                </b:carousel>
+                                </b:panelGrid>
                         </b:column>
                     </b:row>
                 </b:container>
