@@ -27,14 +27,17 @@ and open the template in the editor.
                 <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
                     <b:modal  styleClass="event-modal#{varStatus.index}" title="Modal Example" >
                         <div>
-                            <img style="max-height: 20rem; width: 100%; border-radius: 5px 5px 0px 0px;" src="/website/resources/images/header2.jpg"></img>
+                            <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
                         </div>
-                        <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
+                        <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center; text-align: center;">
                             <h4 style="font-weight: bold; color:black; align-self: center;">#{event.eventTitle}</h4>
                             <p class="event-news-first-text">
                                 #{event.description}
                             </p>
                             <hr class="underline-dark"/>
+                            <p class="event-news-first-text">
+                                #{event.getEventDateFormated()}
+                            </p>
                         </div>
                         <f:facet name="footer">
                         </f:facet>
@@ -67,6 +70,9 @@ and open the template in the editor.
                                             #{event.description}
                                         </p>
                                         <hr class="underline-dark"/>
+                                        <p class="event-news-first-text">
+                                            #{event.getEventDateFormated()}
+                                        </p>
                                     </div>
                                 </div>
                         </b:column>
@@ -91,8 +97,10 @@ and open the template in the editor.
                                 </div>
                                 <div class="event-content">
                                     <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
-
                                     <hr class="underline-dark"/>
+                                    <p class="event-news-first-text">
+                                        #{event.getEventDateFormated()}
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -48,8 +48,8 @@ public class StaffMenuBean implements Serializable {
     @Inject
     private FoodBean foodBean; // +setter (no getter!)
 
-    java.util.Date uDate = new java.util.Date();
-    java.sql.Date sDate = convertUtilToSql(uDate);
+    //java.util.Date uDate = new java.util.Date();
+    //java.sql.Date sDate = convertUtilToSql(uDate);
 
     public String getDish() {
         return dish;
@@ -172,7 +172,7 @@ public class StaffMenuBean implements Serializable {
     public void addLunch() {
 
         for (Food food : selectedFood) {
-            lunchFacade.create(new Lunch("lunch" + food.getFoodId().toString(), food.getFoodId(), sDate, 100));
+            lunchFacade.create(new Lunch("lunch" + food.getFoodId().toString(), food.getFoodId(), lunchDate, 100));
         }
         /*
         for (Integer foodID : selectedFoodIDs) {

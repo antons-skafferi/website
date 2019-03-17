@@ -7,11 +7,14 @@ package bean.staff;
 
 import com.sun.xml.wss.util.DateUtils;
 import entities.Booking;
+import entities.Dinnertable;
 import facade.BookingFacade;
+import facade.DinnertableFacade;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import static java.util.Calendar.HOUR;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -43,9 +46,12 @@ public class StaffBookingBean implements Serializable {
     private String strBookingFrom;
     
     private List<Integer> selectedBookingIDs;
+
     
     @EJB
     private BookingFacade bookingFacade;
+    @EJB
+    private DinnertableFacade dinnertableFacade;
     
     public List<Integer> getSelectedBookingIDs() {
         return selectedBookingIDs;
@@ -211,6 +217,43 @@ public class StaffBookingBean implements Serializable {
         }
     }
      
+     
+     
+     
+     /* -
+     public List<Dinnertable> availableTables(Date date){
+        List<Booking> Booked = bookingFacade.findAll();
+        List<Dinnertable> tables = dinnertableFacade.findAll();
+        List<Dinnertable> availableTables = new ArrayList<Dinnertable>();
+        List<Dinnertable> bookedTables = new ArrayList<Dinnertable>();
+        
+        for(Booking booked : Booked){
+            
+           if(booked.getBookingDate().equals(date)){
+                for(Dinnertable table : tables){
+                    if(booked.getTableId().equals(table.getTableId())){
+                        bookedTables.add(table);
+                    }
+                }
+           }
+        }
+        
+        for(Dinnertable table : tables){
+                if(!bookedTables.contains(table)){
+                    availableTables.add(table);
+                }
+        }
+        return availableTables;
+     }
+        
+     */
+        
+        
+        
+        
+        
+        
+     }
     
     /**
      * Creates a new instance of StaffBookingBean
