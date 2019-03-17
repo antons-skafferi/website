@@ -21,8 +21,8 @@ and open the template in the editor.
                 <b:container fluid="true" class="content-container">
                      <b:accordion expanded-panels="panel1">
                          <b:panel id="panel1" title="Boka bord">
+                            <h:form id="tabform" enctype="multipart/form-data">
                             <b:row>
-                                
                                 <b:column span="7" >
                                     <b:label text="Namn"/>
                                     <b:inputText  style="border:solid 1px black;" id="booking_name" value="#{staffBookingBean.name}" placeholder="Förnamn och efternamn" required="true"></b:inputText>
@@ -38,14 +38,13 @@ and open the template in the editor.
                                     <b:dateTimePicker style="border:solid 1px black; box-shadow: none;" id="booking_date" value="#{staffBookingBean.bookingDate}" format="YYYY-MM-DD" required="true"/>
                                     
                                     <b:label text="Tid"/>
-                                    <b:selectOneMenu style="border:solid 1px black;" required="true">
-                                        <f:selectItem itemLabel="16:00"></f:selectItem>
-                                        <f:selectItem itemLabel="17:00"></f:selectItem>
-                                        <f:selectItem itemLabel="18:00"></f:selectItem>
-                                        <f:selectItem itemLabel="19:00"></f:selectItem>
-                                        <f:selectItem itemLabel="20:00"></f:selectItem>
-                                        <f:selectItem itemLabel="21:00"></f:selectItem>
-                                    </b:selectOneMenu>
+                                    <p:selectOneMenu id="dateTime" value="#{staffBookingBean.strBookingFrom}" style="border:solid 1px black; box-shadow: none; width: 100%">
+                                        <f:selectItem itemLabel="16:00" itemValue="16:00:00" />
+                                        <f:selectItem itemLabel="18:00" itemValue="18:00:00" />
+                                        <f:selectItem itemLabel="20:00" itemValue="20:00:00" />
+                                        <f:selectItem itemLabel="22:00" itemValue="22:00:00" />
+                                    </p:selectOneMenu>
+
                                     
                                     <b:label text="Antal gäster"/>
                                     <b:iconAwesome style="color:black; float:right;" name="fa-question-circle" value="Look at my tooltip!" tooltip="Vid bokning för över 8 pers, kontakta oss direkt!"/>
@@ -53,12 +52,15 @@ and open the template in the editor.
                                     
                                 </b:column>
                             </b:row>
-                        </b:panel>
-                        <b:panel id="panel2" title="Övrig information">
-                             <h:outputText style="color:black;" value="Skriv om du har några allergier eller svåra åtkommligheter som kan
-                                           vara bra för oss att veta, såsom handikapp m.m."/>
-                            <b:inputTextarea label="allergier" value="Skriv här..." />
-                            <h:commandButton type="submit"  value="Boka" action="#{staffBookingBean.addBookingForm()}"/>
+                                <b:row>
+                                    <b:column span="12" >
+                                        <h:outputText style="color:black;" value="Skriv om du har några allergier eller svåra åtkommligheter som kan
+                                               vara bra för oss att veta, såsom handikapp m.m."/>
+                                        <b:inputTextarea label="allergier" value="#{staffBookingBean.bookingDescription}" />
+                                        <h:commandButton type="submit"  value="Boka" action="#{staffBookingBean.addBookingForm()}"/>                           
+                                    </b:column>
+                                </b:row>
+                            </h:form> 
                         </b:panel>
                     </b:accordion>
                 </b:container>

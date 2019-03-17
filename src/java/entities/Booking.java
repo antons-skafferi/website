@@ -42,7 +42,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Booking.findByName", query = "SELECT b FROM Booking b WHERE b.name = :name")
     , @NamedQuery(name = "Booking.findByLastname", query = "SELECT b FROM Booking b WHERE b.lastname = :lastname")
     , @NamedQuery(name = "Booking.findByPhone", query = "SELECT b FROM Booking b WHERE b.phone = :phone")
-    , @NamedQuery(name = "Booking.findByEmail", query = "SELECT b FROM Booking b WHERE b.email = :email")})
+    , @NamedQuery(name = "Booking.findByEmail", query = "SELECT b FROM Booking b WHERE b.email = :email")
+    , @NamedQuery(name = "Booking.findByBookingDescription", query = "SELECT b FROM Booking b WHERE b.bookingDescription = :bookingDescription")
+    , @NamedQuery(name = "Booking.findByStringBookingFrom", query = "SELECT b FROM Booking b WHERE b.stringBookingFrom = :stringBookingFrom")})
 public class Booking implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -97,6 +99,12 @@ public class Booking implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "email")
     private String email;
+    @Size(max = 255)
+    @Column(name = "booking_description")
+    private String bookingDescription;
+    @Size(max = 255)
+    @Column(name = "string_booking_from")
+    private String stringBookingFrom;
 
     public Booking() {
     }
@@ -116,6 +124,20 @@ public class Booking implements Serializable {
         this.lastname = lastname;
         this.phone = phone;
         this.email = email;
+    }
+    
+    public Booking(Integer bookingId, String tableId, int people, Date bookingFrom, Date bookingTo, Date bookingDate, String name, String lastname, String phone, String email, String bookingDescription) {
+        this.bookingId = bookingId;
+        this.tableId = tableId;
+        this.people = people;
+        this.bookingFrom = bookingFrom;
+        this.bookingTo = bookingTo;
+        this.bookingDate = bookingDate;
+        this.name = name;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.email = email;
+        this.bookingDescription = bookingDescription;
     }
 
     public Integer getBookingId() {
@@ -197,8 +219,24 @@ public class Booking implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getBookingDescription() {
+        return bookingDescription;
+    }
+
+    public void setBookingDescription(String bookingDescription) {
+        this.bookingDescription = bookingDescription;
+    }
+
+    public String getStringBookingFrom() {
+        return stringBookingFrom;
+    }
+
+    public void setStringBookingFrom(String stringBookingFrom) {
+        this.stringBookingFrom = stringBookingFrom;
+    }
     
-    public String getFullInfo() {
+     public String getFullInfo() {
         SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM-yyyy");
         

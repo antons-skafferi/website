@@ -5,13 +5,16 @@
  */
 package bean.staff;
 
+import com.sun.xml.wss.util.DateUtils;
 import entities.Booking;
 import facade.BookingFacade;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import static java.util.Calendar.HOUR;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -36,6 +39,8 @@ public class StaffBookingBean implements Serializable {
     private String lastname;
     private String phone;
     private String email;
+    private String bookingDescription;
+    private String strBookingFrom;
     
     private List<Integer> selectedBookingIDs;
     
@@ -133,20 +138,71 @@ public class StaffBookingBean implements Serializable {
     public List<Booking> bookingList() {
         return bookingFacade.findAll();
     }
+
+    public String getBookingDescription() {
+        return bookingDescription;
+    }
+
+    public void setBookingDescription(String bookingDescription) {
+        this.bookingDescription = bookingDescription;
+    }
+
+    public String getStrBookingFrom() {
+        return strBookingFrom;
+    }
+
+    public void setStrBookingFrom(String strBookingFrom) {
+        this.strBookingFrom = strBookingFrom;
+    }
     
-      public void addBookingForm() throws ParseException{
+    public void addBookingForm() throws ParseException {
+        
         int x = 0;
         java.sql.Date sqlDate = new java.sql.Date(bookingDate.getTime());
-        String testStartTime = "10:00:00";
         
-        SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:dd");
+        /*String testStartTime = "10:00:00";
+        SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
         java.util.Date startTime = sdf1.parse(testStartTime);
         java.sql.Date sqlStartTime = new java.sql.Date(startTime.getTime());
         
         System.out.println(sqlStartTime);
-        System.out.println(sqlDate);
+        System.out.println(sqlDate);*/
         
-        bookingFacade.create(new Booking(null, "1", 1, sqlStartTime, sqlStartTime, sqlDate, name, "efternamnxd", phone, email));
+        java.util.Date tempTime = new SimpleDateFormat("HH:mm:ss")
+                .parse(strBookingFrom);
+        
+        //Not working atm
+        java.util.Date tempTime2 = (java.util.Date) tempTime.clone();
+        
+        tempTime2.setTime(tempTime.getTime() + TimeUnit.HOURS.toMillis(2));
+        
+        if(bookingDescription != null){
+            if(name.contains(" ")){ 
+                String[] splittedNames = name.split(" ");
+                name = splittedNames[0];
+                lastname = splittedNames[1];
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, lastname, phone, email, bookingDescription));
+            }
+            else{
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, "templast", phone, email, bookingDescription));
+
+            }
+        }
+        else{
+            if(name.contains(" ")){ 
+                String[] splittedNames = name.split(" ");
+                name = splittedNames[0];
+                lastname = splittedNames[1];
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, lastname, phone, email));
+            }
+            else{
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, "templast", phone, email));
+
+            }
+        }
+        
+       
+        
     }
     
      public void deleteBooking() {
