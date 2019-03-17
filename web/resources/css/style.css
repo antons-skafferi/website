@@ -31,12 +31,18 @@ and open the template in the editor.
     font-weight: normal;
     font-style: normal;
 }
-
+::-webkit-scrollbar {
+width: 0px; /* remove scrollbar space /
+background: transparent; / optional: just make scrollbar invisible */
+}
+            
 html, body {
     margin: 0;
     height: 100%;
     font-size: 16px;
-    scrollbar-width: none;
+
+    
+    
 }
 
 body{
@@ -44,6 +50,7 @@ body{
     margin:0;
     font-size: 1rem;
     color: white;
+ 
 }
 
 ::-webkit-scrollbar {
@@ -1107,5 +1114,5 @@ for simplicity
 }
 
 .carousel-inner{
-    height: 800px;
+    height: 400px;
 }
