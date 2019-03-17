@@ -23,125 +23,85 @@ and open the template in the editor.
     <h:body>
         <ui:composition template = "/templates/common.xhtml">			
             <ui:define name = "content">
-                <b:container fluid="true" class="content-container">
 
-                    <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
-                        <b:modal  styleClass="event-modal#{varStatus.index}" title="Modal Example" >
-
+                <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
+                    <b:modal  styleClass="event-modal#{varStatus.index}" title="Modal Example" >
                         <div>
                             <img style="max-height: 20rem; width: 100%; border-radius: 5px 5px 0px 0px;" src="/website/resources/images/header2.jpg"></img>
                         </div>
                         <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
                             <h4 style="font-weight: bold; color:black; align-self: center;">#{event.eventTitle}</h4>
-
                             <p class="event-news-first-text">
                                 #{event.description}
                             </p>
                             <hr class="underline-dark"/>
-
                         </div>
-
                         <f:facet name="footer">
-
                         </f:facet>
                     </b:modal>
-                    </ui:repeat>
-                   
+                </ui:repeat>
 
-                    <b:row style="margin-bottom: 2rem;">
-                        <div style="display: flex; flex-flow: column; align-items: center;">
-                            <div style="display: flex; flex-flow: column; align-items: center; justify-content: center">
-                                <h1 style="align-self: center">EVENEMANG</h1>
-                                <hr class="underline"/>
+                <div style="display: flex; flex-flow: column; align-items: center;">
+                    <div style="display: flex; flex-flow: column; align-items: center; justify-content: center">
+                        <h1 style="align-self: center">EVENEMANG</h1>
+                        <hr class="underline"/>
+                    </div>
+                </div>
+
+
+                <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
+                    <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Våra kommande event!</h3>
+                </div>
+
+                <b:row style="justify-content: space-between">
+                    <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
+                        <b:column span="4" style="display: flex; margin-bottom: 2rem;">
+                            <a id="atrigger"  onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
+                                <div class="event-news-first">
+                                    <div style="padding: 0rem;">
+                                        <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
+                                    </div>
+                                    <div class="event-content">
+                                        <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
+
+                                        <p class="event-news-first-text">
+                                            #{event.description}
+                                        </p>
+                                        <hr class="underline-dark"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </b:column>
+                    </ui:repeat>
+                </b:row >  
+
+                <hr class="underline-event"/>
+
+                <b:row> 
+                    <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                        <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Kolla även in våra föregående event!</h3>
+                    </div>
+                </b:row>
+                
+                <div style="display: flex; justify-content: center">
+                <div class="events-old-container">
+                    <ui:repeat value="#{eventBean.getEventsAfter(3)}" var="event" varStatus="varStatus">
+                        <div style="padding-top: 2rem; padding-bottom: 2rem">
+                            <div class="event-old-container" onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
+                                <div class="event-image">
+                                    <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
+                                </div>
+                                <div class="event-content">
+                                    <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
+
+                                    <hr class="underline-dark"/>
+                                </div>
                             </div>
                         </div>
-                    </b:row>
-                    <b:row> 
+                    </ui:repeat>
+                </div>
+                    </div>
 
-                        <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
-
-                            <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Våra kommande event!</h3>
-
-                        </div>
-                    </b:row>
-
-                    <b:row style="justify-content: space-between">
-
-                        <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
-                            <b:column span="4" style="display: flex; margin-bottom: 2rem;">
-                                <a id="atrigger"  onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
-                                    <div class="event-news-first">
-                                        <div style="padding: 0rem;">
-                                            <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
-                                        </div>
-                                        <div class="event-content">
-                                            <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
-
-                                            <p class="event-news-first-text">
-                                                #{event.description}
-                                            </p>
-                                            <hr class="underline-dark"/>
-                                        </div>
-                                    </div>
-                                </a>
-                            </b:column>
-                        </ui:repeat>
-
-                    </b:row >  
-
-                    <hr class="underline-event"/>
-
-
-                    <b:row> 
-
-                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
-
-                            <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Kolla även in våra föregående event!</h3>
-
-                        </div>
-
-                    </b:row>
-
-
-                    <b:row style="display: flex; justify-content: center;">
-
-
-
-
-                        <b:column span="7" style="display: flex; flex-flow: column; align-content: center;">
-                            <b:panelGrid columns="3">
-                                <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
-
-                                            <div onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
-                                                <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
-                                                <b:carouselCaption>
-                                                    <h4 style="font-style: oblique;">#{event.eventTitle}</h4>
-                                                    <p>#{event.description}
-                                                    </p>
-                                                </b:carouselCaption>
-                                            </div>
-
-                                </ui:repeat>
-                                <b:carousel  id="tiovivo" style="width:600px;" interval="2500">
-                                    <c:forEach items="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
-                                        <b:carouselItem style="height:100%">
-                                            <div style="height:100%"  onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
-                                                <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
-                                                <b:carouselCaption>
-                                                    <h4 style="font-style: oblique;">#{event.eventTitle}</h4>
-                                                    <p>#{event.description}
-                                                    </p>
-                                                </b:carouselCaption>
-                                            </div>
-                                        </b:carouselItem>
-
-                                    </c:forEach>
-
-                                </b:carousel>
-                                </b:panelGrid>
-                        </b:column>
-                    </b:row>
-                </b:container>
             </ui:define>        		
         </ui:composition> 
     </h:body>
