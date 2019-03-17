@@ -79,17 +79,29 @@
                             </div>
 
                         </b:column>
-                        <b:column id="lunch" span="4" class="fields">
-                            <legend>Maträtter</legend>
-                            <p:selectManyMenu value="#{staffMenuBean.selectedFoodIDs}">
-                                <f:selectItems value="#{foodbean.foodList()}" var="food" itemLabel="#{food.dish}" itemValue="#{food.foodId}" />
-                            </p:selectManyMenu>
-                            <div class="button-field">
-                                <p:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
-                                <p:commandButton type="submit"  value="Lägg till i Luncher"  oncomplete="PF('dlgLunch').show()"/>
-                                <p:commandButton type="submit"  value="Lägg till i Meny"  oncomplete="PF('dlgDinner').show()"/>
-                            </div>
-                        </b:column>
+                       <p:fieldset id="availableFoodField" legend="Available Food">
+                            <p:dataTable id="availableFood" var="food" value="#{foodbean.foodList()}" selection="#{staffMenuBean.selectedFood}" rowKey="#{food.foodId}">
+
+                                <p:column selectionMode="multiple" style="width:35px;text-align:center"/>
+                                <p:column headerText="Dish">
+                                    <h:outputText value="#{food.dish}" />
+                                </p:column>
+                                <p:column headerText="Description">
+                                    <h:outputText value="#{food.description}" />
+                                </p:column>
+                                <p:column headerText="Ingrediens">
+                                    <h:outputText value="#{food.ingrediens}" />
+                                </p:column>
+                                <p:column headerText="Category">
+                                    <h:outputText value="#{food.category}" />
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
+                                    <p:commandButton type="submit"  value="Lägg till i Luncher"  oncomplete="PF('dlgLunch').show()"/>
+                                    <p:commandButton type="submit"  value="Lägg till i Meny"  oncomplete="PF('dlgDinner').show()"/>
+                                </f:facet>
+                            </p:dataTable>
+                        </p:fieldset>
                         <b:column id="dinner" span="4" class="fields">
                             <legend>Luncher</legend>
                             <p:selectManyMenu value="#{staffMenuBean.selectedLunchIDs}">
