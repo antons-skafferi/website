@@ -180,7 +180,7 @@
             <p:growl showDetail="true"  />
             <p:dialog header="Ny lunch maträtt" widgetVar="dlgLunch" resizable="false">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <h:outputLabel for="lunchDate" value="Pris:" />
+                    <h:outputLabel for="lunchDate" value="Datum:" />
                     <b:dateTimePicker value="#{staffMenuBean.lunchDate}" format="YYYY-MM-DD"> </b:dateTimePicker>
                     <f:facet name="footer">
                         <p:commandButton value="Lägg till" action="#{staffMenuBean.addLunch()}" 
