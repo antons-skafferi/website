@@ -14,7 +14,7 @@ and open the template in the editor.
       xmlns:o="http://omnifaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Events</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="/path/to/flickity.css" media="screen"></link>
         <script src="/path/to/flickity.pkgd.min.js"></script>
@@ -23,6 +23,29 @@ and open the template in the editor.
         <ui:composition template = "/templates/common.xhtml">			
             <ui:define name = "content">
                 <b:container fluid="true" class="content-container">
+
+                    <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
+                        <b:modal  styleClass="event-modal#{varStatus.index}" title="Modal Example" >
+
+                        <div>
+                            <img style="max-height: 20rem; width: 100%; border-radius: 5px 5px 0px 0px;" src="/website/resources/images/header2.jpg"></img>
+                        </div>
+                        <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
+                            <h4 style="font-weight: bold; color:black; align-self: center;">#{event.eventTitle}</h4>
+
+                            <p class="event-news-first-text">
+                                #{event.description}
+                            </p>
+                            <hr class="underline-dark"/>
+
+                        </div>
+
+                        <f:facet name="footer">
+
+                        </f:facet>
+                    </b:modal>
+                    </ui:repeat>
+                   
 
                     <b:row style="margin-bottom: 2rem;">
                         <div style="display: flex; flex-flow: column; align-items: center;">
@@ -42,9 +65,10 @@ and open the template in the editor.
                     </b:row>
 
                     <b:row style="justify-content: space-between">
-                        <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event">
+
+                        <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
                             <b:column span="4" style="display: flex; margin-bottom: 2rem;">
-                                <a id="atrigger"  href="#amodal" data-toggle="modal"> 
+                                <a id="atrigger"  onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
                                     <div class="event-news-first">
                                         <div style="padding: 0rem;">
                                             <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
@@ -80,26 +104,7 @@ and open the template in the editor.
 
                     <b:row style="display: flex; justify-content: center;">
 
-                        <b:modal  id="amodal" title="Modal Example" >
 
-                            <div>
-                                <img style="max-height: 20rem; width: 100%; border-radius: 5px 5px 0px 0px;" src="/website/resources/images/header2.jpg"></img>
-                            </div>
-                            <div style="padding: 1rem;display:flex; flex-flow: column; justify-content: center">
-                                <h4 style="font-weight: bold; color:black; align-self: center;">Välkommen in till oss på Antons Skafferi</h4>
-
-                                <p class="event-news-first-text">
-                                    På lördagar kör vi lördagslunch mellan kl. 12.00-15.30 och erbjuder då valfri planka för 198 kr
-                                    och andra enklare rätter som kommer upp under menyer, onsdag varje vecka.
-                                </p>
-                                <hr class="underline-dark"/>
-                                <h4 style="font-style: oblique; color:black; align-self: center;">Varmt välkommen</h4>
-                            </div>
-
-                            <f:facet name="footer">
-
-                            </f:facet>
-                        </b:modal>
 
 
                         <b:column span="7" style="display: flex; flex-flow: column; align-content: center;">
