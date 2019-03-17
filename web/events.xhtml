@@ -55,9 +55,8 @@ and open the template in the editor.
 
                 <b:row style="justify-content: space-between">
                     <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
-                        <b:column span="4" style="display: flex; margin-bottom: 2rem;">
-                            <a id="atrigger"  onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
-                                <div class="event-news-first">
+                        <b:column span="4" style="display: flex; margin-bottom: 2rem; flex: 2; overflow: hidden;">
+                                <div class="event-news-first" onclick="$('.event-modal' + #{varStatus.index}).modal()">
                                     <div style="padding: 0rem;">
                                         <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
                                     </div>
@@ -70,7 +69,6 @@ and open the template in the editor.
                                         <hr class="underline-dark"/>
                                     </div>
                                 </div>
-                            </a>
                         </b:column>
                     </ui:repeat>
                 </b:row >  

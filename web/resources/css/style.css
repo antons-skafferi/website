@@ -407,10 +407,11 @@ hr.hr1{
 
 .event-news-first{
     background-color: white;
-    max-width: 20rem;
-    max-height: 35rem;
+    width: 30rem;
+    height: 30rem;
     border: solid 2px threedface;
-
+    display: flex;
+    flex-flow: column;
 }
 
 .events-old-container{
@@ -455,7 +456,7 @@ hr.hr1{
 
 .event-news-first-image{
     width: 100%;
-
+    height: 50%;
 }
 
 .event-image{
