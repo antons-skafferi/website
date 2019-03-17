@@ -252,14 +252,12 @@ public class StaffBookingBean implements Serializable {
         
         
         
-        
-     }
+
     
     /**
      * Creates a new instance of StaffBookingBean
      */
-    public StaffBookingBean() {
-    }
+
     
     
     
