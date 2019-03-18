@@ -50,6 +50,8 @@ public class StaffBookingBean implements Serializable {
     private String bookingDescription;
     private String strBookingFrom;
 
+    private List<Date> availableTime;
+    
     private List<Integer> selectedBookingIDs;
 
     @EJB
@@ -177,22 +179,26 @@ public class StaffBookingBean implements Serializable {
         
         System.out.println(sqlStartTime);
         System.out.println(sqlDate);*/
-        java.util.Date tempTime = new SimpleDateFormat("HH:mm:ss")
-                .parse(strBookingFrom);
+        
+        int hour = Integer.parseInt(strBookingFrom);		
+        
+        
+        java.util.Date tempTime = (java.util.Date) bookingDate.clone();        
+        tempTime.setTime(TimeUnit.HOURS.toMillis(hour - 1));
 
         //Not working atm
         java.util.Date tempTime2 = (java.util.Date) tempTime.clone();
 
-        tempTime2.setTime(tempTime.getTime() + TimeUnit.HOURS.toMillis(2));
+        tempTime2.setTime(TimeUnit.HOURS.toMillis(hour));
 
         if (bookingDescription != null) {
             if (name.contains(" ")) {
                 String[] splittedNames = name.split(" ");
                 name = splittedNames[0];
                 lastname = splittedNames[1];
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, lastname, phone, email, bookingDescription));
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, lastname, phone, email, bookingDescription));
             } else {
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, "templast", phone, email, bookingDescription));
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, "templast", phone, email, bookingDescription));
 
             }
         } else {
@@ -200,9 +206,9 @@ public class StaffBookingBean implements Serializable {
                 String[] splittedNames = name.split(" ");
                 name = splittedNames[0];
                 lastname = splittedNames[1];
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, lastname, phone, email));
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, lastname, phone, email));
             } else {
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, "templast", phone, email));
+                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, "templast", phone, email));
 
             }
         }
@@ -254,19 +260,30 @@ public class StaffBookingBean implements Serializable {
         return availableTablesForAnAmount;
     }
 
-    public List<String> availableTime() {
-        List<String> timesAvailable = new ArrayList<>();
-        List<Date> dateTimes = getTimesFromDate(bookingDate, 15, 21);
+    public List<Date> getAvailableTime() {
+        return availableTime;
+    }
 
+    public void setAvailableTime(List<Date> availableTime) {
+        this.availableTime = availableTime;
+    }
+    
+    public String getFormatedDate(Date date){
         Format formatter = new SimpleDateFormat("HH");
+        return formatter.format(date);
+    }
+    
+    public void updateAvailableTime() {
+        List<Date> timesAvailable = new ArrayList<>();
+        List<Date> dateTimes = getTimesFromDate(bookingDate, 15, 21);
         
         for (Date tider : dateTimes) {
             if (!availableTables(people, tider).isEmpty()) {
-                timesAvailable.add(formatter.format(tider));
+                timesAvailable.add(tider);
 
             }
         }
-        return timesAvailable;
+        setAvailableTime(timesAvailable);
 
     }
     

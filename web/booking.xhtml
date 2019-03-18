@@ -9,7 +9,6 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
@@ -46,12 +45,15 @@ and open the template in the editor.
                                         <b:slider2 min="1"  max="8" span="7" id="booking_people" value="#{staffBookingBean.people}" />
 
                                         <legend>Lediga tider</legend>
-                                        <b:selectOneMenu value="#{staffBookingBean.strBookingFrom}" label="Your favorite beer brand?">
-                                            <f:selectItem itemLabel="(Please select)" itemValue="" />
-                                            <f:selectItems value="#{staffBookingBean.availableTime}" var="booking" />
-                                        </b:selectOneMenu>
+  
 
-                                        <h:commandButton type="submit" onclick="#{staffBookingBean.availableTime}"  value="Visa lediga tider" /> 
+                                        <b:button onclick="#{staffBookingBean.updateAvailableTime()}" value="Visa lediga tider" /> 
+                                        
+                                        <b:selectOneMenu value="#{staffBookingBean.strBookingFrom}" ajax="true" >
+                                            <f:selectItems value="#{staffBookingBean.availableTime}" var="dateTime" 
+                                                           itemValue="#{staffBookingBean.getFormatedDate(dateTime)}" itemLabel="#{staffBookingBean.getFormatedDate(dateTime)}" />
+                                        </b:selectOneMenu>
+                                        
 
                                     </b:column>
                                 </b:row>
