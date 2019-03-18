@@ -16,41 +16,6 @@
         <h2> Personal </h2>
         <h:form id="tabform" enctype="multipart/form-data">
             <p:tabView>
-                <p:tab title="Schema">
-                    <h3>Schemaläggning</h3>
-                    <p:schedule id="scheduleLocale" value="#{scheduleView.eventModel}" locale="sv" />
-                </p:tab>
-                <p:tab title="Inventarie">
-                    <h3>Inventarie</h3>
-                </p:tab>
-
-                <p:tab title="Personal">
-                    <fieldset>
-                        <legend>Lägg till ny personal</legend>
-                        <label for="firstname">Personnummer</label><br />
-                        <p:inputText id="staff_id" value="#{staffbean.staff_id}" /><br />
-
-                        <label for="lastname">Namn</label><br />
-                        <p:inputText id="firstname" value="#{staffbean.firstname}" /><br />
-
-                        <label for="lastname">Efternamn</label><br />
-                        <p:inputText id="lastname" value="#{staffbean.lastname}" /><br />
-
-                        <label for="start">Adress</label><br />
-                        <p:inputText id="adress" value="#{staffbean.adress}" /><br />
-
-
-                        <label for="lastname">Telefonnummer</label><br />
-                        <p:inputText id="phone" value="#{staffbean.phone}" /><br />
-
-                        <label for="lastname">Email</label><br />
-                        <p:inputText id="email" value="#{staffbean.email}" /><br />
-                    </fieldset>
-                    <input type="reset" value="Rensa" />
-
-                    <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}" />
-                </p:tab>
-
                 <p:tab title="Mat">
                     <b:row>
                         <b:column span="4" class="fields">
@@ -79,7 +44,7 @@
                             </div>
 
                         </b:column>
-                       <p:fieldset id="availableFoodField" legend="Available Food">
+                        <p:fieldset id="availableFoodField" legend="Available Food">
                             <p:dataTable id="availableFood" var="food" value="#{foodbean.foodList()}" selection="#{staffMenuBean.selectedFood}" rowKey="#{food.foodId}">
 
                                 <p:column selectionMode="multiple" style="width:35px;text-align:center"/>
@@ -96,7 +61,7 @@
                                     <h:outputText value="#{food.category}" />
                                 </p:column>
                                 <f:facet name="footer">
-                                    <p:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
+                                    <p:commandButton type="submit" update=":tabform"  value="Ta bort"  action="#{staffMenuBean.deleteFood()}"/>
                                     <p:commandButton type="submit"  value="Lägg till i Luncher"  oncomplete="PF('dlgLunch').show()"/>
                                     <p:commandButton type="submit"  value="Lägg till i Meny"  oncomplete="PF('dlgDinner').show()"/>
                                 </f:facet>
@@ -157,7 +122,7 @@
                     </b:row>
 
                 </p:tab>
-                
+
                 <p:tab title="Bordsbokning">
                     <h3>Bordsbokning</h3>
 
@@ -172,10 +137,38 @@
 
                 </p:tab>
 
+                <p:tab title="Personal">
+                    <fieldset>
+                        <legend>Lägg till ny personal</legend>
+                        <label for="firstname">Personnummer</label><br />
+                        <p:inputText id="staff_id" value="#{staffbean.staff_id}" /><br />
+
+                        <label for="lastname">Namn</label><br />
+                        <p:inputText id="firstname" value="#{staffbean.firstname}" /><br />
+
+                        <label for="lastname">Efternamn</label><br />
+                        <p:inputText id="lastname" value="#{staffbean.lastname}" /><br />
+
+                        <label for="start">Adress</label><br />
+                        <p:inputText id="adress" value="#{staffbean.adress}" /><br />
+
+
+                        <label for="lastname">Telefonnummer</label><br />
+                        <p:inputText id="phone" value="#{staffbean.phone}" /><br />
+
+                        <label for="lastname">Email</label><br />
+                        <p:inputText id="email" value="#{staffbean.email}" /><br />
+                    </fieldset>
+                    <input type="reset" value="Rensa" />
+
+                    <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}" />
+                </p:tab>
             </p:tabView>
-           
+
         </h:form>
-        
+
+
+
         <h:form>
             <p:growl showDetail="true"  />
             <p:dialog header="Ny lunch maträtt" widgetVar="dlgLunch" resizable="false">
@@ -184,14 +177,14 @@
                     <b:dateTimePicker value="#{staffMenuBean.lunchDate}" format="YYYY-MM-DD"> </b:dateTimePicker>
                     <f:facet name="footer">
                         <p:commandButton value="Lägg till" update=":tabform" action="#{staffMenuBean.addLunch()}" 
-                                    oncomplete="PF('dlgLunch').hide()"/>
+                                         oncomplete="PF('dlgLunch').hide()"/>
                     </f:facet>  
                 </h:panelGrid>
             </p:dialog>
         </h:form>
         <h:form>
             <p:growl showDetail="true"  />
-                <p:dialog header="Ny meny maträtt" widgetVar="dlgDinner" resizable="false">
+            <p:dialog header="Ny meny maträtt" widgetVar="dlgDinner" resizable="false">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="dinnerPrice" value="Pris:" />
                     <p:inputText id="dinnerPrice" value="#{staffMenuBean.dinnerPrice}" required="true" label="Maträtt pris" />
