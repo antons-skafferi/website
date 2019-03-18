@@ -19,43 +19,46 @@ and open the template in the editor.
         <ui:composition template = "/templates/common.xhtml">			
             <ui:define name = "content">
                 <b:container fluid="true" class="content-container">
-                     <b:accordion expanded-panels="panel1">
-                         <b:panel id="panel1" title="Boka bord">
+                    <b:accordion expanded-panels="panel1">
+                        <b:panel id="panel1" title="Boka bord">
                             <h:form id="tabform" enctype="multipart/form-data">
-                            <b:row>
-                                <b:column span="7" >
-                                    <b:label text="Namn"/>
-                                    <b:inputText  style="border:solid 1px black;" id="booking_name" value="#{staffBookingBean.name}" placeholder="Förnamn och efternamn" required="true"></b:inputText>
-                                    
-                                    <b:label text="Telefon"/>
-                                    <b:inputText  style="border:solid 1px black;" id="booking_phone" value="#{staffBookingBean.phone}" placeholder="Telefonnummer" required="true"></b:inputText>
-                                    
-                                    <b:label text="Email"/>
-                                    <b:inputText  style="border:solid 1px black;" id="booking_email" value="#{staffBookingBean.email}" placeholder="E-postadress" required="true"></b:inputText>
-                                </b:column>
-                                <b:column span="5">
-                                    <b:label text="Datum" />
-                                    <b:dateTimePicker style="border:solid 1px black; box-shadow: none;" id="booking_date" value="#{staffBookingBean.bookingDate}" format="YYYY-MM-DD" required="true"/>
-                                    
-                                    <b:label text="Tid"/>
-                                    <p:selectOneMenu id="dateTime" value="#{staffBookingBean.strBookingFrom}" style="border:solid 1px black; box-shadow: none; width: 100%">
-                                        <f:selectItem itemLabel="16:00" itemValue="16:00:00" />
-                                        <f:selectItem itemLabel="18:00" itemValue="18:00:00" />
-                                        <f:selectItem itemLabel="20:00" itemValue="20:00:00" />
-                                        <f:selectItem itemLabel="22:00" itemValue="22:00:00" />
-                                    </p:selectOneMenu>
+                                <b:row>
+                                    <b:column span="7" >
+                                        <b:label text="Namn"/>
+                                        <b:inputText  style="border:solid 1px black;" id="booking_name" value="#{staffBookingBean.name}" placeholder="Förnamn och efternamn" required="true"></b:inputText>
 
-                                    
-                                    <b:label text="Antal gäster"/>
-                                    <b:iconAwesome style="color:black; float:right;" name="fa-question-circle" value="Look at my tooltip!" tooltip="Vid bokning för över 8 pers, kontakta oss direkt!"/>
-                                    <b:slider2 min="1" max="8" span="7" id="booking_people" value="#{staffBookingBean.people}"/>
-                                    
-                                </b:column>
-                            </b:row>
+                                        <b:label text="Telefon"/>
+                                        <b:inputText  style="border:solid 1px black;" id="booking_phone" value="#{staffBookingBean.phone}" placeholder="Telefonnummer" required="true"></b:inputText>
+
+                                        <b:label text="Email"/>
+                                        <b:inputText  style="border:solid 1px black;" id="booking_email" value="#{staffBookingBean.email}" placeholder="E-postadress" required="true"></b:inputText>
+                                    </b:column>
+
+                                    <b:column span="5">
+                                        <b:label text="Datum" />
+                                        <b:dateTimePicker style="border:solid 1px black; box-shadow: none;" id="booking_date" value="#{staffBookingBean.bookingDate}" format="YYYY-MM-DD" required="true"/>
+
+                                        <b:label text="Tid"/>
+
+
+                                        <b:label text="Antal gäster"/>
+                                        <b:iconAwesome style="color:black; float:right;" name="fa-question-circle" value="Look at my tooltip!" tooltip="Vid bokning för över 8 pers, kontakta oss direkt!"/>
+                                        <b:slider2 min="1"  max="8" span="7" id="booking_people" value="#{staffBookingBean.people}" />
+
+                                        <legend>Lediga tider</legend>
+                                        <b:selectOneMenu value="#{staffBookingBean.strBookingFrom}" label="Your favorite beer brand?">
+                                            <f:selectItem itemLabel="(Please select)" itemValue="" />
+                                            <f:selectItems value="#{staffBookingBean.availableTime}" var="booking" />
+                                        </b:selectOneMenu>
+
+                                        <h:commandButton type="submit" onclick="#{staffBookingBean.availableTime}"  value="Visa lediga tider" /> 
+
+                                    </b:column>
+                                </b:row>
                                 <b:row>
                                     <b:column span="12" >
                                         <h:outputText style="color:black;" value="Skriv om du har några allergier eller svåra åtkommligheter som kan
-                                               vara bra för oss att veta, såsom handikapp m.m."/>
+                                                      vara bra för oss att veta, såsom handikapp m.m."/>
                                         <b:inputTextarea label="allergier" value="#{staffBookingBean.bookingDescription}" />
                                         <h:commandButton type="submit"  value="Boka" action="#{staffBookingBean.addBookingForm()}"/>                           
                                     </b:column>

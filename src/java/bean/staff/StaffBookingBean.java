@@ -11,10 +11,12 @@ import entities.Dinnertable;
 import facade.BookingFacade;
 import facade.DinnertableFacade;
 import java.io.Serializable;
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import static java.util.Calendar.HOUR;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -27,37 +29,39 @@ import javax.enterprise.context.SessionScoped;
 /**
  *
  * @author Max Wågberg
+ * @author tobi
+ * @author john-E
  */
 @Named(value = "staffBookingBean")
 @ManagedBean
 @SessionScoped
 public class StaffBookingBean implements Serializable {
+
     private String bookingId;
     private String talbeId;
-    private int people;
+    private int people = 2;
     private Date bookingFrom;
     private Date bookingTo;
-    private Date bookingDate;
+    private Date bookingDate = new Date();
     private String name;
     private String lastname;
     private String phone;
     private String email;
     private String bookingDescription;
     private String strBookingFrom;
-    
+
     private List<Integer> selectedBookingIDs;
 
-    
     @EJB
     private BookingFacade bookingFacade;
     @EJB
     private DinnertableFacade dinnertableFacade;
-    
+
     public List<Integer> getSelectedBookingIDs() {
         return selectedBookingIDs;
     }
-    
-    public void setSelectedBookingIDs(List<Integer> selectedBookingIDs){
+
+    public void setSelectedBookingIDs(List<Integer> selectedBookingIDs) {
         this.selectedBookingIDs = selectedBookingIDs;
     }
 
@@ -140,7 +144,7 @@ public class StaffBookingBean implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public List<Booking> bookingList() {
         return bookingFacade.findAll();
     }
@@ -160,12 +164,12 @@ public class StaffBookingBean implements Serializable {
     public void setStrBookingFrom(String strBookingFrom) {
         this.strBookingFrom = strBookingFrom;
     }
-    
+
     public void addBookingForm() throws ParseException {
-        
+
         int x = 0;
         java.sql.Date sqlDate = new java.sql.Date(bookingDate.getTime());
-        
+
         /*String testStartTime = "10:00:00";
         SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
         java.util.Date startTime = sdf1.parse(testStartTime);
@@ -173,76 +177,108 @@ public class StaffBookingBean implements Serializable {
         
         System.out.println(sqlStartTime);
         System.out.println(sqlDate);*/
-        
         java.util.Date tempTime = new SimpleDateFormat("HH:mm:ss")
                 .parse(strBookingFrom);
-        
+
         //Not working atm
         java.util.Date tempTime2 = (java.util.Date) tempTime.clone();
-        
+
         tempTime2.setTime(tempTime.getTime() + TimeUnit.HOURS.toMillis(2));
-        
-        if(bookingDescription != null){
-            if(name.contains(" ")){ 
+
+        if (bookingDescription != null) {
+            if (name.contains(" ")) {
                 String[] splittedNames = name.split(" ");
                 name = splittedNames[0];
                 lastname = splittedNames[1];
                 bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, lastname, phone, email, bookingDescription));
-            }
-            else{
+            } else {
                 bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, "templast", phone, email, bookingDescription));
 
             }
-        }
-        else{
-            if(name.contains(" ")){ 
+        } else {
+            if (name.contains(" ")) {
                 String[] splittedNames = name.split(" ");
                 name = splittedNames[0];
                 lastname = splittedNames[1];
                 bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, lastname, phone, email));
-            }
-            else{
+            } else {
                 bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, sqlDate, name, "templast", phone, email));
 
             }
         }
-        
-       
-        
+
     }
-    
+
     public void deleteBooking() {
         for (Integer bookingID : selectedBookingIDs) {
             bookingFacade.deleteBooking(bookingID);
         }
     }
-     
-    public List<Dinnertable> availableTables(Date date){
+
+    public List<Dinnertable> availableTablesAtDate(Date date) {
         List<Booking> Booked = bookingFacade.findAll();
         List<Dinnertable> tables = dinnertableFacade.findAll();
         List<Dinnertable> availableTables = new ArrayList<Dinnertable>();
         List<Dinnertable> bookedTables = new ArrayList<Dinnertable>();
-        
+
         Date dateEnd = (Date) date.clone();
         dateEnd.setTime(dateEnd.getTime() + TimeUnit.HOURS.toMillis(1));
-        
-        for(Booking booked : Booked){
-            
-           if(booked.getBookingDate().equals(date) || booked.getBookingDate().equals(dateEnd)){
-                for(Dinnertable table : tables){
-                    if(booked.getTableId().equals(table.getTableId())){
+
+        for (Booking booked : Booked) {
+
+            if (booked.getBookingDate().equals(date) || booked.getBookingDate().equals(dateEnd)) {
+                for (Dinnertable table : tables) {
+                    if (booked.getTableId().equals(table.getTableId())) {
                         bookedTables.add(table);
                     }
                 }
-           }
+            }
         }
-        
-        for(Dinnertable table : tables){
-                if(!bookedTables.contains(table)){
-                    availableTables.add(table);
-                }
+
+        for (Dinnertable table : tables) {
+            if (!bookedTables.contains(table)) {
+                availableTables.add(table);
+            }
         }
         return availableTables;
-     } 
+    }
 
+    public List<Dinnertable> availableTables(int people, Date date) {
+        List<Dinnertable> availableTables = availableTablesAtDate(date);
+        List<Dinnertable> availableTablesForAnAmount = new ArrayList<Dinnertable>();
+        for (Dinnertable table : availableTables) {
+            if (table.getSeat() >= people) {
+                availableTablesForAnAmount.add(table);
+            }
+        }
+        return availableTablesForAnAmount;
+    }
+
+    public List<String> availableTime() {
+        List<String> timesAvailable = new ArrayList<>();
+        List<Date> dateTimes = getTimesFromDate(bookingDate, 15, 21);
+
+        Format formatter = new SimpleDateFormat("HH");
+        
+        for (Date tider : dateTimes) {
+            if (!availableTables(people, tider).isEmpty()) {
+                timesAvailable.add(formatter.format(tider));
+
+            }
+        }
+        return timesAvailable;
+
+    }
+    
+    public List<Date> getTimesFromDate(Date date, int startTime, int endTime){
+        List<Date> dateTimes = new ArrayList<>();
+        
+        for(int time = startTime; time <= endTime; time++){
+            Date tempDate = (Date) date.clone();
+            tempDate.setTime(TimeUnit.HOURS.toMillis(time - 1));
+            dateTimes.add(tempDate);
+        }
+        
+        return dateTimes;
+    }
 }
