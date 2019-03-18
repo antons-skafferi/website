@@ -8,16 +8,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Personal</title>
+        <title>Personalsida</title>
         <h:outputStylesheet position="last"  library="css" name="staffstyle.css" />
     </h:head>
 
     <h:body>
-        <h2> Personal </h2>
+        <h2> Antons Skafferi Personalsida </h2>
         <h:form id="tabform" enctype="multipart/form-data">
             <p:tabView>
                 <p:tab title="Mat">
                     <b:row>
+
                         <b:column span="4" class="fields">
                             <fieldset class="fields">
                                 <legend>Lägg till ny maträtt</legend>
@@ -37,13 +38,12 @@
                                     <f:selectItem itemLabel="Förrätt" itemValue="appetizer_menu" />
                                     <f:selectItem itemLabel="Efterätt" itemValue="dessert_menu" />
                                 </p:selectOneMenu>
-
                             </fieldset>
                             <div class="button-field">
                                 <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}"/>
                             </div>
-
                         </b:column>
+
                         <p:fieldset id="availableFoodField" legend="Available Food">
                             <p:dataTable id="availableFood" var="food" value="#{foodbean.foodList()}" selection="#{staffMenuBean.selectedFood}" rowKey="#{food.foodId}">
 
@@ -67,6 +67,7 @@
                                 </f:facet>
                             </p:dataTable>
                         </p:fieldset>
+
                         <b:column id="dinner" span="4" class="fields">
                             <legend>Luncher</legend>
                             <p:selectManyMenu id="dinnerList" value="#{staffMenuBean.selectedLunchIDs}">
@@ -76,6 +77,7 @@
                                 <h:commandButton type="submit"  value="Ta bort"  action="#{staffMenuBean.deleteLunch()}"/>
                             </div>
                         </b:column>
+
                         <b:column span="4" class="fields">
                             <legend>Meny</legend>
                             <p:selectManyMenu id="lunchList" value="#{staffMenuBean.selectedDinnerIDs}">
@@ -87,16 +89,14 @@
                         </b:column>
 
                     </b:row>
-
                 </p:tab>
 
                 <p:tab title="Event">
-                    <h3>Lägg till event</h3>
 
                     <b:row>
-                        <b:column span="3">
-                            <fieldset>
-                                <legend>Event</legend>
+                        <b:column span="4">
+                            <fieldset class="fields">
+                                <legend>Lägg till event</legend>
                                 <label for="Title">Titel</label><br />
                                 <p:inputText id="event_id" value="#{staffEventBean.event_title}" /><br />
 
@@ -109,65 +109,74 @@
                                 <b:dateTimePicker value="#{staffEventBean.event_date}" format="YYYY-MM-DD">
 
                                 </b:dateTimePicker>
-                                <h:commandButton type="submit"  value="Submit"  action="#{staffEventBean.addEventForm()}" />
+                                <div class="button-field">
+                                    <h:commandButton type="submit"  value="Submit"  action="#{staffEventBean.addEventForm()}" />
+                                </div>
                             </fieldset>
                         </b:column>
-                        <b:column span="6">
+                        <b:column span="4" class="fields">
                             <legend>Evenemang</legend>
                             <p:selectManyMenu value="#{staffEventBean.selectedEventIDs}">
                                 <f:selectItems value="#{staffEventBean.eventList()}" var="event" itemLabel="#{event.eventTitle}" itemValue="#{event.eventId}"/>                            
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Delete" action="#{staffEventBean.deleteEvent()}"/>
+                            <div class="button-field">
+                                <h:commandButton type="submit"  value="Delete" action="#{staffEventBean.deleteEvent()}"/>
+                            </div>
                         </b:column>
                     </b:row>
 
                 </p:tab>
 
                 <p:tab title="Bordsbokning">
-                    <h3>Bordsbokning</h3>
-
                     <b:row>
-                        <b:column span="4">
+                        <b:column span="4" class="fields">
+                            <legend>Bordsbokningar</legend>
                             <p:selectManyMenu style="width: 100%" value="#{staffBookingBean.selectedBookingIDs}">
                                 <f:selectItems value="#{staffBookingBean.bookingList()}" var="booking" itemLabel="#{booking.getFullInfo()}" itemValue="#{booking.bookingId}"/>                            
                             </p:selectManyMenu>
-                            <h:commandButton type="submit"  value="Avboka" action="#{staffBookingBean.deleteBooking()}"/>
+                            <div class="button-field">
+                                <h:commandButton type="submit"  value="Avboka" action="#{staffBookingBean.deleteBooking()}"/>
+                            </div>
                         </b:column>
                     </b:row>
 
                 </p:tab>
 
                 <p:tab title="Personal">
-                    <fieldset>
-                        <legend>Lägg till ny personal</legend>
-                        <label for="firstname">Personnummer</label><br />
-                        <p:inputText id="staff_id" value="#{staffbean.staff_id}" /><br />
+                    <b:row>
+                        <b:column span="4">
+                            <fieldset class="fields">
+                                <legend>Lägg till ny personal</legend>
+                                <label for="firstname">Personnummer</label><br />
+                                <p:inputText id="staff_id" value="#{staffbean.staff_id}" /><br />
 
-                        <label for="lastname">Namn</label><br />
-                        <p:inputText id="firstname" value="#{staffbean.firstname}" /><br />
+                                <label for="lastname">Namn</label><br />
+                                <p:inputText id="firstname" value="#{staffbean.firstname}" /><br />
 
-                        <label for="lastname">Efternamn</label><br />
-                        <p:inputText id="lastname" value="#{staffbean.lastname}" /><br />
+                                <label for="lastname">Efternamn</label><br />
+                                <p:inputText id="lastname" value="#{staffbean.lastname}" /><br />
 
-                        <label for="start">Adress</label><br />
-                        <p:inputText id="adress" value="#{staffbean.adress}" /><br />
+                                <label for="start">Adress</label><br />
+                                <p:inputText id="adress" value="#{staffbean.adress}" /><br />
 
 
-                        <label for="lastname">Telefonnummer</label><br />
-                        <p:inputText id="phone" value="#{staffbean.phone}" /><br />
+                                <label for="lastname">Telefonnummer</label><br />
+                                <p:inputText id="phone" value="#{staffbean.phone}" /><br />
 
-                        <label for="lastname">Email</label><br />
-                        <p:inputText id="email" value="#{staffbean.email}" /><br />
-                    </fieldset>
-                    <input type="reset" value="Rensa" />
+                                <label for="lastname">Email</label><br />
+                                <p:inputText id="email" value="#{staffbean.email}" /><br />
+                            </fieldset>
 
-                    <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}" />
+
+                            <div class="button-field">
+                                <input type="reset" value="Rensa" />
+                                <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}" />
+                            </div>
+                        </b:column>
+                    </b:row>
                 </p:tab>
             </p:tabView>
-
         </h:form>
-
-
 
         <h:form>
             <p:growl showDetail="true"  />
