@@ -5,15 +5,7 @@
  */
 package bean.core;
 
-import entities.Staff;
-import facade.LunchFacade;
-import facade.StaffFacade;
 import java.io.Serializable;
-import java.sql.SQLException;
-import java.util.List;
-import javax.annotation.ManagedBean;
-import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -25,70 +17,4 @@ import javax.inject.Named;
 @SessionScoped
 public class StaffBean implements Serializable {
 
-    private String staffID;
-    private String firstname;
-    private String lastname;
-    private String adress;
-    private String phone;
-    private String email;
-    
-    @EJB
-    private StaffFacade staffFacade;
-
-    public String getStaffID() {
-        return staffID;
-    }
-
-    public void setStaffID(String staff_id) {
-        this.staffID = staff_id;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void addForm() {
-        try {
-            staffFacade.create(new Staff(staffID, firstname, lastname, adress, phone, email));
-        } catch (javax.ejb.EJBException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
