@@ -189,7 +189,7 @@ public class StaffBookingBean implements Serializable {
         //Not working atm
         java.util.Date tempTime2 = (java.util.Date) tempTime.clone();
 
-        tempTime2.setTime(TimeUnit.HOURS.toMillis(hour));
+        tempTime2.setTime(TimeUnit.HOURS.toMillis(hour + 1));
 
         if (bookingDescription != null) {
             if (name.contains(" ")) {
@@ -232,7 +232,7 @@ public class StaffBookingBean implements Serializable {
 
         for (Booking booked : Booked) {
 
-            if (booked.getBookingDate().equals(date) || booked.getBookingDate().equals(dateEnd)) {
+            if (booked.getBookingFrom().equals(date) || booked.getBookingFrom().equals(dateEnd)) {
                 for (Dinnertable table : tables) {
                     if (booked.getTableId().equals(table.getTableId())) {
                         bookedTables.add(table);
