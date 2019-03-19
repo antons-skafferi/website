@@ -11,3 +11,11 @@
 
     width: 100%;
 }
+
+.staff-dialog {
+    overflow: visible;
+}
+
+.staff-dialog > .ui-dialog-content {
+    overflow: visible;
+}

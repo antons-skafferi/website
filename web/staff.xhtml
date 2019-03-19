@@ -180,15 +180,13 @@
 
         <h:form>
             <p:growl showDetail="true"  />
-            <p:dialog header="Ny lunch maträtt" widgetVar="dlgLunch" resizable="false">
-                <h:panelGrid columns="2" cellpadding="5">
+            <p:dialog class="staff-dialog" header="Ny lunch maträtt" widgetVar="dlgLunch" resizable="false" style="display: flex; flex-flow: column">
                     <h:outputLabel for="lunchDate" value="Datum:" />
                     <b:dateTimePicker value="#{staffMenuBean.lunchDate}" format="YYYY-MM-DD"> </b:dateTimePicker>
                     <f:facet name="footer">
                         <p:commandButton value="Lägg till" update=":tabform" action="#{staffMenuBean.addLunch()}" 
                                          oncomplete="PF('dlgLunch').hide()"/>
                     </f:facet>  
-                </h:panelGrid>
             </p:dialog>
         </h:form>
         <h:form>
