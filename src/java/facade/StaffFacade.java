@@ -5,6 +5,7 @@
  */
 package facade;
 
+import entities.Event;
 import entities.Staff;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,5 +29,10 @@ public class StaffFacade extends AbstractFacade<Staff> {
     public StaffFacade() {
         super(Staff.class);
     }
-    
+
+    public void deleteStaff(String staffID) {
+        Staff staff = find(staffID);
+        remove(staff);
+    }
+
 }

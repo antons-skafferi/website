@@ -150,29 +150,38 @@
                             <fieldset class="fields">
                                 <legend>Lägg till ny personal</legend>
                                 <label for="firstname">Personnummer</label><br />
-                                <p:inputText id="staff_id" value="#{staffbean.staff_id}" /><br />
+                                <p:inputText id="staff_id" value="#{staffStaffBean.staffId}" /><br />
 
                                 <label for="lastname">Namn</label><br />
-                                <p:inputText id="firstname" value="#{staffbean.firstname}" /><br />
+                                <p:inputText id="firstname" value="#{staffStaffBean.firstname}" /><br />
 
                                 <label for="lastname">Efternamn</label><br />
-                                <p:inputText id="lastname" value="#{staffbean.lastname}" /><br />
+                                <p:inputText id="lastname" value="#{staffStaffBean.lastname}" /><br />
 
                                 <label for="start">Adress</label><br />
-                                <p:inputText id="adress" value="#{staffbean.adress}" /><br />
+                                <p:inputText id="adress" value="#{staffStaffBean.adress}" /><br />
 
 
                                 <label for="lastname">Telefonnummer</label><br />
-                                <p:inputText id="phone" value="#{staffbean.phone}" /><br />
+                                <p:inputText id="phone" value="#{staffStaffBean.phone}" /><br />
 
                                 <label for="lastname">Email</label><br />
-                                <p:inputText id="email" value="#{staffbean.email}" /><br />
+                                <p:inputText id="email" value="#{staffStaffBean.email}" /><br />
                             </fieldset>
 
 
                             <div class="button-field">
                                 <input type="reset" value="Rensa" />
-                                <h:commandButton type="submit"  value="Lägg till"  action="#{staffMenuBean.addfoodForm()}" />
+                                <h:commandButton type="submit"  value="Lägg till"  action="#{staffStaffBean.addStaffForm()}" />
+                            </div>
+                        </b:column>
+                        <b:column span="4" class="fields">
+                            <legend>Personal</legend>
+                            <p:selectManyMenu style="width: 100%" value="#{staffStaffBean.selectedStaffIDs}" >
+                                <f:selectItems value="#{staffStaffBean.staff}" var="staff" itemLabel="#{staff.fullName}" itemValue="#{staff.staffId}"/>                            
+                            </p:selectManyMenu>
+                            <div class="button-field">
+                                <h:commandButton type="submit"  value="Avboka" action="#{staffStaffBean.deleteStaff}"/>
                             </div>
                         </b:column>
                     </b:row>

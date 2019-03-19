@@ -109,6 +109,10 @@ public class Staff implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+        
+    public String getFullName(){
+        return firstname + " " + lastname;
+    }
 
     public String getAdress() {
         return adress;

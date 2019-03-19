@@ -3,44 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bean.core;
+package bean.staff;
 
+import entities.Food;
 import entities.Staff;
-import facade.LunchFacade;
 import facade.StaffFacade;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
- * @author JohnE
+ * @author gustav
  */
-@Named(value = "staffbean")
+@Named(value = "staffStaffBean")
+@ManagedBean
 @SessionScoped
-public class StaffBean implements Serializable {
+public class StaffStaffBean implements Serializable {
 
-    private String staffID;
+    @EJB
+    private StaffFacade staffFacade;
+
+    private List<String> selectedStaffIDs;
+
+    private String staffId;
     private String firstname;
     private String lastname;
     private String adress;
     private String phone;
     private String email;
-    
-    @EJB
-    private StaffFacade staffFacade;
 
-    public String getStaffID() {
-        return staffID;
+    public String getStaffId() {
+        return staffId;
     }
 
-    public void setStaffID(String staff_id) {
-        this.staffID = staff_id;
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
     }
 
     public String getFirstname() {
@@ -83,12 +84,25 @@ public class StaffBean implements Serializable {
         this.email = email;
     }
 
-    public void addForm() {
-        try {
-            staffFacade.create(new Staff(staffID, firstname, lastname, adress, phone, email));
-        } catch (javax.ejb.EJBException e) {
-            e.printStackTrace();
-        }
+    public List<String> getSelectedStaffIDs() {
+        return selectedStaffIDs;
+    }
 
+    public void setSelectedStaffIDs(List<String> selectedStaffIDs) {
+        this.selectedStaffIDs = selectedStaffIDs;
+    }
+
+    public List<Staff> getStaff() {
+        return staffFacade.findAll();
+    }
+
+    public void addStaffForm() {
+        staffFacade.create(new Staff(staffId, firstname, lastname, adress, phone, email));
+    }
+
+    public void deleteStaff() {
+        for (String staffID : selectedStaffIDs) {
+            staffFacade.deleteStaff(staffID);
+        }
     }
 }
