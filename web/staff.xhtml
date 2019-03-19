@@ -13,7 +13,9 @@
     </h:head>
 
     <h:body>
-        <h2> Antons Skafferi Personalsida </h2>
+        <div style="padding: 1rem 3rem 1rem 3rem; color: dimgray;">
+            <h2> Antons Skafferi Personalsida </h2>
+        </div>
         <h:form id="tabform" enctype="multipart/form-data">
             <p:tabView>
                 <p:tab title="Mat">
@@ -181,12 +183,12 @@
         <h:form>
             <p:growl showDetail="true"  />
             <p:dialog class="staff-dialog" header="Ny lunch maträtt" widgetVar="dlgLunch" resizable="false" style="display: flex; flex-flow: column">
-                    <h:outputLabel for="lunchDate" value="Datum:" />
-                    <b:dateTimePicker value="#{staffMenuBean.lunchDate}" format="YYYY-MM-DD"> </b:dateTimePicker>
-                    <f:facet name="footer">
-                        <p:commandButton value="Lägg till" update=":tabform" action="#{staffMenuBean.addLunch()}" 
-                                         oncomplete="PF('dlgLunch').hide()"/>
-                    </f:facet>  
+                <h:outputLabel for="lunchDate" value="Datum:" />
+                <b:dateTimePicker value="#{staffMenuBean.lunchDate}" format="YYYY-MM-DD"> </b:dateTimePicker>
+                <f:facet name="footer">
+                    <p:commandButton value="Lägg till" update=":tabform" action="#{staffMenuBean.addLunch()}" 
+                                     oncomplete="PF('dlgLunch').hide()"/>
+                </f:facet>  
             </p:dialog>
         </h:form>
         <h:form>

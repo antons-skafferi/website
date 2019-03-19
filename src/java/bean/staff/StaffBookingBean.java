@@ -183,22 +183,34 @@ public class StaffBookingBean implements Serializable {
         int hour = Integer.parseInt(strBookingFrom);		
         
         
-        java.util.Date tempTime = (java.util.Date) bookingDate.clone();        
-        tempTime.setTime(TimeUnit.HOURS.toMillis(hour - 1));
+        java.util.Date beginDate = (java.util.Date) bookingDate.clone();        
+        beginDate.setTime(TimeUnit.HOURS.toMillis(hour - 1));
 
-        //Not working atm
-        java.util.Date tempTime2 = (java.util.Date) tempTime.clone();
-
-        tempTime2.setTime(TimeUnit.HOURS.toMillis(hour + 1));
+        java.util.Date endDate = (java.util.Date) beginDate.clone();
+        endDate.setTime(TimeUnit.HOURS.toMillis(hour + 1));
+        
+        List<Dinnertable> tables = availableTables(people, beginDate);
+        if(tables.isEmpty()){
+            return;
+        }     
+        Dinnertable minTableFound = null;
+        for(Dinnertable table : tables){
+            if(table.getSeat() >= people && (minTableFound == null || table.getSeat() < minTableFound.getSeat())){
+                minTableFound = table;
+            }
+        }
+        if(minTableFound == null){
+            return;
+        }
 
         if (bookingDescription != null) {
             if (name.contains(" ")) {
                 String[] splittedNames = name.split(" ");
                 name = splittedNames[0];
                 lastname = splittedNames[1];
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, lastname, phone, email, bookingDescription));
+                bookingFacade.create(new Booking(null, minTableFound.getTableId().toString(), people, beginDate, endDate, bookingDate, name, lastname, phone, email, bookingDescription));
             } else {
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, "templast", phone, email, bookingDescription));
+                bookingFacade.create(new Booking(null, minTableFound.getTableId().toString(), people, beginDate, endDate, bookingDate, name, "templast", phone, email, bookingDescription));
 
             }
         } else {
@@ -206,9 +218,9 @@ public class StaffBookingBean implements Serializable {
                 String[] splittedNames = name.split(" ");
                 name = splittedNames[0];
                 lastname = splittedNames[1];
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, lastname, phone, email));
+                bookingFacade.create(new Booking(null, minTableFound.getTableId().toString(), people, beginDate, endDate, bookingDate, name, lastname, phone, email));
             } else {
-                bookingFacade.create(new Booking(null, "1", people, tempTime, tempTime2, bookingDate, name, "templast", phone, email));
+                bookingFacade.create(new Booking(null, minTableFound.getTableId().toString(), people, beginDate, endDate, bookingDate, name, "templast", phone, email));
 
             }
         }
