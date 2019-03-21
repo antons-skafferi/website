@@ -109,8 +109,8 @@ public class Staff implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-        
-    public String getFullName(){
+
+    public String getFullName() {
         return firstname + " " + lastname;
     }
 
@@ -162,5 +162,5 @@ public class Staff implements Serializable {
     public String toString() {
         return "api.Staff[ staffId=" + staffId + " ]";
     }
-    
+
 }

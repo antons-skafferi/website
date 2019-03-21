@@ -24,6 +24,11 @@ import javax.inject.Named;
 @SessionScoped
 public class StaffMenuBean implements Serializable {
 
+    private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        return sDate;
+    }
+
     private String dish;
     private String description;
     private String ingrediens;
@@ -45,10 +50,7 @@ public class StaffMenuBean implements Serializable {
     private DinnerFacade dinnerFacade;
 
     @Inject
-    private FoodBean foodBean; // +setter (no getter!)
-
-    //java.util.Date uDate = new java.util.Date();
-    //java.sql.Date sDate = convertUtilToSql(uDate);
+    private FoodBean foodBean;
 
     public String getDish() {
         return dish;
@@ -191,22 +193,17 @@ public class StaffMenuBean implements Serializable {
         for (Food food : selectedFood) {
             dinnerFacade.create(new Dinner("dinner" + food.getFoodId().toString(), food.getFoodId(), dinnerPrice));
         }
-/*
+        /*
         for (Integer foodID : selectedFoodIDs) {
             dinnerFacade.create(new Dinner("dinner" + foodID.toString(), foodID, dinnerPrice));
         }
-*/
+         */
     }
 
     public void deleteDinner() {
         for (String dinnerID : selectedDinnerIDs) {
             dinnerFacade.deleteDinner(dinnerID);
         }
-    }
-
-    private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
-        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
-        return sDate;
     }
 
 }

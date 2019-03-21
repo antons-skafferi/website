@@ -87,5 +87,5 @@ public class Order1FacadeREST extends AbstractFacade<Order1> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
 }

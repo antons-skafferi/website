@@ -20,19 +20,20 @@ public class FoodFacade extends AbstractFacade<Food> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public FoodFacade() {
+        super(Food.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public FoodFacade() {
-        super(Food.class);
-    }
-    public void deleteFood(int foodID){
+    public void deleteFood(int foodID) {
         Food food = find(foodID);
         remove(food);
-        
+
         //em.createNamedQuery("Food.deleteByFoodId").setParameter("foodId", foodID);
     }
-    
+
 }

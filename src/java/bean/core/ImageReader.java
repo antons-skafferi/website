@@ -16,12 +16,11 @@ import javax.inject.Named;
  *
  * @author gustav
  */
-
 @Named(value = "imageReader")
 @ApplicationScoped
 public class ImageReader {
 
-public InputStream getImageByPath(String filename) throws FileNotFoundException{
+    public InputStream getImageByPath(String filename) throws FileNotFoundException {
         return new FileInputStream(new File(filename));
-}
+    }
 }

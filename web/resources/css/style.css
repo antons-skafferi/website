@@ -32,17 +32,17 @@ and open the template in the editor.
     font-style: normal;
 }
 ::-webkit-scrollbar {
-width: 0px; /* remove scrollbar space /
-background: transparent; / optional: just make scrollbar invisible */
+    width: 0px; /* remove scrollbar space /
+    background: transparent; / optional: just make scrollbar invisible */
 }
-            
+
 html, body {
     margin: 0;
     height: 100%;
     font-size: 16px;
 
-    
-    
+
+
 }
 
 body{
@@ -50,7 +50,7 @@ body{
     margin:0;
     font-size: 1rem;
     color: white;
- 
+
 }
 
 ::-webkit-scrollbar {

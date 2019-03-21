@@ -94,5 +94,5 @@ public class Dinnertable implements Serializable {
     public String toString() {
         return "entities.Dinnertable[ tableId=" + tableId + " ]";
     }
-    
+
 }

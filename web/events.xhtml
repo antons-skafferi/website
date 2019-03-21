@@ -59,22 +59,22 @@ and open the template in the editor.
                 <b:row style="justify-content: space-between">
                     <ui:repeat value="#{eventBean.getUpcomingEvents(3)}" var="event" varStatus="varStatus">
                         <b:column span="4" style="display: flex; margin-bottom: 2rem; flex: 2; overflow: hidden;">
-                                <div class="event-news-first" onclick="$('.event-modal' + #{varStatus.index}).modal()">
-                                    <div style="padding: 0rem;">
-                                        <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
-                                    </div>
-                                    <div class="event-content">
-                                        <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
-
-                                        <p class="event-news-first-text">
-                                            #{event.description}
-                                        </p>
-                                        <hr class="underline-dark"/>
-                                        <p class="event-news-first-text">
-                                            #{event.getEventDateFormated()}
-                                        </p>
-                                    </div>
+                            <div class="event-news-first" onclick="$('.event-modal' + #{varStatus.index}).modal()">
+                                <div style="padding: 0rem;">
+                                    <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
                                 </div>
+                                <div class="event-content">
+                                    <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
+
+                                    <p class="event-news-first-text">
+                                        #{event.description}
+                                    </p>
+                                    <hr class="underline-dark"/>
+                                    <p class="event-news-first-text">
+                                        #{event.getEventDateFormated()}
+                                    </p>
+                                </div>
+                            </div>
                         </b:column>
                     </ui:repeat>
                 </b:row >  
@@ -86,27 +86,27 @@ and open the template in the editor.
                         <h3 style="align-self: center; padding-left: 10%; padding-right: 10%; font-style: oblique;" >Kolla även in våra föregående event!</h3>
                     </div>
                 </b:row>
-                
+
                 <div style="display: flex; justify-content: center">
-                <div class="events-old-container">
-                    <ui:repeat value="#{eventBean.getEventsAfter(3)}" var="event" varStatus="varStatus">
-                        <div style="padding-top: 2rem; padding-bottom: 2rem">
-                            <div class="event-old-container" onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
-                                <div class="event-image">
-                                    <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
-                                </div>
-                                <div class="event-content">
-                                    <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
-                                    <hr class="underline-dark"/>
-                                    <p class="event-news-first-text">
-                                        #{event.getEventDateFormated()}
-                                    </p>
+                    <div class="events-old-container">
+                        <ui:repeat value="#{eventBean.getEventsAfter(3)}" var="event" varStatus="varStatus">
+                            <div style="padding-top: 2rem; padding-bottom: 2rem">
+                                <div class="event-old-container" onclick="$('.event-modal' + #{varStatus.index}).modal()" > 
+                                    <div class="event-image">
+                                        <o:graphicImage class="event-image" value="#{imageReader.getImageByPath(event.image)}"/>
+                                    </div>
+                                    <div class="event-content">
+                                        <h4 style="font-weight: bold; color:black;">#{event.eventTitle}</h4>
+                                        <hr class="underline-dark"/>
+                                        <p class="event-news-first-text">
+                                            #{event.getEventDateFormated()}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </ui:repeat>
-                </div>
+                        </ui:repeat>
                     </div>
+                </div>
 
             </ui:define>        		
         </ui:composition> 

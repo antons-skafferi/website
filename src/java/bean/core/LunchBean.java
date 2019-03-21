@@ -47,7 +47,6 @@ public class LunchBean implements Serializable {
         this.lunchId = lunchId;
     }
 
-    
     public int getFoodId() {
         return foodId;
     }
@@ -71,90 +70,90 @@ public class LunchBean implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
-    
-    public List<Food> getAllLunchAsFood(){
+
+    public List<Food> getAllLunchAsFood() {
         List<Lunch> lunches = lunchFacade.findAll();
         List<Food> allFood = foodFacade.findAll();
 
         List<Food> lunchFood = new ArrayList<Food>();
-        for(Lunch lunch : lunches){
-            for(Food food : allFood){
-                if(lunch.getFoodId() == food.getFoodId()){
+        for (Lunch lunch : lunches) {
+            for (Food food : allFood) {
+                if (lunch.getFoodId() == food.getFoodId()) {
                     lunchFood.add(food);
                 }
             }
         }
         return lunchFood;
     }
-    
-    public List<Food> getMainCourse(){
+
+    public List<Food> getMainCourse() {
         List<Food> lunches = getAllLunchAsFood();
         List<Food> mainCourse = new ArrayList<Food>();
-        
-        for(Food food : lunches){
-            if(food.getCategory().equals("main_menu")){
+
+        for (Food food : lunches) {
+            if (food.getCategory().equals("main_menu")) {
                 mainCourse.add(food);
             }
-        }  
+        }
         return mainCourse;
     }
-    
-    public List<Food> getChildMenu(){
+
+    public List<Food> getChildMenu() {
         List<Food> lunches = getAllLunchAsFood();
         List<Food> childMenu = new ArrayList<Food>();
-        
-        for(Food food : lunches){
-            if(food.getCategory().equals("child_menu")){
+
+        for (Food food : lunches) {
+            if (food.getCategory().equals("child_menu")) {
                 childMenu.add(food);
             }
-        }   
+        }
         return childMenu;
     }
-    
-    public List<Food> getStarter(){
+
+    public List<Food> getStarter() {
         List<Food> lunches = getAllLunchAsFood();
         List<Food> starter = new ArrayList<Food>();
-        
-        for(Food food : lunches){
-            if(food.getCategory().equals("appetizer_menu")){
+
+        for (Food food : lunches) {
+            if (food.getCategory().equals("appetizer_menu")) {
                 starter.add(food);
             }
-        }  
+        }
         return starter;
     }
-    
-    public List<Food> getDessert(){
+
+    public List<Food> getDessert() {
         List<Food> lunches = getAllLunchAsFood();
         List<Food> dessert = new ArrayList<Food>();
-        
-        for(Food food : lunches){
-            if(food.getCategory().equals("dessert_menu")){
+
+        for (Food food : lunches) {
+            if (food.getCategory().equals("dessert_menu")) {
                 dessert.add(food);
             }
         }
         return dessert;
     }
-    
-    public Lunch getLunch(Food food){
+
+    public Lunch getLunch(Food food) {
         List<Lunch> lunches = lunchFacade.findAll();
-        for(Lunch lunch : lunches){
-            if(lunch.getFoodId() == food.getFoodId()){
+        for (Lunch lunch : lunches) {
+            if (lunch.getFoodId() == food.getFoodId()) {
                 return lunch;
             }
         }
         return null;
     }
-    
-    public Food getFood(Lunch lunch){
+
+    public Food getFood(Lunch lunch) {
         List<Food> allFood = foodFacade.findAll();
-        for(Food food : allFood){
-            if(food.getFoodId() == lunch.getFoodId()){
+        for (Food food : allFood) {
+            if (food.getFoodId() == lunch.getFoodId()) {
                 return food;
             }
         }
         return null;
     }
-    
+
     public List<Food> getTodaysLunch() {
         ZoneId z = ZoneId.of("Europe/Stockholm");
         ZonedDateTime zdt = ZonedDateTime.now(z);
@@ -169,7 +168,7 @@ public class LunchBean implements Serializable {
     }
 
     public List<Food> getTuesdayLunch() {
-        
+
         ZoneId z = ZoneId.of("Europe/Stockholm");
         ZonedDateTime zdt = ZonedDateTime.of(LocalDateTime.now().with(DayOfWeek.TUESDAY), z);
 
@@ -213,6 +212,5 @@ public class LunchBean implements Serializable {
         }
         return todaysLunch;
     }
-        
-    
+
 }

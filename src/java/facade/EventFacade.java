@@ -20,18 +20,18 @@ public class EventFacade extends AbstractFacade<Event> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public EventFacade() {
+        super(Event.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public EventFacade() {
-        super(Event.class);
-    }
-    
-    public void deleteEvent(int eventID){
+    public void deleteEvent(int eventID) {
         Event event = find(eventID);
         remove(event);
     }
-    
+
 }

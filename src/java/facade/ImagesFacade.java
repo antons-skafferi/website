@@ -20,13 +20,13 @@ public class ImagesFacade extends AbstractFacade<Images> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public ImagesFacade() {
+        super(Images.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public ImagesFacade() {
-        super(Images.class);
-    }
-    
 }

@@ -74,7 +74,8 @@ public class Food implements Serializable {
         this.description = description;
         this.category = category;
     }
-      public Food(Integer foodId, String dish, String description, String category, String ingrediens) {
+
+    public Food(Integer foodId, String dish, String description, String category, String ingrediens) {
         this.foodId = foodId;
         this.dish = dish;
         this.description = description;
@@ -146,5 +147,5 @@ public class Food implements Serializable {
     public String toString() {
         return "entities.Food[ foodId=" + foodId + " ]";
     }
-    
+
 }

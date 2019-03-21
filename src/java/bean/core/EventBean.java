@@ -19,11 +19,11 @@ import javax.inject.Named;
 @Named(value = "eventBean")
 @SessionScoped
 public class EventBean implements Serializable {
-    @EJB  
+
+    @EJB
     private EventFacade eventFacade;
-    
-    
-    public List<Event> getUpcomingEvents(int count){
+
+    public List<Event> getUpcomingEvents(int count) {
         List<Event> events = eventFacade.findAll();
         Calendar now = Calendar.getInstance();
         // Using -1 be sure to get current and coming events
@@ -34,15 +34,15 @@ public class EventBean implements Serializable {
         Date currentDate = now.getTime();
         events.removeIf(e -> e.getEventDate().before(currentDate));
         events.sort(Comparator.comparing(Event::getEventDate));
-        
-        if(count > events.size()){
+
+        if (count > events.size()) {
             count = events.size();
         }
-        
+
         return events.subList(0, count);
     }
-    
-    public List<Event> getEventsAfter(int count){
+
+    public List<Event> getEventsAfter(int count) {
         List<Event> events = eventFacade.findAll();
         Calendar now = Calendar.getInstance();
         // Using -1 to only get events that has passed
@@ -51,14 +51,14 @@ public class EventBean implements Serializable {
         now.set(Calendar.SECOND, 0);
         now.set(Calendar.MILLISECOND, 0);
         Date currentDate = now.getTime();
-        events.removeIf(e -> e.getEventDate().after(currentDate) ||
-                e.getEventDate().equals(e));
+        events.removeIf(e -> e.getEventDate().after(currentDate)
+                || e.getEventDate().equals(e));
         events.sort(Comparator.comparing(Event::getEventDate).reversed());
-        
-        if(count > events.size()){
+
+        if (count > events.size()) {
             count = events.size();
         }
-        
+
         return events.subList(0, count);
     }
 

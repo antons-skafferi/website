@@ -20,13 +20,13 @@ public class DinnertableFacade extends AbstractFacade<Dinnertable> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public DinnertableFacade() {
+        super(Dinnertable.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public DinnertableFacade() {
-        super(Dinnertable.class);
-    }
-    
 }

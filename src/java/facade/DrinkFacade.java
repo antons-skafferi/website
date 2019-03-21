@@ -20,13 +20,13 @@ public class DrinkFacade extends AbstractFacade<Drink> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public DrinkFacade() {
+        super(Drink.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public DrinkFacade() {
-        super(Drink.class);
-    }
-    
 }

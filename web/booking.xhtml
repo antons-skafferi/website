@@ -45,15 +45,15 @@ and open the template in the editor.
                                         <b:slider2 min="1"  max="8" span="7" id="booking_people" value="#{staffBookingBean.people}" />
 
                                         <legend>Lediga tider</legend>
-  
+
 
                                         <b:button onclick="#{staffBookingBean.updateAvailableTime()}" value="Visa lediga tider" /> 
-                                        
+
                                         <b:selectOneMenu value="#{staffBookingBean.strBookingFrom}" ajax="true" >
                                             <f:selectItems value="#{staffBookingBean.availableTime}" var="dateTime" 
                                                            itemValue="#{staffBookingBean.getFormatedDate(dateTime)}" itemLabel="#{staffBookingBean.getFormatedDate(dateTime)}" />
                                         </b:selectOneMenu>
-                                        
+
 
                                     </b:column>
                                 </b:row>

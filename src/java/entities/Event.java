@@ -131,7 +131,7 @@ public class Event implements Serializable {
     public void setEventDate(Date eventDate) {
         this.eventDate = eventDate;
     }
-    
+
     public String getEventDateFormated() {
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         return formatter.format(eventDate);
@@ -144,8 +144,8 @@ public class Event implements Serializable {
     public void setEventTitle(String eventTitle) {
         this.eventTitle = eventTitle;
     }
-    
-    public String getImageFileName(){
+
+    public String getImageFileName() {
         Path p = Paths.get(image);
         String stringPath = p.getFileName().toString();
         return stringPath;

@@ -20,13 +20,13 @@ public class LoginFacade extends AbstractFacade<Login> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public LoginFacade() {
+        super(Login.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public LoginFacade() {
-        super(Login.class);
-    }
-    
 }

@@ -109,5 +109,5 @@ public class Drink implements Serializable {
     public String toString() {
         return "api.Drink[ drinkId=" + drinkId + " ]";
     }
-    
+
 }

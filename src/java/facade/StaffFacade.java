@@ -20,13 +20,13 @@ public class StaffFacade extends AbstractFacade<Staff> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public StaffFacade() {
+        super(Staff.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
-
-    public StaffFacade() {
-        super(Staff.class);
     }
 
     public void deleteStaff(String staffID) {

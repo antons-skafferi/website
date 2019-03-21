@@ -48,7 +48,7 @@ public class StaffBookingBean implements Serializable {
     private String strBookingFrom;
 
     private List<Date> availableTime;
-    
+
     private List<Integer> selectedBookingIDs;
 
     @EJB
@@ -145,7 +145,7 @@ public class StaffBookingBean implements Serializable {
     }
 
     public List<Booking> bookingList() {
-        List<Booking> bookings = bookingFacade.findAll();       
+        List<Booking> bookings = bookingFacade.findAll();
         bookings.sort(Comparator.comparing(Booking::getBookingDate));
         return bookings;
     }
@@ -178,27 +178,25 @@ public class StaffBookingBean implements Serializable {
         
         System.out.println(sqlStartTime);
         System.out.println(sqlDate);*/
-        
-        int hour = Integer.parseInt(strBookingFrom);		
-        
-        
-        java.util.Date beginDate = (java.util.Date) bookingDate.clone();        
+        int hour = Integer.parseInt(strBookingFrom);
+
+        java.util.Date beginDate = (java.util.Date) bookingDate.clone();
         beginDate.setTime(TimeUnit.HOURS.toMillis(hour - 1));
 
         java.util.Date endDate = (java.util.Date) beginDate.clone();
         endDate.setTime(TimeUnit.HOURS.toMillis(hour + 1));
-        
+
         List<Dinnertable> tables = availableTables(people, beginDate);
-        if(tables.isEmpty()){
+        if (tables.isEmpty()) {
             return;
-        }     
+        }
         Dinnertable minTableFound = null;
-        for(Dinnertable table : tables){
-            if(table.getSeat() >= people && (minTableFound == null || table.getSeat() < minTableFound.getSeat())){
+        for (Dinnertable table : tables) {
+            if (table.getSeat() >= people && (minTableFound == null || table.getSeat() < minTableFound.getSeat())) {
                 minTableFound = table;
             }
         }
-        if(minTableFound == null){
+        if (minTableFound == null) {
             return;
         }
 
@@ -278,16 +276,16 @@ public class StaffBookingBean implements Serializable {
     public void setAvailableTime(List<Date> availableTime) {
         this.availableTime = availableTime;
     }
-    
-    public String getFormatedDate(Date date){
+
+    public String getFormatedDate(Date date) {
         Format formatter = new SimpleDateFormat("HH");
         return formatter.format(date);
     }
-    
+
     public void updateAvailableTime() {
         List<Date> timesAvailable = new ArrayList<>();
         List<Date> dateTimes = getTimesFromDate(bookingDate, 15, 21);
-        
+
         for (Date tider : dateTimes) {
             if (!availableTables(people, tider).isEmpty()) {
                 timesAvailable.add(tider);
@@ -297,16 +295,16 @@ public class StaffBookingBean implements Serializable {
         setAvailableTime(timesAvailable);
 
     }
-    
-    public List<Date> getTimesFromDate(Date date, int startTime, int endTime){
+
+    public List<Date> getTimesFromDate(Date date, int startTime, int endTime) {
         List<Date> dateTimes = new ArrayList<>();
-        
-        for(int time = startTime; time <= endTime; time++){
+
+        for (int time = startTime; time <= endTime; time++) {
             Date tempDate = (Date) date.clone();
             tempDate.setTime(TimeUnit.HOURS.toMillis(time - 1));
             dateTimes.add(tempDate);
         }
-        
+
         return dateTimes;
     }
 }

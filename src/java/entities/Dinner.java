@@ -108,5 +108,5 @@ public class Dinner implements Serializable {
     public String toString() {
         return "api.Dinner[ dinnerId=" + dinnerId + " ]";
     }
-    
+
 }

@@ -87,5 +87,5 @@ public class DrinkFacadeREST extends AbstractFacade<Drink> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
 }

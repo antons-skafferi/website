@@ -20,18 +20,18 @@ public class BookingFacade extends AbstractFacade<Booking> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public BookingFacade() {
+        super(Booking.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public BookingFacade() {
-        super(Booking.class);
-    }
-    
-    public void deleteBooking(int bookingID){
+    public void deleteBooking(int bookingID) {
         Booking booking = find(bookingID);
         remove(booking);
     }
-    
+
 }

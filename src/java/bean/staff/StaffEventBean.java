@@ -38,44 +38,45 @@ import org.primefaces.model.UploadedFile;
 @ManagedBean
 @SessionScoped
 public class StaffEventBean implements Serializable {
+
     private String event_id;
     private String description;
     private String strDate;
     private Date event_date;
     private String event_title;
-    
+
     private List<Integer> selectedEventIDs;
-    
+
     @EJB
     private EventFacade eventFacade;
-    
+
     private UploadedFile file;
- 
+
     public UploadedFile getFile() {
         return file;
     }
- 
+
     public void setFile(UploadedFile file) {
         this.file = file;
     }
-     
+
     public void upload() {
-        if(file != null) {
+        if (file != null) {
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
-     
+
     public void handleFileUpload(FileUploadEvent event) {
         FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
+
     public List<Integer> getSelectedEventIDs() {
         return selectedEventIDs;
     }
-    
-    public void setSelectedEventIDs(List<Integer> selectedEventIDs){
+
+    public void setSelectedEventIDs(List<Integer> selectedEventIDs) {
         this.selectedEventIDs = selectedEventIDs;
     }
 
@@ -122,13 +123,10 @@ public class StaffEventBean implements Serializable {
     public List<Event> eventList() {
         return eventFacade.findAll();
     }
-    
- 
 
-    public void addEventForm() throws ParseException, FileNotFoundException, IOException{
+    public void addEventForm() throws ParseException, FileNotFoundException, IOException {
         int x = 0;
         java.sql.Date sqlDate = new java.sql.Date(event_date.getTime());
-
 
         InputStream input = null;
         OutputStream output = null;
@@ -136,9 +134,9 @@ public class StaffEventBean implements Serializable {
         File newFile = new File("/antonsskafferi/events", filename);
         String newFilePath = newFile.toPath().toString();
         newFile.getParentFile().mkdirs();
-                    
-            input = file.getInputstream();
-            output = FileUtils.openOutputStream(newFile);
+
+        input = file.getInputstream();
+        output = FileUtils.openOutputStream(newFile);
         try {
 
             IOUtils.copy(input, output);
@@ -148,7 +146,7 @@ public class StaffEventBean implements Serializable {
             IOUtils.closeQuietly(input);
             IOUtils.closeQuietly(output);
         }
-        
+
         if (description == null) {
             if (file == null) {
                 eventFacade.create(new Event(null, sqlDate, event_title));
@@ -159,20 +157,13 @@ public class StaffEventBean implements Serializable {
         } else {
             eventFacade.create(new Event(null, sqlDate, event_title, description, newFilePath));
         }
-        
-        
 
     }
-    
+
     public void deleteEvent() {
         for (Integer eventID : selectedEventIDs) {
             eventFacade.deleteEvent(eventID);
         }
     }
-    /**
-     * Creates a new instance of StaffEventBean
-     */
-    public StaffEventBean() {
-    }
-    
+
 }

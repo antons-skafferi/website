@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entities;
 
 import java.io.Serializable;
@@ -125,7 +124,7 @@ public class Booking implements Serializable {
         this.phone = phone;
         this.email = email;
     }
-    
+
     public Booking(Integer bookingId, String tableId, int people, Date bookingFrom, Date bookingTo, Date bookingDate, String name, String lastname, String phone, String email, String bookingDescription) {
         this.bookingId = bookingId;
         this.tableId = tableId;
@@ -235,16 +234,16 @@ public class Booking implements Serializable {
     public void setStringBookingFrom(String stringBookingFrom) {
         this.stringBookingFrom = stringBookingFrom;
     }
-    
-     public String getFullInfo() {
+
+    public String getFullInfo() {
         SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
         SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM-yyyy");
-        
+
         String bookingStartDate = sdfDate.format(getBookingDate());
         String bookingStartTime = sdfTime.format(getBookingFrom());
         String bookingEndTime = sdfTime.format(getBookingTo());
-        
-        return getName() + " " + getLastname() + "-"+ bookingStartDate +" Från " + bookingStartTime + " Till " + bookingEndTime;
+
+        return getName() + " " + getLastname() + "-" + bookingStartDate + " Från " + bookingStartTime + " Till " + bookingEndTime;
     }
 
     @Override

@@ -20,16 +20,16 @@ public class DinnerFacade extends AbstractFacade<Dinner> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public DinnerFacade() {
+        super(Dinner.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public DinnerFacade() {
-        super(Dinner.class);
-    }
-    
-    public void deleteDinner(String dinnerID){
+    public void deleteDinner(String dinnerID) {
         Dinner dinner = find(dinnerID);
         remove(dinner);
     }

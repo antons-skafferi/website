@@ -87,5 +87,5 @@ public class LunchFacadeREST extends AbstractFacade<Lunch> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
 }

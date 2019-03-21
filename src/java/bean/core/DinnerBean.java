@@ -23,11 +23,11 @@ import javax.inject.Named;
 @Named(value = "dinnerbean")
 @SessionScoped
 public class DinnerBean implements Serializable {
+
     private int dinnerID;
     private int foodID;
     private int price;
-    
-    
+
     @EJB
     private DinnerFacade dinnerFacade;
     @EJB
@@ -56,75 +56,74 @@ public class DinnerBean implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
-    
-        
-    public List<Food> getAllDinnerAsFood(){
+
+    public List<Food> getAllDinnerAsFood() {
         List<Dinner> dinners = dinnerFacade.findAll();
         List<Food> allFood = foodFacade.findAll();
 
         List<Food> dinnerFood = new ArrayList<Food>();
-        for(Dinner dinner : dinners){
-            for(Food food : allFood){
-                if(dinner.getFoodId() == food.getFoodId()){
+        for (Dinner dinner : dinners) {
+            for (Food food : allFood) {
+                if (dinner.getFoodId() == food.getFoodId()) {
                     dinnerFood.add(food);
                 }
             }
         }
         return dinnerFood;
     }
-    
-    public List<Food> getMainCourse(){
+
+    public List<Food> getMainCourse() {
         List<Food> dinners = getAllDinnerAsFood();
         List<Food> mainCourse = new ArrayList<Food>();
-        
-        for(Food food : dinners){
-            if(food.getCategory().equals("main_menu")){
+
+        for (Food food : dinners) {
+            if (food.getCategory().equals("main_menu")) {
                 mainCourse.add(food);
             }
-        }  
+        }
         return mainCourse;
     }
-    
-    public List<Food> getChildMenu(){
+
+    public List<Food> getChildMenu() {
         List<Food> dinners = getAllDinnerAsFood();
         List<Food> childMenu = new ArrayList<Food>();
-        
-        for(Food food : dinners){
-            if(food.getCategory().equals("child_menu")){
+
+        for (Food food : dinners) {
+            if (food.getCategory().equals("child_menu")) {
                 childMenu.add(food);
             }
-        }   
+        }
         return childMenu;
     }
-    
-    public List<Food> getStarter(){
+
+    public List<Food> getStarter() {
         List<Food> dinners = getAllDinnerAsFood();
         List<Food> starter = new ArrayList<Food>();
-        
-        for(Food food : dinners){
-            if(food.getCategory().equals("appetizer_menu")){
+
+        for (Food food : dinners) {
+            if (food.getCategory().equals("appetizer_menu")) {
                 starter.add(food);
             }
-        }  
+        }
         return starter;
     }
-    
-    public List<Food> getDessert(){
+
+    public List<Food> getDessert() {
         List<Food> dinners = getAllDinnerAsFood();
         List<Food> dessert = new ArrayList<Food>();
-        
-        for(Food food : dinners){
-            if(food.getCategory().equals("dessert_menu")){
+
+        for (Food food : dinners) {
+            if (food.getCategory().equals("dessert_menu")) {
                 dessert.add(food);
             }
         }
         return dessert;
     }
-    
-    public Dinner getDinner(Food food){
+
+    public Dinner getDinner(Food food) {
         List<Dinner> dinners = dinnerFacade.findAll();
-        for(Dinner dinner : dinners){
-            if(dinner.getFoodId() == food.getFoodId()){
+        for (Dinner dinner : dinners) {
+            if (dinner.getFoodId() == food.getFoodId()) {
                 return dinner;
             }
         }

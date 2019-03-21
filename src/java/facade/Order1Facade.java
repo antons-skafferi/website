@@ -20,13 +20,13 @@ public class Order1Facade extends AbstractFacade<Order1> {
     @PersistenceContext(unitName = "websitePU")
     private EntityManager em;
 
+    public Order1Facade() {
+        super(Order1.class);
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public Order1Facade() {
-        super(Order1.class);
-    }
-    
 }
