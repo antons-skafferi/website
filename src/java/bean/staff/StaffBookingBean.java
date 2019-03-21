@@ -8,6 +8,7 @@ package bean.staff;
 import com.sun.xml.wss.util.DateUtils;
 import entities.Booking;
 import entities.Dinnertable;
+import entities.Event;
 import facade.BookingFacade;
 import facade.DinnertableFacade;
 import java.io.Serializable;
@@ -17,6 +18,7 @@ import java.text.SimpleDateFormat;
 import static java.util.Calendar.HOUR;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -148,7 +150,9 @@ public class StaffBookingBean implements Serializable {
     }
 
     public List<Booking> bookingList() {
-        return bookingFacade.findAll();
+        List<Booking> bookings = bookingFacade.findAll();       
+        bookings.sort(Comparator.comparing(Booking::getBookingDate));
+        return bookings;
     }
 
     public String getBookingDescription() {
