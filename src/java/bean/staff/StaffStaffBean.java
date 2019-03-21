@@ -5,15 +5,14 @@
  */
 package bean.staff;
 
-import entities.Food;
 import entities.Staff;
 import facade.StaffFacade;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 /**
  *

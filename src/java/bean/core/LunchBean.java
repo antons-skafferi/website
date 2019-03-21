@@ -6,8 +6,8 @@
 package bean.core;
 
 import entities.Food;
-import facade.FoodFacade;
 import entities.Lunch;
+import facade.FoodFacade;
 import facade.LunchFacade;
 import java.io.Serializable;
 import java.sql.Date;
@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**

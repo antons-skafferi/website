@@ -7,13 +7,10 @@ package facade;
 
 
 import entities.Food;
-
 import entities.Lunch;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 /**

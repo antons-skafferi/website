@@ -5,7 +5,6 @@
  */
 package facade;
 
-import entities.Event;
 import entities.Staff;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

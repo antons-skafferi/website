@@ -14,12 +14,11 @@ import facade.FoodFacade;
 import facade.LunchFacade;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 @Named(value = "staffMenuBean")
 @SessionScoped

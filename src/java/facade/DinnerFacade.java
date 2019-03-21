@@ -6,8 +6,6 @@
 package facade;
 
 import entities.Dinner;
-import entities.Lunch;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

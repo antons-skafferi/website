@@ -7,15 +7,14 @@ package bean.core;
 
 import entities.Event;
 import facade.EventFacade;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 @Named(value = "eventBean")
 @SessionScoped

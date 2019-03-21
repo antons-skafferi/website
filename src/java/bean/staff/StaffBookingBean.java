@@ -5,28 +5,23 @@
  */
 package bean.staff;
 
-import com.sun.xml.wss.util.DateUtils;
 import entities.Booking;
 import entities.Dinnertable;
-import entities.Event;
 import facade.BookingFacade;
 import facade.DinnertableFacade;
 import java.io.Serializable;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import static java.util.Calendar.HOUR;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 /**
  *
